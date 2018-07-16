@@ -1,0 +1,21 @@
+@import "ui-elements";
+html,
+body {
+  @include font-reg(1em);
+}
+
+div {
+  display: flex;
+  flex: 1;
+}
+
+body {
+  background-color: $nu-dk-grey;
+}
+
+@media all and (max-width:320px) {
+  html,
+  body {
+    @include font-reg(0.8em);
+  }
+}

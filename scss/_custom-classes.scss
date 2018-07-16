@@ -1,0 +1,328 @@
+@import "main-styles";
+.box {
+  border: 1px solid black;
+}
+
+#carousel-container {
+  //z-index: -1;
+  @include flex(1, 0, auto);
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+  box-sizing: border-box;
+  height: auto;
+  .carousel-image {
+    // min-height: 500px;
+    display: none;
+    @include animation(0, 2s, fade);
+    @include keyframe(fade) {
+      from {
+        opacity: 0.4;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    img {
+      vertical-align: middle;
+      height: auto;
+      width: 100%;
+    }
+    .carousel-caption {
+      color: $white;
+      padding: 8px 12px;
+      position: absolute;
+      bottom: 40px;
+      width: 100%;
+      text-align: center;
+      @include font-reg();
+    }
+  }
+  .carousel-left {
+    @extend .carousel-arrow;
+  }
+  .carousel-right {
+    @extend .carousel-arrow;
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+}
+
+.carousel-arrow {
+  color: $white;
+  font-weight: bold;
+  font-size: 1.2em;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  border-radius: 0 3px 3px 0;
+  @include transition(0.6s ease);
+}
+
+.indicator-container {
+  @include flex();
+  @include flex-direction(row);
+  overflow: hidden;
+  position: absolute;
+  bottom: 5px;
+  min-width: max-content;
+  margin: 0 auto;
+  .carousel-indicator {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: lightenColor($nu-black, 80%);
+    border-radius: 50%;
+    display: inline-flex;
+    @include transition(background-color 0.6s ease);
+    &:hover {
+      background-color: $nu-dk-green !important;
+    }
+  }
+}
+
+.active-carousel {
+  //background-color: lightenColor($nu-black, 60%) !important;
+  background-color: $nu-dk-green !important;
+}
+
+.btn-modal {
+  border: none;
+  text-decoration: none;
+  padding: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  margin: 2px 4px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-comp {
+  padding: 2px 16px;
+}
+
+.modal-content-comp {
+  position: relative;
+  margin: auto;
+  padding: 0; //border-radius: 6px;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  @include keyframe(animatetop) {
+    from {
+      top: -300px;
+      opacity: 0;
+    }
+    to {
+      top: 0;
+      opacity: 1;
+    }
+  }
+  @include animation(none, 0.4s, animatetop);
+}
+
+.modal-main-comp {
+  position: relative;
+  margin: auto;
+  padding: 0;
+  width: 80%;
+}
+
+.modal-light {
+  .modal-content {
+    @extend .modal-content-comp;
+    background-color: $white;
+    color: $nu-black;
+    @include flexbox();
+    @include flex-direction(row);
+    .modal-image {
+      overflow: hidden;
+      img {
+        margin: 0 auto;
+        object-fit: contain;
+        width: 80%;
+        height: 500px;
+      }
+    }
+    .modal-main {
+      @extend .modal-main-comp;
+      @include flexbox();
+      @include flex-direction(column);
+      padding: 15px;
+      min-height: 100%;
+      .close {
+        @include flexbox();
+        max-width: max-content;
+        margin-right: 3%;
+        margin-left: auto;
+        color: lightenColor($nu-black, 70%);
+        font-size: 28px;
+        font-weight: bold;
+        &:hover {
+          color: lightenColor($nu-black, 80%);
+          text-decoration: none;
+          cursor: pointer;
+        }
+        &:focus {
+          color: lightenColor($nu-black, 80%);
+          text-decoration: none;
+          cursor: pointer;
+        }
+      }
+      .modal-header {
+        @extend .modal-comp;
+        background-color: $white;
+        color: $nu-black;
+        @include font-bold(1.8rem);
+        text-transform: uppercase;
+        @include flexbox();
+        @include flex-direction(row);
+        margin-bottom: 10px;
+        border-bottom: 1px solid $nu-yellow;
+      }
+      .modal-body {
+        @include flexbox();
+        @include flex-direction(row);
+        @include flex-wrap(row);
+        @extend .modal-comp;
+        @include font-reg();
+        margin-top: 10px;
+        margin-bottom: 15px;
+        background-color: $white;
+        color: $nu-black;
+        ul {
+          li {
+            margin: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 2000px){
+  .modal {
+    padding-top: 200px;
+  }
+}
+
+@media all and (max-width: 1400px){
+  .modal {
+    padding-top: 50px;
+  }
+}
+
+@media all and (max-width:540px) {
+  .modal {
+    padding-top: 30px;
+  }
+  .modal-light {
+    .modal-content {
+      @include flex-direction(column);
+      .modal-image {
+        img {
+          display: none;
+        }
+      }
+      .modal-main {
+        padding: 5px;
+        min-height: 100%;
+      }
+      .modal-header {
+        font-family: $font-bold !important;
+        font-size: 1.4rem !important;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+      .modal-body {
+        ul {
+          li {
+            margin: 8px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 500px) {
+  #carousel-container {
+    .carousel-image {
+      .carousel-caption {
+        bottom: 30px;
+        font-size: 0.8em;
+      }
+    }
+  }
+  .indicator-container {
+    bottom: 5px;
+    .carousel-indicator {
+      height: 10px;
+      width: 10px;
+    }
+  }
+}
+
+@media all and (max-width: 320px) {
+  #carousel-container {
+    .carousel-image {
+      .carousel-caption {
+        bottom: 25px !important;
+      }
+    }
+  }
+  .indicator-container {
+    bottom: 5px;
+    .carousel-indicator {
+      height: 5px;
+      width: 5px;
+    }
+  }
+  .carousel-arrow {
+    font-size: 0.9em;
+  }
+  .modal-light {
+    .modal-content {
+      @include flex-direction(column);
+      .modal-image {
+        img {
+          display: none;
+        }
+      }
+      .modal-main {
+        padding: 5px;
+        min-height: 100%;
+      }
+      .modal-header {
+        font-family: $font-bold !important;
+        font-size: 1.4rem !important; //@include font-bold(1.4rem);
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+      .modal-body {
+        ul {
+          li {
+            margin: 8px !important;
+          }
+        }
+      }
+    }
+  }
+}

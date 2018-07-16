@@ -1,0 +1,87 @@
+[
+    {
+        "sectionName": "Personal Information",
+        "inputs": [
+            {
+                "name": "First Name",
+                "type": "text",
+                "id": "fName"
+            },
+            {
+                "name": "Last Name",
+                "type": "text",
+                "id": "lName"
+            },
+            {
+                "name": "Middle Initial",
+                "type": "text",
+                "id": "mI"
+            }
+        ]
+    },
+    {
+        "sectionName": "Project Information",
+        "inputs": [
+            {
+                "name": "Project Name",
+                "type": "text",
+                "id": "projName"
+            },
+            {
+                "name": "Describe how the project idea came about",
+                "type": "textArea",
+                "id": "projDesc"
+            },
+            {
+                "name": "Identify at a high level what value your product or idea will provide (i.e. what does your project do)",
+                "type": "testArea",
+                "id": "projAttri"
+            }
+        ]
+    },
+    {
+        "sectionName": "Scope",
+        "inputs": [
+            {
+                "name": "Who is your market?",
+                "type": "text",
+                "id": "who"
+            },
+            {
+                "name": "Identify potential roadblocks or difficulties you feel you will need to overcome",
+                "type": "textArea",
+                "id": "roadBlocks"
+            }
+        ]
+    },
+    {
+        "sectionName": "High Level Requirements",
+        "inputs": [
+            {
+                "name": "What types of people will you need to help you develop the idea?",
+                "type": "textArea",
+                "id": "teamType"
+            },
+            {
+                "name": "What expertise will you need that is not at Neumont?",
+                "type": "textArea",
+                "id": "expertiseNeed"
+            },
+            {
+                "name": "What specific market are you looking at?",
+                "type": "textArea",
+                "id": "market"
+            }
+        ]
+    },
+    {
+        "sectionName": "Other Information",
+        "inputs": [
+            {
+                "name": "List and Additional Comments below",
+                "type": "textArea",
+                "id": "additionalComments"
+            }
+        ]
+    }
+]

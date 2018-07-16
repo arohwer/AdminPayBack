@@ -1,0 +1,24 @@
+$nu-black: #000;
+$white: #fff;
+$nu-dk-grey: #2B2929;
+$nu-yellow: #FFCC00;
+$nu-orange: #EA9919;
+$nu-red: #D24D3B;
+$nu-lt-green: #D6E03E;
+$nu-dk-green: #8CAB3C;
+$nu-lt-blue: #12B5EA;
+$nu-dk-blue: #056CB6;
+$nu-purple: #AB79A3;
+$nu-lt-grey: #D8CFC6;
+$nu-med-grey: #BAB0A5;
+$nu-warm-grey: #998B7D;
+$nu-dk-steel: #636363;
+$nu-lt-steel: #989898;
+
+@function lightenColor($color, $value: 10%) {
+  @return lighten($color, $value);
+}
+
+@function darkenColor($color, $value: 10%) {
+  @return darken($color, $value);
+}

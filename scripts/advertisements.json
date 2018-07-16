@@ -1,0 +1,27 @@
+{
+  "ads": [{
+      "type": "personal",
+      "username": "",
+      "projectName": "",
+      "message": ""
+    },
+    {
+      "type": "bug",
+      "username": "",
+      "projectName": "",
+      "message": ""
+    },
+    {
+      "type": "personal",
+      "username": "",
+      "projectName": "",
+      "message": ""
+    },
+    {
+      "type": "bug",
+      "username": "",
+      "projectName": "",
+      "message": ""
+    }
+  ]
+}

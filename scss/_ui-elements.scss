@@ -1,0 +1,708 @@
+@import "colors";
+@import "fonts";
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-bold;
+}
+
+//had to give the body padding so that the navbar wouldnt cover content;
+body {
+    padding-bottom: 30px;
+}
+
+p {
+    @include flexbox();
+    @include flex-direction(column);
+    @include flex-wrap(column);
+    margin: 10px;
+}
+
+a {
+    text-decoration: none;
+    display: flex;
+    flex: 1;
+    color: $nu-dk-grey;
+    cursor: pointer;
+    max-width: max-content;
+}
+
+span {
+    display: flex;
+    flex: 1;
+}
+
+.navbar {
+    z-index: 1;
+    font-size: 1.2rem;
+    min-width: 100%;
+    flex-direction: column;
+    background: $white;
+    color: $nu-dk-grey;
+    top: 0;
+    position: fixed;
+    @include selectNone;
+}
+
+.navLogo {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 1%;
+    h2 {
+        margin: 0 auto;
+    }
+}
+
+.logo {
+    display: flex;
+    flex: 1;
+    max-height: 88px;
+}
+
+.navMenu {
+    position: fixed;
+    min-width: 100%;
+    z-index: 1;
+    padding: 0.5%;
+    flex-direction: column;
+    color: $white;
+    background-color: $nu-dk-steel;
+    @include opacity(0.75);
+    @include transition(0.5s);
+}
+
+.navText {
+    margin: 0 auto;
+}
+
+.navLinkCont {
+    padding: 1%;
+}
+
+.navMenuBtn {
+    background-color: $nu-dk-steel;
+    color: $white;
+    padding: 0.5% 1%;
+    min-width: 100%;
+    @include transition(0.5s);
+}
+
+.navMenuBtn:hover {
+    background: lighten($nu-dk-steel, $amount: 25);
+    color: darken($white, $amount: 75);
+}
+
+.shrink {
+    flex-direction: row;
+    .navLogo {
+        flex-direction: row;
+        .logo {
+            max-height: 75px;
+        }
+        .navText {
+            flex: 3;
+            justify-content: center;
+        }
+    }
+    .navMenuBtn {
+        background-color: $white;
+        min-width: max-content;
+        max-width: max-content;
+        color: $nu-dk-steel;
+        min-height: 100%;
+        @include transition(0.5s);
+        .btnText {
+            margin: 0 auto;
+            max-height: max-content;
+        }
+    }
+    .navMenuBtn:hover {
+        background: darken($white, $amount: 75);
+        color: lighten($nu-dk-steel, $amount: 50);
+    }
+    border-bottom: $nu-dk-green 3px solid;
+}
+
+.menuItem {
+    text-decoration: none;
+    color: $white;
+    padding: 0.5% 1%;
+    max-width: 33%;
+}
+
+.welcome {
+    max-width: 100%;
+    min-height: max-content;
+    background-color: $nu-yellow;
+    text-align: center;
+    padding: 2%;
+}
+
+.footer {
+    @include flex(1, 0, auto);
+    @include justify-content(center);
+    @include align-items(center);
+    bottom: 0;
+    position: relative;
+    text-align: center;
+    margin: 0 auto;
+    color: $white;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.parallaxImg {
+    margin: 0 auto;
+    padding: 1%;
+    width: 30%;
+}
+
+//Formatting rules for design
+.row {
+    flex-direction: row;
+}
+
+.row_rev {
+    flex-direction: row-reverse;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.section {
+    @include flex(1, 0, auto);
+    padding: 10px;
+    margin: 10px;
+}
+
+#infoContainer {
+    @include flex-direction(column);
+}
+
+div {
+    @include flex(1, 0, auto);
+}
+
+.aboutDiv {
+    background-color: $white;
+    @include flex-direction(column);
+    padding: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    line-height: 1.3;
+    h1 {
+        margin: 15px;
+    }
+    p {
+        margin: 20px;
+    }
+}
+
+//Card Rules
+.card {
+    background-color: $white;
+    color: $nu-dk-grey;
+    max-width: 85%; // max-width: max-content; 
+    max-height: max-content;
+    margin: 1% auto;
+    flex-direction: column;
+
+}
+
+#applicationCard{
+    margin-bottom: 3%;
+    padding: 1%;
+}
+
+.project-card {
+    // margin: 2%;
+    margin: 2% auto;
+    .projPhoto {
+        @include flex;
+        max-height: 350px;
+    }
+    .projInfo {
+        flex-direction: column;
+        padding: 1%;
+        .projectDes {
+            line-height: 120%;
+        }
+    }
+}
+
+@media all and (max-width:1050px){
+    .project-card{
+        .projPhoto{
+            object-fit: cover;
+            object-position: top;
+        }
+        flex-direction: column;
+    }
+}
+.cardHeader {
+    flex-direction: row;
+    padding: 1%;
+    max-height: max-content;
+    .headerText {
+        flex-direction: column;
+        max-height: max-content;
+    }
+}
+
+.cardContainer {
+    padding: 2%;
+    flex-direction: row;
+    .cardContents {
+        flex: 4;
+        padding: 2%;
+        flex-direction: column;
+    }
+    .cardImage {
+        flex-direction: column;
+    }
+}
+
+.cardActions {
+    min-height: max-content;
+    min-width: 100%;
+    margin: 1%;
+    padding: 1%;
+}
+
+.imageGrid {
+    min-width: 100%;
+    flex-direction: column;
+    .imageRow {
+        flex-direction: row;
+        .imageCell {
+            @include transition(1s);
+            min-height: 150px;
+            padding: 1%;
+            color: $white;
+            flex: 1;
+            background-color: $nu-yellow;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center top;
+            span {
+                max-width: max-content;
+                max-height: max-content;
+                @include transition(0.25s);
+                @include selectNone;
+                margin: auto;
+            }
+        }
+        .imageCell:hover {
+            background-color: $nu-dk-steel;
+            span {
+                padding: 2%;
+                background-color: $nu-dk-green;
+                border-radius: 10px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.form {
+    background-color: $white;
+    flex-direction: column;
+    padding: 2% 6%;
+    .formSection {
+        flex-direction: column;
+        margin-bottom: 5%;
+        .sectionHeader {
+            color: $nu-orange;
+            font-size: 25px;
+        }
+        .inputContainer {
+            margin-left: 3%;
+            flex-direction: column;
+            .inputLabel {
+                margin-top: 2%;
+                @include font-light(1rem);
+            }
+            input {
+                @include font-light(1rem);
+                @include transition(0.5s);
+                outline: none;
+                margin: 1%;
+                border: none;
+                border-bottom: $nu-dk-steel solid 1px;
+            }
+            input:focus {
+                border-bottom: $nu-orange solid 2px;
+            }
+        }
+    }
+    input[type=submit] {
+        @include font-reg(1rem);
+        background-color: $nu-dk-green;
+        padding: 1% 4%;
+        border: 1px;
+        border-radius: 10px;
+        @include transition(0.5s);
+    }
+    input[type=submit]:hover {
+        color: $nu-dk-green;
+        background-color: unset;
+        border: 1px $nu-dk-green solid;
+    }
+}
+
+.btn {
+    background-color: $nu-dk-green;
+    max-height: max-content;
+    max-width: max-content;
+    padding: 1% 4%;
+    border: 1px;
+    border-radius: 10px;
+    @include transition(0.5s);
+}
+
+.btn:hover {
+    color: $nu-dk-green;
+    background-color: unset;
+    border: 1px $nu-dk-green solid;
+}
+
+.yellowText {
+    text-indent: 25px;
+    color: $nu-yellow;
+    min-width: max-content;
+}
+
+.stagger-left {
+    margin-left: 2%;
+    margin-right: auto;
+}
+
+.stagger-right {
+    margin-right: 2%;
+    margin-left: auto;
+}
+
+.left {
+    margin-left: 10%;
+    margin-right: auto;
+}
+
+.right {
+    margin-right: 10%;
+    margin-left: auto;
+}
+
+.center {
+    margin: 0 auto;
+}
+
+//This is mostly for the navMenu
+.active {
+    display: flex;
+    max-height: max-content;
+    @include transition(0.5s);
+}
+
+.hidden {
+    max-height: 0%;
+    display: none;
+    @include transition(0.5s);
+}
+
+.link {
+    text-decoration: none;
+    color: $nu-dk-green;
+    &:hover {
+        color: $nu-lt-green;
+    }
+}
+
+.yellow-heading {
+    color: $nu-yellow;
+}
+
+.txt-center {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.project-card {
+    background-color: $white;
+    @extend .card;
+    @extend .projCard;
+}
+
+.monthCard {
+    h2 {
+        margin-top: 2%;
+    }
+    padding: 10px;
+    margin: 2% auto;
+    @include flexbox();
+    @include flex(2, 0, auto);
+    max-width: max-content;
+    .eventRow {
+        @include flexbox();
+        @include flex-direction(row);
+        @include flex(1, 0, auto);
+        @include flex-wrap(wrap);
+        margin: 0 auto;
+        min-width: 100%;
+        .event-card {
+            @include flexbox();
+            @include transition(0.5s);
+            @include flex-direction(column);
+            cursor: pointer;
+            margin: 1%;
+            background-color: $white;
+            h5,
+            h6 {
+                text-align: center;
+                margin: 10px;
+            }
+            &:hover {
+                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+            }
+        }
+    }
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid $nu-yellow;
+    margin: 1em 0;
+    padding: 0;
+    width: 100%;
+}
+
+.projectHead {
+    max-width: 100%;
+    max-height: max-content;
+    background: $nu-yellow;
+    padding-top: 2%; // text-align: center;
+    // align-content: center;
+}
+
+.projectImg,
+.projectHeadText {
+    margin: 2% auto;
+}
+
+.currentProjTitle {
+    margin-top: 10px;
+}
+
+.projectText {
+    padding: 2%;
+}
+
+.cardText {
+    padding-left: 15%;
+    line-height: 1.5;
+}
+
+.contactInfoText {
+    @extend .bold-heading;
+    font-size: 1.3rem; //text-align: center;
+    padding-bottom: 3%;
+    margin: 30px;
+    margin: 0 auto; // padding-left: 30%;
+}
+
+.contactInfo {
+    padding-bottom: 2%;
+    @extend .light-heading;
+    font-size: 1.1rem;
+    text-transform: inherit;
+}
+
+.projectInfo {
+    @extend .bold-heading;
+    font-size: 1.5rem;
+    padding-top: 15%;
+    color: darken($nu-orange, 1%);
+}
+
+.projCard {
+    flex-direction: row;
+}
+
+.sm-img-container {
+    background-image: url('../images/jerry_pay_headshot.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: max-content;
+    height: auto;
+    float: right;
+    background-position: right;
+    margin-right: 10px;
+}
+
+@media all and (max-width: 800px) {
+    .monthCard {
+        .eventRow {
+            @include flex-direction(column);
+            @include justify-content(center);
+            @include align-items(center);
+            margin: 0 auto;
+            min-width: 100%;
+            .event-card {
+                min-width: 100%;
+            }
+        }
+    }
+    .projectHead {
+        max-width: 100%;
+        padding-top: 1%;
+        .projectHeadText {
+            font-size: 1.2rem;
+        }
+    }
+    .projCard {
+        flex-direction: column;
+    }
+}
+
+@media all and (max-width: 650px) {
+    .navbar {
+        max-width: 100%;
+        flex-direction: row;
+        position: fixed;
+        .navText {
+            display: none;
+        }
+        .navLogo {
+            flex-direction: row;
+            margin: 0;
+            min-width: percentage($number: (3/4));
+            .logo {
+                max-height: 55px;
+            }
+            .navText {
+                @include font-bold;
+                padding: 2%;
+                justify-content: center;
+            }
+        }
+        .navMenuBtn {
+            background-color: $white;
+            color: $nu-dk-steel;
+            @include transition(0.5s);
+            .btnText {
+                font-size: 0.7em;
+                align-items: center;
+                margin-left: 6%;
+            }
+        }
+        .navMenuBtn:hover {
+            background: darken($white, $amount: 75);
+            color: lighten($nu-dk-steel, $amount: 50);
+        }
+        border-bottom: $nu-dk-green 3px solid;
+    }
+    .card {
+        min-width: 100%;
+        margin-bottom: 3%;
+        .cardContainer {
+            max-width: 100%;
+            padding: unset;
+            .cardContents {
+                max-width: 100%;
+                padding: unset;
+                .cardHeader {
+                    font-size: 20px;
+                    padding: unset;
+                    margin: 0;
+                    padding-top: 2%;
+                    flex-direction: row;
+                    .cardImage {
+                        .cardImg {
+                            max-width: 65%;
+                        }
+                    }
+                }
+                .cardText {
+                    margin: 0 auto;
+                    padding: 2.5%;
+                    font-size: 12px;
+                }
+            }
+        }
+        .cardActions {
+            max-width: 100%;
+            padding: unset;
+            margin-top: 1%;
+            margin-bottom: 1%;
+            margin: 0;
+            .btn {
+                margin-top: 2%;
+                font-size: 15px;
+                margin-bottom: 2%;
+            }
+        }
+    }
+    .imageCell {
+        p {
+            font-size: 15px;
+        }
+    }
+    .project-card {
+        min-width: 100%;
+        margin: 2% auto;
+        flex-direction: column;
+        .projInfo {
+            margin: 2%;
+            .projectDes {
+                line-height: 1.5;
+            }
+            .projPhoto {
+                max-height: 350px;
+            }
+        }
+    }
+}
+
+@media all and (max-width:455px) {
+    .footer {
+        font-size: 0.8rem;
+        margin-top: 15px;
+        margin-bottom: 0px;
+    }
+    .projPhoto {
+        max-height: 250px;
+    }
+}
+
+@media all and (max-width:400px) {
+    .contactInfo {
+        font-size: 0.8rem;
+    }
+}
+
+@media all and (max-width:365px) {
+    .footer {
+        font-size: 0.7rem;
+    }
+}
+
+@media all and (max-width:320px) {
+    .cardImage {
+        img {
+            width: 100%;
+        }
+    }
+    .footer {
+        margin-top: 5px;
+        margin-bottom: 0px;
+    }
+    .sm-img-container {
+        margin-right: 10px;
+    }
+}

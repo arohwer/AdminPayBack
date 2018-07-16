@@ -1,0 +1,103 @@
+[{
+    "monthName": "January",
+    "events": []
+  },
+  {
+    "monthName": "February",
+    "events": []
+  },
+  {
+    "monthName": "March",
+    "events": []
+  },
+  {
+    "monthName": "April",
+    "events": []
+  }, {
+    "monthName": "May",
+    "events": [{
+        "title": "Startup Speed Interview",
+        "day": "Tuesday",
+        "date": 15,
+        "time": "11 AM",
+        "location": "Lassonde Innovation Center",
+        "description": "Is a description still needed?",
+        "img": "images/logos/lassonde_logotwo.png"
+      },
+      {
+        "title": "Hours with Experts: Legal Support",
+        "day": "Tuesday",
+        "date": 15,
+        "time": "12 PM",
+        "location": "Lassonde Innovation Center",
+        "description": "Is a description still needed?",
+        "img": "images/logos/lassonde_logotwo.png"
+      }, {
+        "title": "Workshops: Financial Models",
+        "day": "Wednesday",
+        "date": 16,
+        "time": "12 PM",
+        "location": "Lassonde Innovation Center",
+        "description": "Is a description still needed?",
+        "img": "images/logos/lassonde_logotwo.png"
+      },
+      {
+        "title": "Hours with Experts: Accounting",
+        "day": "Tuesday",
+        "date": 22,
+        "time": "12 PM",
+        "location": "Lassonde Innovation Center",
+        "description": "Is a description still needed?",
+        "img": "images/logos/lassonde_logotwo.png"
+      },
+      {
+        "title": "Innovation Center Update",
+        "day": "Wednesday",
+        "date": 23,
+        "time": "7 PM",
+        "location": "Neumont Innovation Center",
+        "description": "Is a description still needed?",
+        "img": "images/nu.jpg"
+      },
+      {
+        "title": "Tiger Fish Tank",
+        "day": "Friday",
+        "date": 25,
+        "time": "7 PM",
+        "location": "Neumont Innovation Center",
+        "description": "Is a description still needed?",
+        "img": "images/nu.jpg"
+      },
+      {
+        "title": "Get Seeded Application Process",
+        "day": "Thursday",
+        "date": 31,
+        "time": "7 PM",
+        "location": "Neumont Innovation Center",
+        "description": "Is a description still needed?",
+        "img": "images/nu.jpg"
+      }
+    ]
+  }, {
+    "monthName": "June",
+    "events": []
+  }, {
+    "monthName": "July",
+    "events": []
+  }, {
+    "monthName": "August",
+    "events": []
+  }, {
+    "monthName": "September",
+    "events": []
+  }, {
+    "monthName": "October",
+    "events": []
+  }, {
+    "monthName": "November",
+    "events": []
+  }, {
+    "monthName": "December",
+    "events": []
+  }
+]
