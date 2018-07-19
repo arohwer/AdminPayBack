@@ -1,0 +1,111 @@
+[
+  {
+    "title": "Startup Speed Interview Session",
+    "date": {
+      "day": 15,
+      "month": "May",
+      "year": 2018,
+      "dayOfWeek": "Tuesday"
+    },
+    "overview":"This is a super short descriptor about the event to give visitors a summary of what the event is about.",
+    "time":"11 am",
+    "location":"Lassonde Center",
+    "description": "This field is to put a more detailed description about the evet itself with everything they need to know.",
+    "image": "../assets/images/enterprise2.jpg",
+    "anchor": {
+      "text": "Go to the event 1 website",
+      "link": "http://www.neumont.edu"
+    }
+  },
+  {
+    "title": "Workshops: Financial Models",
+    "date": {
+      "day": 16,
+      "month": "May",
+      "year": 2018,
+      "dayOfWeek": "Wednesday"
+    },
+    "overview":"This is a super short descriptor about the event to give visitors a summary of what the event is about.",
+    "time":"12 pm",
+    "location":"Lassonde Center",
+    "description": "This field is to put a more detailed description about the evet itself with everything they need to know.",
+    "image": "../assets/images/ben.jpg",
+    "anchor": {
+      "text": "Go to the event 1 website",
+      "link": "http://www.neumont.edu"
+    }
+  },
+  {
+    "title": "Hours with Experts: Accounting",
+    "date": {
+      "day": 22,
+      "month": "May",
+      "year": 2018,
+      "dayOfWeek": "Tuesday"
+    },
+    "overview":"This is a super short descriptor about the event to give visitors a summary of what the event is about.",
+    "time":"12 pm",
+    "location":"Lassonde Center",
+    "description": "This field is to put a more detailed description about the evet itself with everything they need to know.",
+    "image": "../assets/images/enterprise3.jpg",
+    "anchor": {
+      "text": "Go to the event 1 website",
+      "link": "http://www.neumont.edu"
+    }
+  },
+  {
+    "title": "Innovation Center Update",
+    "date": {
+      "day": 23,
+      "month": "May",
+      "year": 2018,
+      "dayOfWeek": "Wednesday"
+    },
+    "overview":"This is a super short descriptor about the event to give visitors a summary of what the event is about.",
+    "time":"7 pm",
+    "location":"Neumont Innovation Center",
+    "description": "This field is to put a more detailed description about the evet itself with everything they need to know.",
+    "image": "../assets/images/techtalk.jpg",
+    "anchor": {
+      "text": "Go to the event 1 website",
+      "link": "http://www.neumont.edu"
+    }
+  },
+  {
+    "title": "Tiger Fish Tank",
+    "date": {
+      "day": 25,
+      "month": "May",
+      "year": 2018,
+      "dayOfWeek": "Friday"
+    },
+    "overview":"This is a super short descriptor about the event to give visitors a summary of what the event is about.",
+    "time":"7 pm",
+    "location":"Neumont Innovation Center",
+    "description": "This field is to put a more detailed description about the evet itself with everything they need to know.",
+    "image": "../assets/images/tigertank.jpg",
+    "anchor": {
+      "text": "Go to the event 1 website",
+      "link": "http://www.neumont.edu"
+    }
+  },
+  {
+    "title": "Get Seeded Application Process",
+    "date": {
+      "day": 31,
+      "month": "May",
+      "year": 2018,
+      "dayOfWeek": "Thursday"
+    },
+    "overview":"This is a super short descriptor about the event to give visitors a summary of what the event is about.",
+    "time":"7 pm",
+    "location":"Neumont Innovation Center",
+    "description": "This field is to put a more detailed description about the evet itself with everything they need to know.",
+    "image": "../assets/images/capstone.jpg",
+    "anchor": {
+      "text": "Go to the event 1 website",
+      "link": "http://www.neumont.edu"
+    }
+  }
+  
+]

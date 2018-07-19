@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width">
+  <title>NCCS Innovation Lab | Home</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/jquery.fullPage.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+  <link rel='stylesheet' href='assets/css/main.css' />
+  <link rel="shortcut icon" href="assets/images/icon/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="assets/images/icon/favicon.ico" type="image/x-icon">
+</head>
+
+<body class="preload">
+
+  <div class='loader'>
+    <img class='loaderImg' src='assets/images/icon/nclogo.png' />
+    <div class='progress-bar'>
+      <div class='bar'></div>
+    </div>
+    <h3 class='percent'>0%</h3>
+  </div>
+
+  <nav class='navbar-fixed-top'>
+    <a href="javascript:void(0)" id='close-menu' class="closebtn">&times;</a>
+    <img class='nav-icon' src='assets/images/icon/nclogo.png' id='nc-icon' />
+    <a href="index.html" class='active'>HOME</a>
+    <a href="pages/projects.html">PROJECTS</a>
+    <a href="pages/events.html">EVENTS</a>
+    <a href="pages/contact.html">CONTACT</a>
+  </nav>
+  <div class="navbar-side">
+    <span id="hamburger" onclick="">&#9776;</span>
+    <img class="nav-icon-side" src='assets/images/icon/nclogo.png' id='nc-icon-side'/>
+  </div>
+
+  <div id="fullpage">
+    <div class="section" id="section-video">
+      <div class="vidOverlay">
+        <div class='overlay-content'>
+          <h1 class='vidHeader'>
+            <span class="nc-yellow font-bold">INNOVATORS</span> BEGIN HERE</h1>
+          <p class='overlay-sub-header'>LAUNCH YOUR FUTURE BUSINESS</p>
+
+        </div>
+        <div class='btn-cont' id='learnMoreBtn'>
+          <a class='btn' href='#'>
+            Learn More
+            <span class='line-1'></span>
+            <span class='line-2'></span>
+            <span class='line-3'></span>
+            <span class='line-4'></span>
+          </a>
+        </div>
+      </div>
+      <video autoplay muted loop data-keepplaying class='fullScreenVid' id='videoPlayer'>
+        <source src="assets/videos/innovation1080.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="section section2">
+      <div class="row fit theme-white">
+        <div class="col-l-7 section-content">
+          <h1 class="uppercase animated-text">
+            Turn your dreams
+            <span class="font-bold block">into reality</span>
+          </h1>
+          <p class="animated-text">Neumont's Innovation Lab connects students to resources beyond campus to help them turn their projects into businesses.
+            These resources provide students with the tools they need to build prototypes of their ideas, test their projects,
+            and gives them access to funding groups. Students will have the opportunity to create a business model for their
+            idea and work with industry experts to develop their idea. Your ideas can change the world, let the Innovation
+            Lab show you how.</p>
+        </div>
+        <div class="col-l-5 index-bg" id="index-bg1"></div>
+      </div>
+    </div>
+
+    <div class="section section3">
+      <div class="row fit theme-steelgray">
+        <div class="col-l-5 index-bg" id="index-bg4"></div>
+        <div class="col-l-7 section-content">
+          <h1 class='animated-text'>IT'S YOURS
+            <span class="font-bold block">TO KEEP</span>
+          </h1>
+          <p class='animated-text'>Your projects at Neumont are yours to keep. That's right, you retain all intellectual property rights to your ideas
+            and projects. As an institution, we believe we're here to help you reach your full potential. We'll help you
+            turn your ideas and projects into a business through the Innovation Lab and our partnerships in the community.</p>
+          <br>
+          <p class='animated-text'>To read the full legal case explanation, click
+            <a id="modal-btn">here.</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section parallax section4" id='index-bg3'>
+      <div class="row fit">
+        <div class="col-l-7 section-content">
+          <h1 class="uppercase white shadow animated-text">MAKE YOUR PROJECT
+            <span class="font-bold block nc-yellow shadow">Your Business</span>
+          </h1>
+          <p class='white animated-text'>You develop remarkable projects throughout your education at Neumont. Why not make it into a viable business?
+            <br/>
+            <br/> The Innovation Lab assists students in turning their projects into businesses. The Lab connects student teams
+            with other entrepreneurs across the state through meaningful partnerships in business, technology, and government.
+            With the Lab's help, you can turn your idea into reality. </p>
+        </div>
+        <div class="col-l-5 index-bg" id="index-bg3-small"></div>
+
+      </div>
+    </div>
+
+
+    <div class="section section5">
+      <div class="row fit theme-steelgray">
+        <div class="col-l-5 index-bg" id="index-bg5"></div>
+        <div class="col-l-7 section-content">
+          <h1 class='animated-text'>INNOVATION LAB
+            <span class="font-bold block">PARTNERS:</span>
+          </h1>
+          <p class='animated-text'>Student teams participating in the Innovation lab will have access to the resources listed below. These partner
+            organizations are committed to helping Neumont students find expertise outside the computer science field like
+            medical, engineering, accounting and more to help them succeed.
+          </p>
+          <h3 class="animated-text uppercase m-t-40 m-b-10">Partners</h3>
+          <ul class="animated-text">
+            <li>
+              <a target="_blank" href="https://lassonde.utah.edu/">Lassonde Entrepreneur Institute</a>
+            </li>
+            <li>
+              <a target="_blank" href="https://venturecapital.org/">VentureCapital.org</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section section6">
+      <div class="row fit theme-white">
+        <div class="col-l-7 section-content">
+          <h1 class="uppercase animated-text">
+            <span class="font-bold block">Join the</span> Innovation Lab</h1>
+          <p class='animated-text'>Students and alumni looking to join the Innovation Lab must submit an application. Applicants will be judged on
+            the project's potential for success in the marketplace. Additionally, priority will be given to projects that
+            work across degrees and communities.
+            <br/>
+            <br/> To start your application, visit our
+            <a href='pages/contact.html'>contact page.</a>
+          </p>
+        </div>
+        <div class="col-l-5 index-bg" id="index-bg2"></div>
+      </div>
+    </div>
+
+
+    <div id="main-modal" class="modal">
+      <div class="modal-container">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>Intellectual Property and Nondisclosure</h2>
+        </div>
+        <div class="modal-body">
+
+          <div class="nc-yellow">This Nondisclosure Agreement (the "Agreement") is entered into by and between</div>
+
+          <div class="textLayer--absolute">________________________, principally located at ________________________, ("Disclosing Party") &amp; Neumont College
+            of Computer Science, principally located at Salt Lake City, Utah, ("Receiving Party") for the purpose of preventing
+            the unauthorized disclosure of Confidential Information as defined below.</div>
+          <br>
+          <div class="textLayer--absolute">The parties agree to enter into a confidential relationship with respect to the disclosure of certain proprietary
+            and confidential information ("Confidential Information").</div>
+          <br>
+
+          <div class="nc-yellow">1. Definition of Confidential Information.</div>
+          <div class="textLayer--absolute">For purposes of this Agreement, "Confidential Information" shall include all information or material that has or
+            could have commercial value or other utility in the business in which Disclosing Party is engaged. If Confidential
+            Information is in written form, the Disclosing Party shall label or stamp the materials with the word "Confidential"
+            or some similar warning. If Confidential Information is transmitted orally, the Disclosing Party shall promptly
+            provide a writing indicating that such oral communication constituted Confidential Information.
+          </div>
+          <br>
+
+          <div class="nc-yellow">2. Exclusions from Confidential Information.</div>
+          <div class="textLayer--absolute">Receiving Party's obligations under this Agreement do not extend to information that is:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;a) publicly known at the time of disclosure or subsequently becomes publicly known through
+            no fault of the Receiving Party;
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;b) discovered or created by the Receiving Party before disclosure by Disclosing Party;
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;c) learned by the Receiving Party through legitimate means other than from the Disclosing
+            Party; or d) is disclosed by Receiving Party with Disclosing Party's prior written approval.</div>
+          <br>
+
+          <div class="nc-yellow">3. Obligations of Receiving Party.</div>
+          <div class="textLayer--absolute">Receiving Party shall hold and maintain the Confidential Information in strictest confidence for the sole and exclusive
+            benefit of the Disclosing Party. Receiving Party shall carefully restrict access to Confidential Information
+            to employees, contractors and third parties as is reasonably required and shall require those persons to sign
+            nondisclosure restrictions at least as protective as those in this Agreement. Receiving Party shall not, without
+            prior written approval of Disclosing Party, use for Receiving Party's own benefit, publish, copy, or otherwise
+            disclose to others, or permit the use by others for their benefit or to the detriment of Disclosing Party, any
+            Confidential Information. Receiving Party shall return to Disclosing Party any and all records, notes, and other
+            written, printed, or tangible materials in its possession pertaining to Confidential Information immediately
+            if Disclosing Party requests it in writing.</div>
+          <br>
+          <div class="nc-yellow">4. Time Periods.</div>
+          <div class="textLayer--absolute">The nondisclosure provisions of this Agreement shall survive the termination of this Agreement and Receiving Party's
+            duty to hold Confidential Information in confidence shall remain in effect until the Confidential Information
+            no longer qualifies as a trade secret or until Disclosing Party sends Receiving Party written notice releasing
+            Receiving Party from this Agreement, whichever occurs first.</div>
+          <br>
+
+          <div class="nc-yellow">5. Relationships.</div>
+          <div class="textLayer--absolute">Nothing contained in this Agreement shall be deemed to constitute either party a partner, joint venturer or employee
+            of the other party for any purpose.</div>
+          <br>
+          <div class="nc-yellow">6. Severability.</div>
+          <div class="textLayer--absolute">If a court finds any provision of this Agreement invalid or unenforceable, the remainder of this Agreement shall
+            be interpreted so as best to effect the intent of the parties.</div>
+          <br>
+
+          <div class="nc-yellow">7. Integration.</div>
+          <div class="textLayer--absolute">This Agreement expresses the complete understanding of the parties with respect to the subject matter and supersedes
+            all prior proposals, agreements, representations and understandings. This Agreement may not be amended except
+            in a writing signed by both parties.</div>
+          <br>
+
+          <div class="nc-yellow">8. Waiver.</div>
+          <div class="textLayer--absolute">The failure to exercise any right provided in this Agreement shall not be a waiver of prior or subsequent rights.
+          </div>
+          <br>
+
+          <div class="textLayer--absolute">This Agreement and each party's obligations shall be binding on the representatives, assigns and successors of
+            such party.</div>
+          <br>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+  <script src="assets/scripts/bundle--index.js"></script>
+  <script src="assets/scripts/jquery.fullPage.js"></script>
+  <script>
+  </script>
+</body>
+
+</html>
