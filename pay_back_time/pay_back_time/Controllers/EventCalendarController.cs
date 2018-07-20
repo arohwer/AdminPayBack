@@ -30,6 +30,47 @@ namespace pay_back_time.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        public ActionResult SearchResults(string searchQuery)
+        {
+            CalendarEventListModel model = service.GetAllEvents();
+            CalendarEventListModel eventResults = new CalendarEventListModel();
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                string upper = searchQuery.First().ToString().ToUpper() + searchQuery.Substring(1);
+                var results = model.Events.Where(s => s.Title.Contains(searchQuery) || s.Title.Contains(upper) ||
+                s.Date.ToString().Contains(searchQuery) || s.Date.ToString().Contains(upper) ||
+                s.Location.ToString().Contains(searchQuery) || s.Location.ToString().Contains(upper)).ToList();
+
+                if (results.Count != 0)
+                {
+                    foreach (var e in results)
+                    {
+                        eventResults.Events.Add(e);
+                    }
+                }
+                else
+                {
+                    ViewBag.Heading = "Search Results";
+                    return View("NoEventsFound");
+                }
+            }
+            else
+            {
+                ViewBag.Heading = "Search Results";
+                return View("NoEventsFound");
+            }
+
+            ViewBag.Heading = "Search Results";
+            return View("Index", eventResults);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult NoEventsFound()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Admin")]
         public ActionResult AddNewEvent()
         {
             return View();
