@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PayBackTime")]
+[assembly: AssemblyTitle("pay_back_time")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PayBackTime")]
+[assembly: AssemblyProduct("pay_back_time")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("80139490-b913-4d0e-b899-5cf56e828dbc")]
+[assembly: Guid("32cdcd42-a5ab-4f72-a6c6-081fcf65fa65")]
 
 // Version information for an assembly consists of the following four values:
 //

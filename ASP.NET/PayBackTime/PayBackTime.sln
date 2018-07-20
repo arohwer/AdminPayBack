@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayBackTime", "PayBackTime\PayBackTime.csproj", "{A046E49F-675B-43CE-AB87-56066692626E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayBackTime", "PayBackTime\PayBackTime.csproj", "{6A5C2644-0784-4F7F-8FDE-83502E4E61B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A046E49F-675B-43CE-AB87-56066692626E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A046E49F-675B-43CE-AB87-56066692626E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A046E49F-675B-43CE-AB87-56066692626E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A046E49F-675B-43CE-AB87-56066692626E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A5C2644-0784-4F7F-8FDE-83502E4E61B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A5C2644-0784-4F7F-8FDE-83502E4E61B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A5C2644-0784-4F7F-8FDE-83502E4E61B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A5C2644-0784-4F7F-8FDE-83502E4E61B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {4C9220E9-1759-4DF4-A454-AF7D422ECF57}
+		SolutionGuid = {0C1EE9D6-BF95-4769-8052-40ADD100845A}
 	EndGlobalSection
 EndGlobal
