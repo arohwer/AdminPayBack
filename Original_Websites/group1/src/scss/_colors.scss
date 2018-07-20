@@ -1,0 +1,30 @@
+$black: #000000;
+$white:#fff;
+$logo-gray: #2b2929;
+
+$nc-yellow: #ffcc00;
+$nc-orange: #ea9919;
+$nc-alt-orange: #e88823;
+$nc-red: #d24d3b;
+$nc-tech-green: #d6e03e;
+$nc-finance-green: #8cab3c;
+$nc-cyan: #12b5ea;
+$nc-blue: #056cb6;
+$nc-grape: #ab79a3;
+
+$nc-dark-steelgray: #636363;
+$nc-light-steelgray: #989898;
+
+
+.nc-yellow {
+  color: $nc-yellow;
+}
+
+.white{
+  color:$white;
+}
+
+.shadow{
+  text-shadow: 1px 1px 3px #000000;
+}
+

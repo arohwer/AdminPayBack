@@ -1,0 +1,30 @@
+@font-face {
+    font-family: NCLight;
+    src: url(../fonts/Linotype_-_DINNextLTPro-Light.otf);
+}
+  
+@font-face {
+    font-family: NCBold;
+    src: url(../fonts/Linotype_-_DINNextLTPro-Bold.otf);
+}
+  
+@font-face {
+    font-family: NCMedium;
+    src: url(../fonts/Linotype_-_DINNextLTPro-Medium.otf);
+}
+
+$NC-Medium: 'NCMedium', sans-serif;
+$NC-Bold: 'NCBold', sans-serif;
+$NC-Light: 'NCLight', sans-serif;
+
+.font-bold {
+    font-family:$NC-Bold;
+}
+
+.font-light {
+    font-family:$NC-Light;
+}
+
+b {
+    font-weight: bold;
+}

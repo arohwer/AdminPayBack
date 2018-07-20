@@ -1,0 +1,86 @@
+@mixin flex-size($range) {
+  @if $range==xl {
+      @media (min-width: $xlarge-width) {
+          @content;
+      }
+  }
+  @else if $range==l {
+      @media (min-width: $large-width) {
+          @content;
+      }
+  }
+  @else if $range==m {
+      @media (min-width: $medium-width) {
+          @content;
+      }
+  }
+  @else if $range==s {
+      @media (min-width: $small-width) {
+          @content;
+      }
+  }
+  @else if $range==xs {
+      @media (min-width: $xsmall-width) {
+          @content;
+      }
+  }
+  @else {
+      @media (min-width: 0) {
+          @content;
+      }
+  }
+}
+
+.c-container {
+  width: 100%;
+  padding: 15px 0;
+}
+
+%col-default {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.fit {
+    height: 100%;
+}
+.vertical-center {
+    display: flex;    
+    align-items: center;
+}
+
+@for $column-size-number from 1 through 6 {
+  $column-size-name: d;
+  @if $column-size-number==1 {
+      $column-size-name: xl;
+  }
+  @else if $column-size-number==2 {
+      $column-size-name: l;
+  }
+  @else if $column-size-number==3 {
+      $column-size-name: m;
+  }
+  @else if $column-size-number==4 {
+      $column-size-name: s;
+  }
+  @else if $column-size-number==5 {
+      $column-size-name: xs;
+  }
+  @else {
+      $column-size-name: f;
+  }
+  @for $column-number from 1 through $grid-count {
+      .col-#{$column-size-name}-#{$column-number} {
+          @extend %col-default;
+          @include flex-size($column-size-name) {
+              flex: 0 0 100% * ($column-number / $grid-count);
+          }
+      }
+  }
+}

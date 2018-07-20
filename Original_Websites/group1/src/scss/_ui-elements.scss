@@ -1,0 +1,653 @@
+// BEGIN DEFAULT ELEMENTS
+html {
+    font-family: $NC-Light;
+    color: $logo-gray
+}
+
+a {
+    text-decoration: none;
+    color: $nc-yellow;
+    transition: .2s;
+    &:visited {}
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+// BEGIN HEADERS
+h1 {
+    font-size: 6vw;
+    line-height: 5vw;
+    margin: .3em 0;
+    font-family: $NC-Light;
+    @include max-width($small-width) {
+        font-size: 8vw;
+        line-height: 7vw;
+    }
+}
+
+h2 {
+    font-size: 2em;
+    margin: .75em 0;
+    font-family: $NC-Light;
+}
+
+h3 {
+    font-size: 1.5em;
+    margin: .83em 0;
+    font-family: $NC-Light;
+}
+
+h5 {
+    font-size: .83em;
+    margin: 1.5em 0;
+    font-family: $NC-Bold;
+}
+
+h6 {
+    font-size: .75em;
+    margin: 1.67em 0;
+    font-family: $NC-Bold;
+}
+
+// END HEADERS
+p {
+    line-height: 1.5em;
+    font-size: 1.5em;
+    display: block;
+    position: relative;
+}
+
+ul {
+    li {
+        line-height: 1.2em;
+    }
+}
+
+// END DEFAULT ELEMENTS
+// BEGIN THEMES
+@mixin theme($bg, $fg, $ac, $ah, $sc) {
+    background-color: $bg;
+    color: $fg;
+    a {
+        color: $ac;
+        &:hover {
+            color: $ah;
+        }
+    }
+    span {
+        color: $sc;
+    }
+}
+
+.theme-steelgray {
+    @include theme($nc-dark-steelgray, $white, $nc-yellow, $nc-orange, $nc-yellow);
+}
+
+.theme-white {
+    @include theme($white, $logo-gray, $nc-yellow, $nc-orange, $logo-gray);
+}
+
+.navbar-fixed-top {
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    position: fixed;
+    z-index: 99;
+    height: $nav-height;
+    a {
+        transition: all .5s;
+        color: $white;
+        text-align: center;
+        padding: 0 16px;
+        line-height: $nav-height;
+        vertical-align: middle;
+        text-decoration: none;
+        margin: 0;
+        font-size: 24px;
+        font-family: $NC-Medium;
+        cursor: pointer;
+    }
+    a:hover {
+        color: $nc-yellow;
+    }
+    .active {
+        color: $nc-yellow;
+        &:hover {
+            color: $white;
+        }
+    }
+    .nav-icon {
+        transition: all .5s;
+        height: 40px;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+    .hamburger {
+        display: none;
+    }
+    .closebtn {
+        display: none;
+        font-size: 70px !important;
+        width: auto;
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        z-index: 500;
+    }
+    @include max-width($small-width) {
+        width: 0;
+        height: 100% !important;
+        overflow-x: hidden;
+        background-color: $logo-gray;
+        a {
+            line-height: inherit !important;
+            margin: 0 !important;
+            padding-top: 0 !important;
+            width: 100%;
+            display: block;
+            text-align: center;
+            font-size: 30px !important;
+        }
+        .active {
+            color: $nc-yellow !important;
+            background-color: $logo-gray !important;
+        }
+        .closebtn {
+            display: inline-block;
+        }
+        .nav-icon {
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+            margin: 5px auto !important;
+        }
+    }
+    @include max-width($large-width - (1px)) {
+        background-color: $logo-gray;
+        height: $nav-height-after;
+        a {
+            line-height: $nav-height-after;
+            padding-top: 3px;
+            font-size: 18px;
+        }
+        .active {
+            background-color: $nc-yellow;
+            color: $white;
+        }
+        .nav-icon {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+    }
+    @include min-width($small-width +(1px)) {
+        width: 100% !important;
+    }
+}
+
+.navbar-side {
+    z-index: 98;
+    display: none;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: $nav-height-after;
+    background-color: $logo-gray;
+    .nav-icon-side {
+        cursor: pointer;
+        position: absolute;
+        top: 5px;
+        height: 40px;
+        left: 50%;
+        margin-left: -40px;
+    }
+    #hamburger {
+        line-height: $nav-height-after;
+        vertical-align: middle;
+        transition: .2s;
+        cursor: pointer;
+        position: absolute;
+        left: 5px;
+        top: 3px;
+        color: $nc-light-steelgray;
+        font-size: 40px;
+        &:hover {
+            color: $white
+        }
+    }
+    @include max-width($small-width) {
+        display: inline-block;
+    }
+}
+
+.navbar-fixed-top-after {
+    @extend .navbar-fixed-top;
+    background-color: $logo-gray;
+    height: $nav-height-after;
+    a {
+        line-height: $nav-height-after;
+        padding-top: 3px;
+        font-size: 18px;
+    }
+    .active {
+        background-color: $nc-yellow;
+        color: $white;
+    }
+    .nav-icon {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+}
+
+.parallax {
+    background-size: cover;
+    background-attachment: fixed;
+    @include max-width($medium-width) {
+        background-image: none;
+        background: $nc-dark-steelgray;
+    }
+}
+
+.index-bg {
+    @include max-width($large-width) {
+        min-height: 200px;
+    }
+}
+
+#index-bg1 {
+    background-position: center center;
+    background-image: url("../images/maddy.jpg");
+    background-size: cover;
+}
+
+#index-bg2 {
+    background-position: center center;
+    background-image: url("../images/classroom.jpg");
+    background-size: cover;
+}
+
+#index-bg3 {
+    background-image: url("../images/innovation.jpg");
+    @media(max-width: $large-width - 1) {
+        background-image: none;
+        .shadow {
+            text-shadow: none;
+        }
+        @include theme($logo-gray,
+        $white,
+        $nc-yellow,
+        $nc-orange,
+        $nc-yellow);
+    }
+}
+
+#index-bg3-small {
+    @media(max-width: $large-width - 1) {
+        background-position: center center;
+        background-image: url("../images/innovation.jpg");
+        background-size: cover;
+    }
+}
+
+#index-bg4 {
+    background-position: center center;
+    background-image: url("../images/car.jpg");
+    background-size: cover;
+}
+
+#index-bg5 {
+    background-position: center center;
+    background-image: url("../images/brian.jpg");
+    background-size: cover;
+}
+
+.preload * {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -ms-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+}
+
+.navbar-gray {
+    @extend .navbar-fixed-top-after;
+}
+
+// picture - text sections
+.section-content {
+    padding: 60px 50px 10px 50px;
+    @media(max-width: $large-width - 1) {
+        padding: 30px 15px 0 15px;
+        h1 {
+            margin-bottom: 40px;
+        }
+    }
+}
+
+p {
+    @media(max-width: $large-width - 1) {
+        font-size: 1.2em;
+    }
+}
+
+.project-name {
+    margin: .83em 0 5px 0;
+}
+
+.project-owner {
+    margin: 0 0 25px 0;
+    font-family: $NC-Medium;
+}
+
+// END THEMES
+// BEGIN FULLPAGE
+#fp-nav ul li a span,
+.fp-slidesNav ul li a span {
+    background-color: $nc-light-steelgray !important;
+}
+
+#fp-nav ul li a.active span,
+.fp-slidesNav ul li a.active span {
+    background-color: $nc-yellow !important;
+}
+
+.fp-controlArrow.fp-prev {
+    transition: .2s;
+    &:hover {
+        border-color: transparent $logo-gray transparent transparent;
+    }
+    @media(max-width: $medium-width) {
+        left: 10px;
+        border-width: 24px 20px 24px 0;
+    }
+}
+
+.fp-controlArrow.fp-next {
+    transition: .2s;
+    &:hover {
+        border-color: transparent transparent transparent $logo-gray;
+    }
+    @media(max-width: $medium-width) {
+        right: 10px;
+        border-width: 24px 0 24px 20px;
+    }
+}
+
+.fp-slidesNav {
+    @include max-width($medium-width) {
+        display: none;
+    }
+}
+
+// END FULLPAGE
+#projects-bg {
+    background-image: url("../images/projectshowcase.jpg");
+    background-size: cover;
+    background-position: center 25%;
+    min-height: 400px;
+}
+
+.nc-btn {
+    background-color: $nc-yellow;
+    width: 150px;
+    color: $white;
+    cursor: pointer;
+    text-align: center;
+    @include border-radius(0 0 0 15px);
+    font-size: 20px;
+    margin: 20px auto;
+    padding: 15px 20px;
+    transition: all .5s;
+}
+
+.nc-btn:hover {
+    background-color: $nc-orange;
+}
+
+// MODAL
+.modal {
+    display: none;
+    position: fixed;
+    overflow: auto;
+    z-index: 101;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: rgba(43, 41, 41, 0.7);
+    animation-name: fade-in;
+    animation-duration: 0.5s;
+}
+
+@-webkit-keyframes fade-in {
+    from {
+        opacity: 0
+    }
+    ;
+    to {
+        opacity: 1;
+    }
+    ;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0
+    }
+    ;
+    to {
+        opacity: 1;
+    }
+    ;
+}
+
+.modal-container {
+    width: 80%;
+    max-width: 900px;
+    margin: auto;
+    margin-top: 50px; 
+    @media(max-width: $medium-width) {
+        width: 100%;
+        margin-top: 0;
+        height: 100%;
+        .modal-body {
+            height: 80vh;
+            box-sizing: border-box;
+        }
+        .modal-header {
+            border-radius: 0;
+            padding: 5vh 20px;
+            height: 10vh;
+            h2 {
+                margin: 0;
+                font-size: 4vh;
+                text-align: center;
+                padding: 20px;
+            }
+            .close {
+                position: absolute;
+                top: 0;
+                right: 5px;
+                margin: 0;
+            }
+        }
+    }
+}
+
+.modal-header {
+    font-weight: bold;
+    color: #fff;
+    border-radius: 15px 15px 0 0;
+    background-color: #636363;
+    padding: 1px 20px;
+}
+
+.close {
+    font-size: 60px;
+    color: #fff;
+    float: right;
+    transition: 0.5s ease;
+    margin-top: 8.8px;
+    transition: 0.5s ease;
+}
+
+.close:hover,
+.close:focus {
+    cursor: pointer;
+    color: $logo-gray;
+}
+
+.modal-body {
+    margin: 0px;
+    padding: 1em;
+    background-color: #fff;
+    height: 370px;
+    overflow-y: auto;
+}
+
+.form-entry {
+    margin-bottom: 10px;
+    p {
+        margin-bottom: -20px;
+    }
+}
+
+textarea {
+    resize: none;
+    width: 97%;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: $NC-Light;
+    font-size: 16px;
+}
+
+input[type=text] {
+    height: 25px;
+    width: 45%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 0.5px solid $nc-dark-steelgray;
+    font-family: $NC-Light;
+    font-size: 16px;
+}
+
+.project-content {
+    padding: 60px 80px 60px 40px;
+}
+
+.bottom {
+    text-align: center;
+}
+
+.fp-controlArrow.fp-prev {
+    border-color: transparent $nc-dark-steelgray transparent transparent;
+}
+
+.fp-controlArrow.fp-next {
+    border-color: transparent transparent transparent $nc-dark-steelgray;
+}
+
+#upcoming-events {
+    padding: 50px;
+}
+
+#events-bg {
+    background-image: url("../images/building.jpg");
+    background-size: cover;
+    background-position: center 25%;
+    min-height: 400px;
+}
+
+#contact-bg {
+    background-image: url("../images/payHD.jpg");
+    background-size: cover;
+    background-position: center top;
+    min-height: 400px;
+    @include max-width($large-width - (1px)) {
+        background-position: center 10%;
+    }
+    @include max-width($small-width) {
+        background-position: center top;
+    }
+}
+
+#pay-title {
+    position: absolute;
+    bottom: 5%;
+    left: 60%;
+    background-color: $logo-gray;
+    padding: 10px;
+    border: 1px solid $nc-yellow;
+    border-radius: 0 0 0 20px;
+    @include max-width($large-width - (1px)) {
+        display: none;
+    }
+}
+
+#jerry-pay {
+    font-size: 40px;
+    line-height: 1.2em;
+}
+
+// *************  Tooltip  *******************
+.tooltip-right {
+    position: relative;
+    display: inline;
+}
+
+.tooltip-right .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: $logo-gray;
+    color: $white;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 103;
+}
+
+.tooltip-right:hover .tooltiptext {
+    visibility: visible;
+}
+
+.event-container {
+    margin: 40px auto;
+    box-shadow: 2px 4px 8px $logo-gray;
+    width: 80%;
+    @include max-width($small-width) {
+        width: 100%;
+    }
+}
+
+.event-img {
+    min-height: 200px;
+    background-position: center center;
+    background-image: url();
+    background-size: cover;
+}
+
+.event-date {
+    margin: 0;
+    font-size: 45px;
+}
+
+.event-name {
+    margin-bottom: 0.3em;
+}
+
+.event-overview {
+    line-height: inherit;
+}
+
+.project-bg {
+    min-height: 400px;
+    background-position: center top;
+    background-image: url("../images/brian.jpg");
+    background-size: cover;
+}
+
+#submit-btn {
+    text-align: center;
+}
