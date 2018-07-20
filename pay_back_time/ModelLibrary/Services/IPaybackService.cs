@@ -9,8 +9,9 @@ namespace ModelLibrary.Services
 {
     public interface IPaybackService
     {
-        //could also return lists of filtered events; i.e., current events, past events, upcoming events
+        //could also return lists of filtered events; i.e., current events, past events
         CalendarEventListModel GetAllEvents();
+        CalendarEventListModel GetArchivedEvents();
         CalendarEventModel GetEventByID(int id);
     }
 }

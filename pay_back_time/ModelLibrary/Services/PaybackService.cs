@@ -84,5 +84,11 @@ namespace ModelLibrary.Services
                 DataAccessLayer.Service.ProjectCRUD.AddEvent(newEvent);
             }
         }
+
+        public CalendarEventListModel GetArchivedEvents()
+        {
+            //could make new table for archived events and pull there, or filter events here
+            throw new NotImplementedException();
+        }
     }
 }

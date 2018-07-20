@@ -21,15 +21,25 @@ namespace pay_back_time.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public ActionResult EventList()
+        public ActionResult AdminEventList()
         {
             //get all events and send to view to display
             //edit/add options will be displayed for admin role
+            //archived events will also be displayed w/ button redirecting to ArchivedEventList()
             CalendarEventListModel model = service.GetAllEvents();
             return View(model);
         }
 
         [Authorize(Roles = "Admin")]
+        public ActionResult ArchivedEventList()
+        {
+            //get all archived events and send to view to display
+            //edit/add options will be displayed for admin role
+            //current events will also be displayed w/ button redirecting to EventList()
+            CalendarEventListModel model = service.GetArchivedEvents();
+            return View(model);
+        }
+
         public ActionResult SearchResults(string searchQuery)
         {
             CalendarEventListModel model = service.GetAllEvents();
@@ -64,10 +74,15 @@ namespace pay_back_time.Controllers
             return View("Index", eventResults);
         }
 
-        [Authorize(Roles = "Admin")]
         public ActionResult NoEventsFound()
         {
             return View();
+        }
+
+        public ActionResult EventDetail(int id)
+        {
+            CalendarEventModel model = service.GetEventByID(id);
+            return View(model);
         }
 
         [Authorize(Roles = "Admin")]
@@ -78,7 +93,7 @@ namespace pay_back_time.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult AddProductSave(CalendarEventModel e)
+        public ActionResult AddEventSave(CalendarEventModel e)
         {
             //get event model from form and pass to service to persist to db
             ((PaybackService)service).AddNewEvent(e);
