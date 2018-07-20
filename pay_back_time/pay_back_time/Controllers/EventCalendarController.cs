@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ModelLibrary.Models;
+using ModelLibrary.Services;
 
 namespace pay_back_time.Controllers
 {
@@ -13,15 +15,18 @@ namespace pay_back_time.Controllers
         public ActionResult Index()
         {
             //get all events and send to view to display
-            return View();
+            CalendarEventListModel model = service.GetAllEvents();
+            ViewBag.Heading = "Event Calendar";
+            return View(model);
         }
 
         [Authorize(Roles = "Admin")]
         public ActionResult EventList()
         {
             //get all events and send to view to display
-            //edit/delete/add options will be displayed for admin role
-            return View();
+            //edit/add options will be displayed for admin role
+            CalendarEventListModel model = service.GetAllEvents();
+            return View(model);
         }
 
         [Authorize(Roles = "Admin")]
@@ -34,8 +39,8 @@ namespace pay_back_time.Controllers
         [HttpPost]
         public ActionResult AddProductSave(CalendarEventModel e)
         {
-            //get event model from form and pass to service to persist to JSON
-
+            //get event model from form and pass to service to persist to db
+            ((PaybackService)service).AddNewEvent(e);
             return RedirectToAction("EventList");
         }
 
@@ -44,7 +49,9 @@ namespace pay_back_time.Controllers
         {
             //pass in event model to edit
             //grab event and pass to editing view
-            return View();
+            CalendarEventListModel modelList = service.GetAllEvents();
+            var eventToEdit = modelList.Events.Where(x => x.ID == id).First();
+            return View(eventToEdit);
         }
 
         [Authorize(Roles = "Admin")]
@@ -53,11 +60,7 @@ namespace pay_back_time.Controllers
         {
             if (Request.Form["update"] != null)
             {
-                //update event (overwrite JSON)
-            }
-            else
-            {
-                //delete event (empty/re-write array)
+                ((PaybackService)service).UpdateEvent(e);
             }
             return RedirectToAction("EventList");
         }
