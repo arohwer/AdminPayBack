@@ -106,7 +106,7 @@ namespace pay_back_time.Controllers
             //pass in event model to edit
             //grab event and pass to editing view
             CalendarEventListModel modelList = service.GetAllEvents();
-            var eventToEdit = modelList.Events.Where(x => x.ID == id).First();
+            var eventToEdit = modelList.Events.Where(x => x.EventID == id).First();
             return View(eventToEdit);
         }
 

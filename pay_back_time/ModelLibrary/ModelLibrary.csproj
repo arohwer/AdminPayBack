@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Models\CalendarEventListModel.cs" />
     <Compile Include="Models\CalendarEventModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
