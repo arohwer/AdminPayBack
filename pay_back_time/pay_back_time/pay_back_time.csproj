@@ -208,9 +208,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\main.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -296,7 +297,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\_EventCalendarLayout.cshtml" />
+    <Content Include="Views\Shared\_EventCalendarEditEventsLayout.cshtml" />
     <Content Include="Views\EventCalendar\Index.cshtml" />
     <Content Include="Views\EventCalendar\AdminEventList.cshtml" />
     <Content Include="Views\EventCalendar\NoEventsFound.cshtml" />
