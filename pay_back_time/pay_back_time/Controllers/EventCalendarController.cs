@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -96,7 +97,15 @@ namespace pay_back_time.Controllers
         public ActionResult AddEventSave(CalendarEventModel e)
         {
             //get event model from form and pass to service to persist to db
-            ((PaybackService)service).AddNewEvent(e);
+            if (ModelState.IsValid)
+            {
+                if (e.UploadedFile != null)
+                {
+                    Console.WriteLine(e.ImagePath);
+                    e.UploadedFile.SaveAs(Path.Combine("~/Images/", e.ImagePath.Replace(" ", string.Empty) + ".jpg"));
+                }
+                ((PaybackService)service).AddNewEvent(e);
+            }
             return RedirectToAction("EventList");
         }
 
@@ -114,8 +123,12 @@ namespace pay_back_time.Controllers
         [HttpPost]
         public ActionResult EditEventSave(CalendarEventModel e)
         {
-            if (Request.Form["update"] != null)
+            if (Request.Form["update"] != null && ModelState.IsValid)
             {
+                if (e.UploadedFile != null)
+                {
+                    e.UploadedFile.SaveAs(Path.Combine("~/Images/", e.ImagePath.Replace(" ", string.Empty) + ".jpg"));
+                }
                 ((PaybackService)service).UpdateEvent(e);
             }
             return RedirectToAction("EventList");

@@ -1,36 +1,43 @@
 ﻿@model ModelLibrary.Models.CalendarEventListModel
 
-@*@{
+@{
+    ViewBag.Title = "Events";
+}
+
+@{
     Layout = "~/Views/Shared/_EventCalendarLayout.cshtml";
-}*@
+}
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div class="row">
-        @if (Model != null)
+@section Navigation {
+    @Html.ActionLink("Home", "Index", "Home")
+    @Html.ActionLink("Projects", "Projects", "Projects")
+    @Html.ActionLink("Events", "Index", "EventCalendar")
+    @Html.ActionLink("Contact", "Contact", "Home", new { @class = "active" })
+    <div id="searchEventsBar">
+        @using (Html.BeginForm("SearchResults", "EventCalendar", FormMethod.Get, new { id = "searchEventsForm" }))
         {
-            foreach (var calEvent in Model.Events)
-            {
-                <div class="column">
-                    <a href="@Url.Action("EventDetail", new { id = calEvent.EventID })" class="event_links">
-                        <img alt="@calEvent.Title" src="@Url.Content(calEvent.ImagePath)" class="hover-shadow">
-                    </a>
-                    <ul>
-                        <li>@calEvent.Title</li>
-                        <li>@calEvent.Location</li>
-                        <li>@calEvent.Description</li>
-                        <li>@calEvent.Date.ToString("MM/dd/yyyy")</li>
-                        <li>@calEvent.Time.ToString("hh:mm tt")</li>
-                    </ul>
-                </div>
-            }
+            @Html.TextBox("searchQuery", null, new { placeholder = "Search all events", id = "searchEventsBarBox" })
+            <input type="submit" value="Search" id="searchEventsBtn" />
         }
     </div>
-</body>
-</html>
+}
+<div class="row">
+    @if (Model != null)
+    {
+        foreach (var calEvent in Model.Events)
+        {
+            <div class="column">
+                <a href="@Url.Action("EventDetail", new { id = calEvent.EventID })" class="event_links">
+                    <img alt="@calEvent.Title" src="@Url.Content(calEvent.ImagePath)" class="hover-shadow">
+                </a>
+                <ul>
+                    <li>@calEvent.Title</li>
+                    <li>@calEvent.Location</li>
+                    <li>@calEvent.Description</li>
+                    <li>@calEvent.Date.ToString("MM/dd/yyyy")</li>
+                    <li>@calEvent.Time.ToString("hh:mm tt")</li>
+                </ul>
+            </div>
+        }
+    }
+</div>

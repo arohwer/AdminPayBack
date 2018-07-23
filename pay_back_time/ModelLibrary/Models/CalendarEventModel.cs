@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace ModelLibrary.Models
 {
@@ -36,6 +37,10 @@ namespace ModelLibrary.Models
         //public string ImagePath
         //{
         //    get { return Title.Replace(" ", string.Empty) + ".jpg"; }
+        //    set;
         //}
+
+        [NotMapped]
+        public HttpPostedFileBase UploadedFile { get; set; }
     }
 }
