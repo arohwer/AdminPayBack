@@ -297,7 +297,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\_EventCalendarEditEventsLayout.cshtml" />
+    <Content Include="Views\Shared\_EventCalendarLayout.cshtml" />
     <Content Include="Views\EventCalendar\Index.cshtml" />
     <Content Include="Views\EventCalendar\AdminEventList.cshtml" />
     <Content Include="Views\EventCalendar\NoEventsFound.cshtml" />
@@ -305,7 +305,6 @@
     <Content Include="Views\EventCalendar\AddNewEvent.cshtml" />
     <Content Include="Views\EventCalendar\EditEvent.cshtml" />
     <Content Include="Views\EventCalendar\ArchivedEventList.cshtml" />
-    <Content Include="Views\Shared\_AdminEventListLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
