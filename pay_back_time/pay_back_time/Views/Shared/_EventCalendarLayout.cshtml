@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCCS Innovation Lab | @ViewBag.Title</title>
+    <link rel='stylesheet' href="~/Content/main.css" />
+    <link rel="shortcut icon" href="~/Images/icon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="~/Images/icon/favicon.ico" type="image/x-icon">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <nav class='navbar-fixed-top navbar-gray'>
+        <a href="javascript:void(0)" id='close-menu' class="closebtn">&times;</a>
+        <img class='nav-icon' src="~/Images/icon/nclogo.png" id='nc-icon' />
+        @RenderSection("Navigation")
+    </nav>
+    <div class="navbar-side">
+        <span id="hamburger" onclick="">&#9776;</span>
+        <img class="nav-icon-side" src="~/Images/icon/nclogo.png" id='nc-icon-side' />
+    </div>
+    <header></header>
+    <div class="col-l-5" id="events-bg">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

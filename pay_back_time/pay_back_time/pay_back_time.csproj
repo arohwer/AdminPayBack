@@ -208,20 +208,51 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Global.asax" />
+    <Content Include="Content\main.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Fonts\Linotype_-_DINNextLTPro-Bold.otf" />
+    <Content Include="Fonts\Linotype_-_DINNextLTPro-Light.otf" />
+    <Content Include="Fonts\Linotype_-_DINNextLTPro-Medium.otf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Images\ben.jpg" />
+    <Content Include="Images\brian.jpg" />
+    <Content Include="Images\building-close.jpg" />
+    <Content Include="Images\building.jpg" />
+    <Content Include="Images\calendar\event_default.jpg" />
+    <Content Include="Images\capstone.jpg" />
+    <Content Include="Images\car.jpg" />
+    <Content Include="Images\classroom.jpg" />
+    <Content Include="Images\emily.jpg" />
+    <Content Include="Images\enterprise2.jpg" />
+    <Content Include="Images\enterprise3.jpg" />
+    <Content Include="Images\eric.jpg" />
+    <Content Include="Images\icon\favicon.ico" />
+    <Content Include="Images\icon\nclogo.png" />
+    <Content Include="Images\icon\nc_colorpalette.png" />
+    <Content Include="Images\icon\nc_horiz-black.png" />
+    <Content Include="Images\icon\nc_horiz-fc-onwhite.png" />
+    <Content Include="Images\icon\nc_horiz-reverse.png" />
+    <Content Include="Images\icon\nc_horizwide-fc-oncharcoal.png" />
+    <Content Include="Images\icon\nc_horizwide-fc-onwhite.png" />
+    <Content Include="Images\icon\nc_monogram-reverse.png" />
+    <Content Include="Images\icon\nc_vert-black.png" />
+    <Content Include="Images\icon\nc_vert-fc-oncharcoal %281%29.png" />
+    <Content Include="Images\innovation.jpg" />
+    <Content Include="Images\lab1.jpg" />
+    <Content Include="Images\maddy.jpg" />
+    <Content Include="Images\morg1.jpg" />
+    <Content Include="Images\payHD.jpg" />
+    <Content Include="Images\priya.jpg" />
+    <Content Include="Images\projectshowcase.jpg" />
+    <Content Include="Images\sophie.jpg" />
+    <Content Include="Images\techtalk.jpg" />
+    <Content Include="Images\tigertank.jpg" />
+    <Content Include="Images\wyatt.jpg" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -266,21 +297,19 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_EventCalendarLayout.cshtml" />
+    <Content Include="Views\EventCalendar\Index.cshtml" />
+    <Content Include="Views\EventCalendar\AdminEventList.cshtml" />
+    <Content Include="Views\EventCalendar\NoEventsFound.cshtml" />
+    <Content Include="Views\EventCalendar\EventDetail.cshtml" />
+    <Content Include="Views\EventCalendar\AddNewEvent.cshtml" />
+    <Content Include="Views\EventCalendar\EditEvent.cshtml" />
+    <Content Include="Views\EventCalendar\ArchivedEventList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
-    <Folder Include="Views\EventCalendar\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
