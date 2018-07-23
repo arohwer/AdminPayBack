@@ -1,0 +1,90 @@
+﻿@model ModelLibrary.Models.CalendarEventModel
+
+@{
+    ViewBag.Title = "AddNewEvent";
+}
+
+@{
+    Layout = "~/Views/Shared/_EventCalendarLayout.cshtml";
+}
+
+@section Navigation {
+    @Html.ActionLink("Home", "Index", "Home")
+    @Html.ActionLink("Projects", "Projects", "Projects")
+    @Html.ActionLink("Events", "Index", "EventCalendar")
+    @Html.ActionLink("Contact", "Contact", "Home", new { @class = "active" })
+    <div id="searchEventsBar">
+        @using (Html.BeginForm("SearchResults", "EventCalendar", FormMethod.Get, new { id = "searchEventsForm" }))
+        {
+            @Html.TextBox("searchQuery", null, new { placeholder = "Search all events", id = "searchEventsBarBox" })
+            <input type="submit" value="Search" id="searchEventsBtn" />
+        }
+    </div>
+}
+
+<div id="addEventContainer">
+    <h2>Add New Event:</h2>
+
+    <div class="formContainer">
+        <div id="form">
+            @using (Html.BeginForm("AddEventSave", "EventCalendar", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.ValidationSummary()
+                <div class="form-entry">
+                    <p>
+                        <b>Title</b>
+                    </p>
+                    <br />
+                    @Html.TextBoxFor(x => x.Title)
+                </div>
+                <div class="form-entry">
+                    <p>
+                        <b>Description</b>
+                    </p>
+                    <br />
+                    @Html.TextAreaFor(x => x.Description, new { @rows = 5 })
+                </div>
+                <div class="form-entry">
+                    <p>
+                        <b>Location</b>
+                    </p>
+                    <br />
+                    <!--TODO: ADD GOOGLE MAPS IN SOMEHOW-->
+                    @Html.TextBoxFor(x => x.Location)
+                </div>
+                <div class="form-entry">
+                    <p>
+                        <b>Date</b>
+                    </p>
+                    <br />
+                    @Html.HiddenFor(x => x.Date)
+                    <input type="date" id="event-date" name="eventDate" value="@Model.Date">
+                </div>
+                <div class="form-entry">
+                    <p>
+                        <b>Time</b>
+                    </p>
+                    <br />
+                    @Html.HiddenFor(x => x.Time)
+                    <input type="time" id="event-time" name="event-time" value="@Model.Time" />
+                </div>
+                <div class="form-entry">
+                    <p>
+                        <b>Image</b>
+                    </p>
+                    <br />
+                    @Html.HiddenFor(x => x.ImagePath)
+                    <input type="file" name="UploadedFile" value="@Model.ImagePath" />
+                </div>
+                <div>
+                    @Html.HiddenFor(x => x.EventID)
+                </div>
+                <div id="submit-btn">
+                    <input type="submit" value="Save" name="addevent" class="nc-btn uppercase" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+

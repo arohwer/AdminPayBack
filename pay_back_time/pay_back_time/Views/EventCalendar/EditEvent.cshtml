@@ -1,0 +1,23 @@
+﻿@model ModelLibrary.Models.CalendarEventModel
+
+@{
+    ViewBag.Title = "Events";
+}
+
+@{
+    Layout = "~/Views/Shared/_EventCalendarLayout.cshtml";
+}
+
+@section Navigation {
+    @Html.ActionLink("Home", "Index", "Home")
+    @Html.ActionLink("Projects", "Projects", "Projects")
+    @Html.ActionLink("Events", "Index", "EventCalendar")
+    @Html.ActionLink("Contact", "Contact", "Home", new { @class = "active" })
+    <div id="searchEventsBar">
+        @using (Html.BeginForm("SearchResults", "EventCalendar", FormMethod.Get, new { id = "searchEventsForm" }))
+        {
+            @Html.TextBox("searchQuery", null, new { placeholder = "Search all events", id = "searchEventsBarBox" })
+            <input type="submit" value="Search" id="searchEventsBtn" />
+        }
+    </div>
+}
