@@ -54,15 +54,15 @@ table {
 
 @font-face {
   font-family: NCLight;
-  src: url(~/Fonts/Linotype_-_DINNextLTPro-Light.otf);
+  src: url(../Fonts/Linotype_-_DINNextLTPro-Light.otf);
 }
 @font-face {
   font-family: NCBold;
-  src: url(~/Fonts/Linotype_-_DINNextLTPro-Bold.otf);
+  src: url(../Fonts/Linotype_-_DINNextLTPro-Bold.otf);
 }
 @font-face {
     font-family: NCMedium;
-    src: url(~/Fonts/Linotype_-_DINNextLTPro-Medium.otf);
+    src: url(../Fonts/Linotype_-_DINNextLTPro-Medium.otf);
 }
 .font-bold {
   font-family: "NCBold", sans-serif;
@@ -1223,10 +1223,21 @@ input[type=text] {
   box-shadow: 2px 4px 8px #2b2929;
   width: 80%;
 }
+
+.new-event-container {
+    margin-top: 100px;
+    margin: 40px auto;
+    box-shadow: 2px 4px 8px #2b2929;
+    width: 80%;
+    min-height: max-content;
+}
 @media (max-width: 650px) {
   .event-container {
     width: 100%;
   }
+    .new-event-container {
+        width: 100%;
+    }
 }
 
 .event-img {
