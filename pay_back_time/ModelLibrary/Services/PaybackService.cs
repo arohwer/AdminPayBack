@@ -45,6 +45,28 @@ namespace ModelLibrary.Services
             return model;
         }
 
+        public CalendarEventListModel GetArchivedEvents()
+        {
+            CalendarEventListModel model = new CalendarEventListModel();
+
+            List<CalendarEventModel> allEvents = GetAllEvents().Events;
+
+            DateTime currentDate = DateTime.Now;
+
+            foreach (CalendarEventModel e in allEvents)
+            {
+                int currMonth = currentDate.Month;
+                int eventMonth = e.Date.Month;
+
+                if( Math.Abs(currMonth - eventMonth) > 6)
+                {
+                    model.Events.Add(e);
+                } 
+            }
+
+            return model;
+        }
+
         public CalendarEventModel GetEventByID(int id)
         {
             return GetAllEvents().Events.Where(calendarEvt => calendarEvt.EventID == id).First();
