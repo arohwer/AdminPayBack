@@ -133,10 +133,5 @@ namespace ModelLibrary.Services
             }
         }
 
-        public CalendarEventListModel GetArchivedEvents()
-        {
-            //could make new table for archived events and pull there, or filter events here
-            throw new NotImplementedException();
-        }
     }
 }

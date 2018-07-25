@@ -1346,6 +1346,21 @@ input[type=text] {
   transition: 0.5s;
 }
 
+.tile{
+    display: flex;
+    flex:1;
+    background-color:#fff;
+
+}
+.tile-header {
+    font-size: 20px;
+    color: #EA9919;
+}
+.tile-description {
+    font-size: 15px;
+    color: #2B2929;
+}
+
 .fade, .fadeUp {
   opacity: 0;
   visibility: hidden;
