@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NCCS Innovation Lab | @ViewBag.Title</title>
-    <link rel='stylesheet' href="~/Content/main.css" />
+    @*<link href="@Url.Content("~/Content/main.css")" rel="stylesheet" type="text/css" />*@
+    @*<link rel='stylesheet' href="~/Content/main.css" />*@
     <link rel="shortcut icon" href="~/Images/icon/favicon.ico" type="image/x-icon">
     <link rel="icon" href="~/Images/icon/favicon.ico" type="image/x-icon">
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("/Content/main.css")
 
 </head>
 <body>
@@ -22,12 +22,12 @@
         <img class="nav-icon-side" src="~/Images/icon/nclogo.png" id='nc-icon-side' />
     </div>
     <header></header>
-    <div class="col-l-5" id="events-bg">
+    <div>
         @RenderBody()
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
+    <script src="~/Scripts/EventCalendarScript.js"></script>
 </body>
 </html>
 

@@ -21,3 +21,16 @@
         }
     </div>
 }
+
+<div class="row theme-steelgray new-event-container">
+    <div class="col-xl-5 event-img"
+         style="background-image: url(@Model.ImagePath.Replace("~", "").ToString())"></div>
+    <div class="col-xl-7 content-spacer">
+        <h2 class="uppercase event-date">@Model.Date.DayOfWeek, @Model.Date.ToString("MMMM") @Model.Date.Day, @Model.Date.Year</h2>
+        <h2 class="uppercase event-date">@Model.Time.ToString("hh:mm tt")</h2>
+        <h2 class="font-bold block nc-yellow uppercase event-name">@Model.Title</h2>
+        <p class="event-overview">@Model.Description</p>
+        <a href="@Model.Location">@Model.Location</a>
+        @*<h4 class="font-bold block nc-yellow uppercase event-name">@Model.Location</h4>*@
+    </div>
+</div>
