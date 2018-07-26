@@ -58,10 +58,28 @@ namespace ModelLibrary.Services
                 int currMonth = currentDate.Month;
                 int eventMonth = e.Date.Month;
 
-                if( Math.Abs(currMonth - eventMonth) > 6)
+                if (Math.Abs(currMonth - eventMonth) > 6)
                 {
                     model.Events.Add(e);
-                } 
+                }
+            }
+
+            return model;
+        }
+
+        public CalendarEventListModel GetUpcomingEvents()
+        {
+            CalendarEventListModel model = new CalendarEventListModel();
+
+            List<CalendarEventModel> allEvents = GetAllEvents().Events;
+
+            foreach (CalendarEventModel e in allEvents)
+            {
+                if(e.Date.Month >= DateTime.Now.Month)
+                {
+                    model.Events.Add(e);
+                }
+
             }
 
             return model;

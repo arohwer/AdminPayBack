@@ -15,10 +15,11 @@ namespace pay_back_time.Controllers
 
         public ActionResult Index()
         {
-            //get all events and send to view to display
-            CalendarEventListModel model = service.GetAllEvents();
+            //get all upcoming events and send to view to display
+            CalendarEventListModel upcoming = service.GetUpcomingEvents();
+
             ViewBag.Heading = "Event Calendar";
-            return View(model);
+            return View(upcoming);
         }
 
         [Authorize(Roles = "Admin")]

@@ -21,38 +21,163 @@
         }
     </div>
 }
-<div class="row">
+<div class="body">
+
     @if (Model != null)
     {
-        foreach (var calEvent in Model.Events)
-        {
-            <a href="@Url.Action("EventDetail", new { id = calEvent.EventID}) " class="event_links">
-                <div class="tile">
-                    <div class="tile-header">
-                        @calEvent.Date.ToString("MM/dd/yyyy");
-                    </div>
-                    <div class="tile-description">
-                        @calEvent.Title
-                    </div>
-                </div>
-            </a>
-            // <div class="column">
-            //   <a href="@Url.Action("EventDetail", new { id = calEvent.EventID })" class="event_links">
-            //     <img alt="@calEvent.Title" src="@Url.Content(calEvent.ImagePath)" class="hover-shadow">
-            //</a>
-            //<ul>
-            //  <li>@calEvent.Title</li>
-            //<li>@calEvent.Location</li>
-            //<li>@calEvent.Description</li>
-            //<li>@calEvent.Date.ToString("MM/dd/yyyy")</li>
-            //<li>@calEvent.Time.ToString("hh:mm tt")</li>
-            // </ul>
-            //</div>
-        }
+
+        <div id="calendar-slideshow">
+            <div class="slideshow" id="card-container">
+            </div>
+            <div class="controls"></div>
+        </div>
+
+        <script type="text/javascript">
+            var Model = @(Html.Raw(Json.Encode(Model)));;
+            console.log('script')
+            console.log(Model);
+
+            var currMont = @DateTime.Now.Month;
+
+            var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            var monthEvents = [];
+
+            function parseEvents() {
+                for (var x = 0; x < 12; x++) {
+                    var month = {
+                        monthName: monthNames[x],
+                        month: x,
+                        events: []
+                    }
+                    monthEvents.push(month);
+                }
+                for (var i = 0; i < Model.Events.length; i++) {
+                    var event = Model.Events[i];
+
+                    var cSharpDate = Model.Events[i].Date;
+                    var jsDate = new Date(parseInt(cSharpDate.replace(/[^0-9 +]/g, '')));
+
+                    event.Date = jsDate;
+
+                    var month = monthEvents[jsDate.getMonth()];
+
+                    month.events.push(event);
+                }
+            }
+
+            function createTiles() {
+                var container = document.getElementById('card-container');
+
+                for (var i = 0; i < monthEvents.length; i++) {
+                    var month = monthEvents[i];
+                    if (month.events.length != 0) {
+                        var card = document.createElement('div');
+                        card.className = 'card';
+
+                        var cardHeader = document.createElement('div');
+                        cardHeader.className = 'card-header';
+                        card.appendChild(cardHeader);
+
+                        var monthName = document.createElement('div');
+                        monthName.className = 'month-name';
+                        monthName.innerHTML = month.monthName;
+                        cardHeader.appendChild(monthName)
+
+                        var line = document.createElement('div');
+                        line.className = 'line';
+                        cardHeader.appendChild(line);
+
+                        var cardBody = document.createElement('div');
+                        cardBody.className = 'card-body';
+                        card.appendChild(cardBody);
+
+                        var containers = [];
+                        var size = month.events.length;
+
+                        while (size > 0) {
+                            var contr = document.createElement("div");
+                            contr.className = "eventRow";
+                            containers.push(contr);
+                            size -= 3;
+                        }
+
+                        if (size < 0) {
+                            var contr = document.createElement("div");
+                            contr.className = "eventRow";
+                            containers.push(contr);
+                        }
+
+                        for (var x = 0; x < month.events.length; x++) {
+                            var event = month.events[x];
+
+                            var eventdiv = document.createElement("div");
+                            eventdiv.className = "event-card";
+
+                            //day of the week
+                            var dow = document.createElement("h5");
+                            var weekday = new Array(7);
+                            weekday[0] = "Sunday";
+                            weekday[1] = "Monday";
+                            weekday[2] = "Tuesday";
+                            weekday[3] = "Wednesday";
+                            weekday[4] = "Thursday";
+                            weekday[5] = "Friday";
+                            weekday[6] = "Saturday";
+
+                            dow.innerHTML = weekday[event.Date.getDay()];
+                            eventdiv.appendChild(dow);
+
+                            //day numeric
+                            var dayNum = document.createElement("h6");
+                            dayNum.innerHTML = event.Date.getDay();
+                            eventdiv.appendChild(dayNum)
+
+                            //title
+                            var eventTitle = document.createElement("h6");
+                            eventTitle.innerHTML = event.Title;
+                            eventdiv.appendChild(eventTitle);
+
+                            for (var k = 0; k < containers.length; k++) {
+                                var cont = containers[k];
+                                if (cont.children.length < 3) {
+                                    cont.appendChild(eventdiv);
+                                }
+                            }
+
+                            for (var l = 0; l < containers.length; l++) {
+                                var cont = containers[l];
+                                cardBody.appendChild(cont);
+                            }
+                        }
+
+                        container.appendChild(card);
+                    }
+
+
+
+                }
+
+            }
+
+
+            //this is for testing the slideshow
+            function addFakeEvents(amount) {
+                for (var i = 0; i < amount; i++) {
+                    var event = {};
+
+                }
+            }
+
+            parseEvents();
+            createTiles();
+
+        </script>
     }
-    else  {
+    else
+    {
         <div class="col-xl-7">
             <h1>No events have been scheduled for this month</h1>
         </div>
     }
 </div>
+
