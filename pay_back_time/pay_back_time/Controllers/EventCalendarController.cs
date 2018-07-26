@@ -16,18 +16,9 @@ namespace pay_back_time.Controllers
         public ActionResult Index()
         {
             //get all events and send to view to display
+            //TODO: add admin checks for archived section, edit, and add buttons
             CalendarEventListModel model = service.GetAllEvents();
             ViewBag.Heading = "Event Calendar";
-            return View(model);
-        }
-
-        [Authorize(Roles = "Admin")]
-        public ActionResult AdminEventList()
-        {
-            //get all events and send to view to display
-            //edit/add options will be displayed for admin role
-            //archived events will also be displayed w/ button redirecting to ArchivedEventList()
-            CalendarEventListModel model = service.GetAllEvents();
             return View(model);
         }
 
@@ -86,15 +77,15 @@ namespace pay_back_time.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = "Admin")]
-        public ActionResult AddNewEvent()
+        //[Authorize(Roles = "Admin")]
+        public ViewResult AddNewEvent()
         {
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult AddEventSave(CalendarEventModel e)
+        public ViewResult AddNewEvent(CalendarEventModel e)
         {
             //get event model from form and pass to service to persist to db
             if (ModelState.IsValid)
@@ -102,14 +93,26 @@ namespace pay_back_time.Controllers
                 if (e.UploadedFile != null)
                 {
                     Console.WriteLine(e.ImagePath);
-                    e.UploadedFile.SaveAs(Path.Combine("~/Images/", e.ImagePath.Replace(" ", string.Empty) + ".jpg"));
+                    var fileName = Path.GetFileName(e.UploadedFile.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Images/calendar/"), fileName);
+                    e.UploadedFile.SaveAs(path);
+                    e.ImagePath = "~/Images/calendar/" + fileName;
+                }
+                else
+                {
+                    e.ImagePath = "~/Images/calendar/event_default.jpg";
                 }
                 ((PaybackService)service).AddNewEvent(e);
+                CalendarEventListModel model = service.GetAllEvents();
+                return View("Index", model);
             }
-            return RedirectToAction("EventList");
+            else
+            {
+                return View(e);
+            }
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public ActionResult EditEvent(int id)
         {
             //pass in event model to edit
@@ -119,19 +122,31 @@ namespace pay_back_time.Controllers
             return View(eventToEdit);
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult EditEventSave(CalendarEventModel e)
+        public ViewResult EditEvent(CalendarEventModel e)
         {
-            if (Request.Form["update"] != null && ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 if (e.UploadedFile != null)
                 {
-                    e.UploadedFile.SaveAs(Path.Combine("~/Images/", e.ImagePath.Replace(" ", string.Empty) + ".jpg"));
+                    var fileName = Path.GetFileName(e.UploadedFile.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Images/calendar/"), fileName);
+                    e.UploadedFile.SaveAs(path);
+                    e.ImagePath = "~/Images/calendar/" + fileName;
+                }
+                else
+                {
+                    e.ImagePath = "~/Images/calendar/event_default.jpg";
                 }
                 ((PaybackService)service).UpdateEvent(e);
+                CalendarEventListModel model = service.GetAllEvents();
+                return View("Index", model);
             }
-            return RedirectToAction("EventList");
+            else
+            {
+                return View(e);
+            }
         }
     }
 }

@@ -11,38 +11,47 @@
 @section Navigation {
     @Html.ActionLink("Home", "Index", "Home")
     @Html.ActionLink("Projects", "Projects", "Projects")
-    @Html.ActionLink("Events", "Index", "EventCalendar")
-    @Html.ActionLink("Contact", "Contact", "Home", new { @class = "active" })
+    @Html.ActionLink("Events", "Index", "EventCalendar", new { @class = "active" })
+    @Html.ActionLink("Contact", "Contact", "Home")
     <div id="searchEventsBar">
         @using (Html.BeginForm("SearchResults", "EventCalendar", FormMethod.Get, new { id = "searchEventsForm" }))
         {
             @Html.TextBox("searchQuery", null, new { placeholder = "Search all events", id = "searchEventsBarBox" })
-            <input type="submit" value="Search" id="searchEventsBtn" />
+            <input type="submit" value="Search" id="searchEventsBtn" class="nc-btn uppercase" />
         }
     </div>
 }
-<div class="row">
-    @if (Model != null)
-    {
-        foreach (var calEvent in Model.Events)
+    <div class="row">
+        @if (Model != null)
         {
-            <div class="column">
-                <a href="@Url.Action("EventDetail", new { id = calEvent.EventID })" class="event_links">
-                    <img alt="@calEvent.Title" src="@Url.Content(calEvent.ImagePath)" class="hover-shadow">
-                </a>
-                <ul>
-                    <li>@calEvent.Title</li>
-                    <li>@calEvent.Location</li>
-                    <li>@calEvent.Description</li>
-                    <li>@calEvent.Date.ToString("MM/dd/yyyy")</li>
-                    <li>@calEvent.Time.ToString("hh:mm tt")</li>
-                </ul>
-            </div>
+            if (Model.Events.Count() > 0)
+            {
+                foreach (var calEvent in Model.Events)
+                {
+                    <div class="column">
+                        <a href="@Url.Action("EventDetail", new { id = calEvent.EventID })" class="event_links">
+                            <img alt="@calEvent.Title" src="@Url.Content(calEvent.ImagePath)" class="hover-shadow">
+                        </a>
+                        <ul>
+                            <li>@calEvent.Title</li>
+                            <li><a href="@calEvent.Location.Split('$')[1]">@calEvent.Location.Split('$')[0]</a></li>
+                            <li>@calEvent.Description</li>
+                            <li>@calEvent.Date.ToString("MM/dd/yyyy")</li>
+                            <li>@calEvent.Time.ToString("hh:mm tt")</li>
+                        </ul>
+                    </div>
+                }
+
+            }
+            else
+            {
+                <div class="col-xl-7">
+                    <h1>No events have been scheduled for this month</h1>
+                </div>
+            }
         }
-    }
-    else  {
-        <div class="col-xl-7">
-            <h1>No events have been scheduled for this month</h1>
-        </div>
-    }
-</div>
+        else
+        {
+            <h1>Model is null</h1>
+        }
+    </div>

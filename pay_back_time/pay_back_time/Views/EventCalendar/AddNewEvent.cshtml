@@ -11,80 +11,126 @@
 @section Navigation {
     @Html.ActionLink("Home", "Index", "Home")
     @Html.ActionLink("Projects", "Projects", "Projects")
-    @Html.ActionLink("Events", "Index", "EventCalendar")
-    @Html.ActionLink("Contact", "Contact", "Home", new { @class = "active" })
+    @Html.ActionLink("Events", "Index", "EventCalendar", new { @class = "active" })
+    @Html.ActionLink("Contact", "Contact", "Home")
     <div id="searchEventsBar">
         @using (Html.BeginForm("SearchResults", "EventCalendar", FormMethod.Get, new { id = "searchEventsForm" }))
         {
             @Html.TextBox("searchQuery", null, new { placeholder = "Search all events", id = "searchEventsBarBox" })
-            <input type="submit" value="Search" id="searchEventsBtn" />
+            <input type="submit" value="Search" id="searchEventsBtn" class="nc-btn uppercase" />
         }
     </div>
 }
 
-<div id="addEventContainer">
+<div id="addEventContainer" class="eventManagement">
     <h2>Add New Event:</h2>
 
     <div class="formContainer">
         <div id="form">
-            @using (Html.BeginForm("AddEventSave", "EventCalendar", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("AddNewEvent", "EventCalendar", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
-                @Html.ValidationSummary()
+                @Html.ValidationSummary(true)
                 <div class="form-entry">
                     <p>
-                        <b>Title</b>
+                        <b>@Html.LabelFor(x => x.Title)</b>
                     </p>
                     <br />
-                    @Html.TextBoxFor(x => x.Title)
+                    @Html.TextBoxFor(x => x.Title, new { placeholder = "Enter a name for your event" })
+                    @Html.ValidationMessageFor(x => x.Title, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-entry">
                     <p>
-                        <b>Description</b>
+                        <b>@Html.LabelFor(x => x.Description)</b>
                     </p>
                     <br />
-                    @Html.TextAreaFor(x => x.Description, new { @rows = 5 })
+                    @Html.TextAreaFor(x => x.Description, new { @rows = 5, placeholder = "Enter a description for your event" })
+                    @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-entry">
                     <p>
-                        <b>Location</b>
+                        <b>@Html.LabelFor(x => x.Location)</b>
                     </p>
                     <br />
-                    <!--TODO: ADD GOOGLE MAPS IN SOMEHOW-->
-                    @Html.TextBoxFor(x => x.Location)
+                    @Html.HiddenFor(x => x.Location, new { id = "location" })
+                    <input id="autocomplete" class="location" placeholder="Enter the address for your event" onFocus="geolocate()" type="text" />
+                    @Html.ValidationMessageFor(x => x.Location, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-entry">
                     <p>
-                        <b>Date</b>
+                        <b>@Html.LabelFor(x => x.Date)</b>
                     </p>
                     <br />
-                    @Html.HiddenFor(x => x.Date)
-                    <input type="date" id="event-date" name="eventDate" value="@Model.Date">
+                    @Html.HiddenFor(x => x.Date, new { id = "eventDate" })
+                    <input type="date" id="event-date" name="eventDate">
+                    @Html.ValidationMessageFor(x => x.Date, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-entry">
                     <p>
-                        <b>Time</b>
+                        <b>@Html.LabelFor(x => x.Time)</b>
                     </p>
                     <br />
-                    @Html.HiddenFor(x => x.Time)
-                    <input type="time" id="event-time" name="event-time" value="@Model.Time" />
+                    @Html.HiddenFor(x => x.Time, new { id = "eventTime" })
+                    <input type="time" id="event-time" name="event-time" />
+                    @Html.ValidationMessageFor(x => x.Time, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-entry">
                     <p>
                         <b>Image</b>
                     </p>
                     <br />
-                    @Html.HiddenFor(x => x.ImagePath)
-                    <input type="file" name="UploadedFile" value="@Model.ImagePath" />
+                    @Html.HiddenFor(x => x.ImagePath, new { id = "imagePath" })
+                    <input type="file" name="UploadedFile" id="image-upload" accept="image/*" />
                 </div>
                 <div>
                     @Html.HiddenFor(x => x.EventID)
                 </div>
                 <div id="submit-btn">
-                    <input type="submit" value="Save" name="addevent" class="nc-btn uppercase" />
+                    <input type="submit" value="Save" name="addevent" onclick="setFields()" class="nc-btn uppercase" />
                 </div>
             }
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    var placeSearch, autocomplete;
+
+    function initAutocomplete() {
+        autocomplete = new google.maps.places.Autocomplete((document.getElementById('autocomplete')),
+            { types: ['geocode'] });
+
+        autocomplete.addListener('place_changed', getAddress);
+    }
+
+    function geolocate() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var geolocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                var circle = new google.maps.Circle({
+                    center: geolocation,
+                    radius: position.coords.accuracy
+                });
+                autocomplete.setBounds(circle.getBounds());
+            });
+        }
+    }
+
+    function getAddress() {
+        var place = autocomplete.getPlace();
+        console.log("place", place);
+        var address = place.formatted_address.toString().slice(0, -1);
+        console.log("address", address);
+        var url = place.url;
+        console.log("url", url);
+
+        var location = document.getElementById("location");
+        location.value = address + " $ " + url;
+    }
+
+    initAutocomplete();
+</script>
 
 
