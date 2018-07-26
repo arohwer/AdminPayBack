@@ -25,20 +25,15 @@ namespace ModelLibrary.Models
         [Required(ErrorMessage = "Please enter an event location")]
         public string Location { get; set; }
 
+        [DataType(DataType.DateTime)]
         [Required(ErrorMessage = "Please enter a date for the event")]
         public DateTime Date { get; set; }
 
+        [DataType(DataType.DateTime)]
         [Required(ErrorMessage = "Please enter a time for the event")]
         public DateTime Time { get; set; }
 
         public string ImagePath { get; set; }
-        //$"~/Images/{ImagePath}"
-        //$"~/Images/calendar/event_default.jpg"
-        //public string ImagePath
-        //{
-        //    get { return Title.Replace(" ", string.Empty) + ".jpg"; }
-        //    set;
-        //}
 
         [NotMapped]
         public HttpPostedFileBase UploadedFile { get; set; }

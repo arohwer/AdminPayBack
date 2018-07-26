@@ -13,5 +13,6 @@ namespace ModelLibrary.Services
         CalendarEventListModel GetAllEvents();
         CalendarEventListModel GetArchivedEvents();
         CalendarEventModel GetEventByID(int id);
+        CalendarEventListModel GetUpcomingEvents();
     }
 }
