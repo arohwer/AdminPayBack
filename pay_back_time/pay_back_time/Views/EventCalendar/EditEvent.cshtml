@@ -1,7 +1,7 @@
 ﻿@model ModelLibrary.Models.CalendarEventModel
 
 @{
-    ViewBag.Title = "Events";
+    ViewBag.Title = "AddNewEvent";
 }
 
 @{
@@ -11,13 +11,127 @@
 @section Navigation {
     @Html.ActionLink("Home", "Index", "Home")
     @Html.ActionLink("Projects", "Projects", "Projects")
-    @Html.ActionLink("Events", "Index", "EventCalendar")
-    @Html.ActionLink("Contact", "Contact", "Home", new { @class = "active" })
+    @Html.ActionLink("Events", "Index", "EventCalendar", new { @class = "active" })
+    @Html.ActionLink("Contact", "Contact", "Home")
     <div id="searchEventsBar">
         @using (Html.BeginForm("SearchResults", "EventCalendar", FormMethod.Get, new { id = "searchEventsForm" }))
         {
             @Html.TextBox("searchQuery", null, new { placeholder = "Search all events", id = "searchEventsBarBox" })
-            <input type="submit" value="Search" id="searchEventsBtn" />
+            <input type="submit" value="Search" id="searchEventsBtn" class="nc-btn uppercase" />
         }
     </div>
 }
+
+<div id="addEventContainer" class="eventManagement">
+    <h2>Add New Event:</h2>
+
+    <div class="formContainer">
+        <div id="form">
+            @using (Html.BeginForm("EditEvent", "EventCalendar", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.ValidationSummary(true)
+                <div class="form-entry">
+                    <p>
+                        <b>@Html.LabelFor(x => x.Title)</b>
+                    </p>
+                    <br />
+                    @Html.EditorFor(x => x.Title)
+                    @Html.ValidationMessageFor(x => x.Title, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-entry">
+                    <p>
+                        <b>@Html.LabelFor(x => x.Description)</b>
+                    </p>
+                    <br />
+                    @Html.EditorFor(x => x.Description, new { @rows = 5})
+                    @*@Html.TextAreaFor(x => x.Description, new { @rows = 5, placeholder = Model.Description })*@
+                    @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-entry">
+                    <p>
+                        <b>@Html.LabelFor(x => x.Location)</b>
+                    </p>
+                    <br />
+                    @Html.HiddenFor(x => x.Location, new { id = "location" })
+                    <input id="autocomplete" class="location" value="@Model.Location.Split('$')[0]" onFocus="geolocate()" type="text" />
+                    @Html.ValidationMessageFor(x => x.Location, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-entry">
+                    <p>
+                        <b>@Html.LabelFor(x => x.Date)</b>
+                    </p>
+                    <br />
+                    @Html.HiddenFor(x => x.Date, new { id = "eventDate" })
+                    <input type="date" id="event-date" name="eventDate" value="@Model.Date.Date.ToString("yyyy-MM-dd")" />
+                    @Html.ValidationMessageFor(x => x.Date, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-entry">
+                    <p>
+                        <b>@Html.LabelFor(x => x.Time)</b>
+                    </p>
+                    <br />
+                    @Html.HiddenFor(x => x.Time, new { id = "eventTime" })
+                    <input type="time" id="event-time" name="event-time" value="@Model.Time.TimeOfDay" />
+                    @Html.ValidationMessageFor(x => x.Time, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-entry">
+                    <p>
+                        <b>Image</b>
+                    </p>
+                    <br />
+                    @Html.HiddenFor(x => x.ImagePath, new { id = "imagePath" })
+                    <input type="file" name="UploadedFile" id="image-upload" accept="image/*" value="@Model.ImagePath" />
+                </div>
+                <div>
+                    @Html.HiddenFor(x => x.EventID)
+                </div>
+                <div id="submit-btn">
+                    <input type="submit" value="Save" name="addevent" onclick="setFields()" class="nc-btn uppercase" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var placeSearch, autocomplete;
+
+    function initAutocomplete() {
+        autocomplete = new google.maps.places.Autocomplete((document.getElementById('autocomplete')),
+            { types: ['geocode'] });
+
+        autocomplete.addListener('place_changed', getAddress);
+    }
+
+    function geolocate() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var geolocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                var circle = new google.maps.Circle({
+                    center: geolocation,
+                    radius: position.coords.accuracy
+                });
+                autocomplete.setBounds(circle.getBounds());
+            });
+        }
+    }
+
+    function getAddress() {
+        var place = autocomplete.getPlace();
+        console.log("place", place);
+        var address = place.formatted_address.toString().slice(0, -1);
+        console.log("address", address);
+        var url = place.url;
+        console.log("url", url);
+
+        var location = document.getElementById("location");
+        location.value = address + " $ " + url;
+    }
+
+    initAutocomplete();
+</script>
+
+
