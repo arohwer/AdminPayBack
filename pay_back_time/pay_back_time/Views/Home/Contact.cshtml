@@ -1,17 +1,43 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿
+@{
+    ViewBag.Title = "NCCS Innovation Lab | Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<nav class='navbar-fixed-top-after'>
+    <a href="javascript:void(0)" id='close-menu' class="closebtn">&times;</a>
+    <img class='nav-icon' src='~/Content/Images/nclogo.png' id='nc-icon' />
+    @Html.ActionLink("HOME", "Index", "Home")
+    @Html.ActionLink("PROJECTS", "Projects", "Home")
+    @Html.ActionLink("EVENTS", "Events", "Home")
+    @Html.ActionLink("CONTACT", "Contact", "Home", null, new { @class = "active" })
+    @Html.ActionLink("APPLY", "Apply", "Home")
+</nav>
+<div class="navbar-side">
+    <span id="hamburger" onclick="">&#9776;</span>
+    <img class="nav-icon-side" src='~/Content/Images/nclogo.png' id='nc-icon-side' />
+</div>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<div class="section " id="section0">
+    <div class="row fit theme-steelgray">
+        <div class="col-l-7 section-content">
+            <h1 class="uppercase animated-text white">
+                <span class="font-bold block nc-yellow">contact</span>
+                JERRY PAY
+            </h1>
+            <p>
+                Do you have a brilliant business proposal, product, or app idea but need resources to get you started? Got an idea that could change the world and revolutionize how we use technlogy?
+                Apply now or send an email to
+                <a href="mailto:JPay@neumont.edu?Subject=Innovation%20Lab">JPay@neumont.edu</a> to learn more about the Innovation Lab.
+            </p>
+            <div class='nc-btn uppercase' id="apply-btn">
+                APPLY
+            </div>
+        </div>
+        <div class="col-l-5" id="contact-bg">
+            <div id='pay-title'>
+                <p class="font-bold block nc-yellow" id='jerry-pay'>JERRY PAY</p>
+                <p>Student Innovations Manager</p>
+            </div>
+        </div>
+    </div>
+</div>

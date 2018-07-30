@@ -1,0 +1,74 @@
+﻿@model ModelLibrary.models.ApplicationModel
+
+@{
+    ViewBag.Title = "NCCS Innovation Lab | Apply";
+}
+
+<nav class='navbar-fixed-top-after'>
+    <a href="javascript:void(0)" id='close-menu' class="closebtn">&times;</a>
+    <img class='nav-icon' src='~/Content/Images/nclogo.png' id='nc-icon' />
+    @Html.ActionLink("HOME", "Index", "Home")
+    @Html.ActionLink("PROJECTS", "Projects", "Home")
+    @Html.ActionLink("EVENTS", "Events", "Home")
+    @Html.ActionLink("CONTACT", "Contact", "Home")
+    @Html.ActionLink("APPLY", "Apply", "Home", null, new { @class = "active" })
+</nav>
+<div class="navbar-side">
+    <span id="hamburger" onclick="">&#9776;</span>
+    <img class="nav-icon-side" src='~/Content/Images/nclogo.png' id='nc-icon-side' />
+</div>
+<div class="section">
+
+    <div class="section row theme-steelgray">
+        <div class="col-l-12 section-content">
+            <div id="application_form">
+                <div id="application_header">
+                    <h3>APPLICATION FOR NEUMONT INNOVATION CENTER</h3>
+                </div>
+                
+                @using (Html.BeginForm("CreateApplication","Apply", FormMethod.Post))
+                {
+                    <div id="form">
+                        
+                        <div class="form-entry">
+                            <p class="label"><b>Name:</b></p>
+                            @Html.TextBoxFor(model => model.Name, new { @placeholder = "Your Name Here"})
+                        </div>
+
+                        <div class="form-entry">
+                            <p class="label"><b>Email:</b></p>
+                            @Html.TextBoxFor(model => model.Email, new { @placeholder = "Your Email Here" })
+                        </div>
+
+                        <div class="form-entry">
+                            <p><b>Project Description:</b></p>
+                            @Html.TextAreaFor(model => model.Description, new { @placeholder = "How did your project come about? What will it do?",@rows=5 })
+                        </div>
+
+                        <div class="form-entry">
+                            <p><b>Intended Audience:</b></p>
+                            @Html.TextAreaFor(model => model.Audience, new { @placeholder = "Who will your project benefit?", @rows = 5 })
+                        </div>
+
+                        <div class="form-entry">
+                            <p><b>Roadblocks:</b></p>
+                            @Html.TextAreaFor(model => model.Roadblocks, new { @placeholder = "Any forseeable roadblocks or obstacles?", @rows = 5 })
+                        </div>
+
+                        <div class="form-entry">
+                            <p><b>High Level Project/Product Requirements:</b></p>
+                            @Html.TextAreaFor(model => model.Requirements, new { @placeholder = "What types of people are you looking for? Any expertise you're seeking? Is there a specific market you wish to target?", @rows = 8,@maxlength=500 })
+                        </div>
+
+                    </div>
+
+                    <div id="submit-btn">
+                        <input type="submit" value="Submit" class="nc-btn uppercase"/>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+

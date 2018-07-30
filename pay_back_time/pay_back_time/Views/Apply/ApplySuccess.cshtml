@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Success!";
+}
+
+<div class="section " id="section0">
+    <div class="row fit theme-steelgray">
+        <div class="section">
+            <div class="row fit theme-white">
+                <div class="col-l-7 section-content">
+                    <h1 class="uppercase animated-text">
+                        YOUR APPLICATION IS
+                        <span class="font-bold block">SUBMITTED</span>
+                    </h1>
+                    <p class="animated-text">Your application was successfully sent to Jerry Pay. Please wait for processing time and handling, and await contact from Mr. Pay for further information on your approval.</p>
+                    <!-- <a class="animated-text" id="submit-btn" href="../index.html">Return to the Home Page</a> -->
+                    @*<p class="animated-text"><a href="../index.html">Return to Home Page</a></p>*@
+                    <p class="animated-text">@Html.ActionLink("Return to Home Page", "Index", "Home")</p>
+                </div>
+                <div class="col-l-5 index-bg" id="application_bg"></div>
+            </div>
+        </div>
+    </div>
+</div>

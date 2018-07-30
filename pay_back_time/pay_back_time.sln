@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27703.2042
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pay_back_time", "pay_back_time\pay_back_time.csproj", "{1991F80E-344C-48D5-BFA9-01F542D2E001}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{EDDD29F3-5A75-411F-BA8E-E4D4923D358F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelLibrary", "ModelLibrary\ModelLibrary.csproj", "{C8F853A5-9967-451B-B170-4D0D97FEB9BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{1991F80E-344C-48D5-BFA9-01F542D2E001}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1991F80E-344C-48D5-BFA9-01F542D2E001}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1991F80E-344C-48D5-BFA9-01F542D2E001}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDDD29F3-5A75-411F-BA8E-E4D4923D358F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDDD29F3-5A75-411F-BA8E-E4D4923D358F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDDD29F3-5A75-411F-BA8E-E4D4923D358F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDDD29F3-5A75-411F-BA8E-E4D4923D358F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8F853A5-9967-451B-B170-4D0D97FEB9BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8F853A5-9967-451B-B170-4D0D97FEB9BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8F853A5-9967-451B-B170-4D0D97FEB9BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8F853A5-9967-451B-B170-4D0D97FEB9BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

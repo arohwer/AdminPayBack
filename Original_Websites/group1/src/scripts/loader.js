@@ -7,16 +7,22 @@ function progress() {
             clearInterval(id);
         } else {
             width++;
-            $('.bar').css("width", width + '%');
-            $('.percent').text(width + "%");
+            document.getElementsByClassName('bar')[0].style.width = `${width}%`;
+            document.getElementsByClassName('percent')[0].innerHTML = `${width}%`
+            // $('.bar').css("width", width + '%');
+            // $('.percent').text(width + "%");
             if (width == 100) {
 
-                $('.loaderImg').addClass('fadeUp');
-                $('.progress-bar').addClass('fadeUp');
-                $('.percent').addClass('fadeUp');
+                document.getElementsByClassName('loaderImg')[0].classList.add('fadeUp');
+                document.getElementsByClassName('progress-bar')[0].classList.add('fadeUp');
+                document.getElementsByClassName('percent')[0].classList.add('fadeUp');
+                // $('.loaderImg').addClass('fadeUp');
+                // $('.progress-bar').addClass('fadeUp');
+                // $('.percent').addClass('fadeUp');
 
                 setTimeout(function () {
-                    $('.loader').addClass('fade');
+                    document.getElementsByClassName('loader')[0].classList.add('fade');
+                    // $('.loader').addClass('fade');
                 }, 500);
                 document.getElementById("videoPlayer").play();
 
@@ -25,6 +31,9 @@ function progress() {
     }
 }
 
-$(document).ready(function () {
+// $(document).ready(function () {
+//     progress()
+// });
+document.addEventListener('DOMContentLoaded', function() { 
     progress()
-});
+})

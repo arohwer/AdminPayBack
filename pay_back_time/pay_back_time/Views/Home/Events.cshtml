@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "NCCS Innovation Lab | Events";
+}
+
+<nav class='navbar-fixed-top-after'>
+    <a href="javascript:void(0)" id='close-menu' class="closebtn">&times;</a>
+    <img class='nav-icon' src='~/Content/Images/nclogo.png' id='nc-icon' />
+    @Html.ActionLink("HOME", "Index", "Home")
+    @Html.ActionLink("PROJECTS", "Projects", "Home")
+    @Html.ActionLink("EVENTS", "Events", "Home",null, new { @class = "active" })
+    @Html.ActionLink("CONTACT", "Contact", "Home")
+    @Html.ActionLink("APPLY", "Apply", "Home")
+</nav>
+<div class="navbar-side">
+    <span id="hamburger" onclick="">&#9776;</span>
+    <img class="nav-icon-side" src='~/Content/Images/nclogo.png' id='nc-icon-side' />
+</div>
+
+<div class="section">
+    <div class="row fit theme-steelgray">
+        <div class="col-l-7 section-content">
+            <h1 class="uppercase animated-text white">
+                upcoming
+                <span class="font-bold block nc-yellow">events</span>
+            </h1>
+            <p class="white animated-text">The Innovation Lab works with its partners to host various events and workshops for our students to get them connected with industry experts and get them the exposure and resources they need to turn their ideas and projects into tangible products and businesses. View our upcoming innovation lab events below.</p>
+            <div class='nc-btn uppercase' id='view-events'>
+                VIEW Events
+            </div>
+        </div>
+        <div class="col-l-5" id="events-bg"></div>
+    </div>
+</div>

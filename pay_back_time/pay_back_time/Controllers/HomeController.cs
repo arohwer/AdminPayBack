@@ -13,18 +13,24 @@ namespace pay_back_time.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Projects()
         {
-            ViewBag.Message = "Your application description page.";
+            return View();
+        }
 
+        public ActionResult Events()
+        {
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
+
+        //public ActionResult Apply()
+        //{
+        //    return View();
+        //}
     }
 }
