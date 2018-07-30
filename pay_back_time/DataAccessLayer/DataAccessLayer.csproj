@@ -39,6 +39,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,16 +49,55 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="PaybackModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PaybackModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaybackModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PaybackModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaybackModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PaybackModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="service\ProjectCRUD.cs" />
+    <Compile Include="UserApplication.cs">
+      <DependentUpon>PaybackModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <EntityDeploy Include="PaybackModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PaybackModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="PaybackModel.edmx.diagram">
+      <DependentUpon>PaybackModel.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PaybackModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PaybackModel.edmx</DependentUpon>
+      <LastGenOutput>PaybackModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="PaybackModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PaybackModel.edmx</DependentUpon>
+      <LastGenOutput>PaybackModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -48,11 +48,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="models\UserApplicationListModel.cs" />
+    <Compile Include="models\UserApplicationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="services\IPaybackService.cs" />
     <Compile Include="services\PaybackService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="models\" />
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{eddd29f3-5a75-411f-ba8e-e4d4923d358f}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
