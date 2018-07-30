@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ModelLibrary.models
 {
-    public class UserApplicationListModel
+    public class ApplicationListModel
     {
-        public List<UserApplicationModel> Applications { get; set; } = new List<UserApplicationModel>();
+        public List<ApplicationModel> Applications { get; set; } = new List<ApplicationModel>();
     }
 }

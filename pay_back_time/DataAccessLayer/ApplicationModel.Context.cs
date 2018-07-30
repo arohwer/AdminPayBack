@@ -13,10 +13,10 @@ namespace DataAccessLayer
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PayTestEntities : DbContext
+    public partial class ApplicationsEntities : DbContext
     {
-        public PayTestEntities()
-            : base("name=PayTestEntities")
+        public ApplicationsEntities()
+            : base("name=ApplicationsEntities")
         {
         }
     
@@ -25,6 +25,6 @@ namespace DataAccessLayer
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<UserApplication> UserApplications { get; set; }
+        public virtual DbSet<Application> Applications { get; set; }
     }
 }

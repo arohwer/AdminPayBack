@@ -11,19 +11,19 @@ namespace ModelLibrary.services
     //This is where we will make our queries to the database
     public class PaybackService : IPaybackService
     {
-        public UserApplicationListModel GetAllApplications()
+        public ApplicationListModel GetAllApplications()
         {
-            UserApplicationListModel model = new UserApplicationListModel();
+            ApplicationListModel model = new ApplicationListModel();
 
-            using (var db = new PayTestEntities())
+            using (var db = new ApplicationsEntities())
             {
-                var query = db.UserApplications.Select(x => x);
+                var query = db.Applications.Select(x => x);
 
                 var applicationList = query.ToList();
 
                 applicationList.ForEach(application =>
                 {
-                    UserApplicationModel a = new UserApplicationModel();
+                    ApplicationModel a = new ApplicationModel();
                     a.ApplicationID = application.ApplicationID;
                     a.Name = application.Name;
                     a.Email = application.Email;
@@ -41,19 +41,19 @@ namespace ModelLibrary.services
             return model;
         }
 
-        public UserApplicationListModel GetReviewedApplications()
+        public ApplicationListModel GetReviewedApplications()
         {
-            UserApplicationListModel model = new UserApplicationListModel();
+            ApplicationListModel model = new ApplicationListModel();
 
-            using (var db = new PayTestEntities())
+            using (var db = new ApplicationsEntities())
             {
-                var query = db.UserApplications.Where(x => x.Reviewed == true);
+                var query = db.Applications.Where(x => x.Reviewed == true);
 
                 var applicationList = query.ToList();
 
                 applicationList.ForEach(application =>
                 {
-                    UserApplicationModel a = new UserApplicationModel();
+                    ApplicationModel a = new ApplicationModel();
                     a.ApplicationID = application.ApplicationID;
                     a.Name = application.Name;
                     a.Email = application.Email;
@@ -71,19 +71,19 @@ namespace ModelLibrary.services
             return model;
         }
 
-        public UserApplicationListModel GetNonReviewedApplications()
+        public ApplicationListModel GetNonReviewedApplications()
         {
-            UserApplicationListModel model = new UserApplicationListModel();
+            ApplicationListModel model = new ApplicationListModel();
 
-            using (var db = new PayTestEntities())
+            using (var db = new ApplicationsEntities())
             {
-                var query = db.UserApplications.Where(x => x.Reviewed == false);
+                var query = db.Applications.Where(x => x.Reviewed == false);
 
                 var applicationList = query.ToList();
 
                 applicationList.ForEach(application =>
                 {
-                    UserApplicationModel a = new UserApplicationModel();
+                    ApplicationModel a = new ApplicationModel();
                     a.ApplicationID = application.ApplicationID;
                     a.Name = application.Name;
                     a.Email = application.Email;
@@ -101,18 +101,18 @@ namespace ModelLibrary.services
             return model;
         }
 
-        public int GetNextApplicationID(UserApplicationListModel list)
+        public int GetNextApplicationID(ApplicationListModel list)
         {
             return list.Applications.Last().ApplicationID + 1;
         }
 
 
-        public void CreateUserApplication(UserApplicationModel model)
+        public void CreateUserApplication(ApplicationModel model)
         {
-            using (var db = new PayTestEntities())
+            using (var db = new ApplicationsEntities())
             {
-                var list = db.UserApplications;
-                list.Add(new UserApplication()
+                var list = db.Applications;
+                list.Add(new Application()
                 {
                     ApplicationID = GetNextApplicationID(GetAllApplications()),
                     Name = model.Name,
@@ -121,7 +121,9 @@ namespace ModelLibrary.services
                     Audience = model.Audience,
                     Roadblocks = model.Roadblocks,
                     Requirements = model.Requirements,
-                    Reviewed = false
+                    Reviewed = false,
+                    Saved = false,
+                    Archived = false
                 });
                 db.SaveChanges();
             }

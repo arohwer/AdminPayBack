@@ -10,11 +10,11 @@ namespace ModelLibrary.services
     public interface IPaybackService
     {
 
-        UserApplicationListModel GetAllApplications();
-        UserApplicationListModel GetReviewedApplications();
-        UserApplicationListModel GetNonReviewedApplications();
-        int GetNextApplicationID(UserApplicationListModel list);
-        void CreateUserApplication(UserApplicationModel model);
+        ApplicationListModel GetAllApplications();
+        ApplicationListModel GetReviewedApplications();
+        ApplicationListModel GetNonReviewedApplications();
+        int GetNextApplicationID(ApplicationListModel list);
+        void CreateUserApplication(ApplicationModel model);
 
     }
 }

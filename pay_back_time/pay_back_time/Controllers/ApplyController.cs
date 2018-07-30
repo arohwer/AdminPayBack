@@ -19,10 +19,11 @@ namespace pay_back_time.Controllers
 
         public ActionResult ApplySuccess()
         {
+      
             return View();
         }
 
-        public ActionResult CreateApplication(UserApplicationModel model)
+        public ActionResult CreateApplication(ApplicationModel model)
         {
             service.CreateUserApplication(model);
 

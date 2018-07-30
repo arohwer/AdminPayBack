@@ -12,7 +12,7 @@ namespace DataAccessLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class UserApplication
+    public partial class Application
     {
         public int ApplicationID { get; set; }
         public string Name { get; set; }
@@ -22,5 +22,7 @@ namespace DataAccessLayer
         public string Roadblocks { get; set; }
         public string Requirements { get; set; }
         public bool Reviewed { get; set; }
+        public bool Saved { get; set; }
+        public bool Archived { get; set; }
     }
 }
