@@ -13,8 +13,9 @@ namespace ModelLibrary.services
         ApplicationListModel GetAllApplications();
         ApplicationListModel GetReviewedApplications();
         ApplicationListModel GetNonReviewedApplications();
+        ApplicationListModel GetSavedApplications();
+        ApplicationListModel GetArchivedApplications();
         int GetNextApplicationID(ApplicationListModel list);
         void CreateUserApplication(ApplicationModel model);
-
     }
 }

@@ -11,6 +11,7 @@ namespace ModelLibrary.models
         public int ApplicationID { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
+        public string ProjectTitle { get; set; }
         public string Description { get; set; }
         public string Audience { get; set; }
         public string Roadblocks { get; set; }

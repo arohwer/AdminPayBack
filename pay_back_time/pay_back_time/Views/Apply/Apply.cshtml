@@ -6,7 +6,7 @@
 
 <nav class='navbar-fixed-top-after'>
     <a href="javascript:void(0)" id='close-menu' class="closebtn">&times;</a>
-    <img class='nav-icon' src='~/Content/Images/nclogo.png' id='nc-icon' />
+    <a target="_blank" href="https://www.neumont.edu" id="icon-link"><img class='nav-icon' src='~/Content/Images/nclogo.png' id='nc-icon' /></a>
     @Html.ActionLink("HOME", "Index", "Home")
     @Html.ActionLink("PROJECTS", "Projects", "Home")
     @Html.ActionLink("EVENTS", "Events", "Home")
@@ -32,32 +32,37 @@
                         
                         <div class="form-entry">
                             <p class="label"><b>Name:</b></p>
-                            @Html.TextBoxFor(model => model.Name, new { @placeholder = "Your Name Here"})
+                            @Html.TextBoxFor(model => model.Name, new { @placeholder = "Your Name Here", @maxlength = 30 })
                         </div>
 
                         <div class="form-entry">
                             <p class="label"><b>Email:</b></p>
-                            @Html.TextBoxFor(model => model.Email, new { @placeholder = "Your Email Here" })
+                            @Html.TextBoxFor(model => model.Email, new { @placeholder = "Your Email Here", @maxlength = 50 })
+                        </div>
+
+                        <div class="form-entry">
+                            <p class="label"><b>Title:</b></p>
+                            @Html.TextBoxFor(model => model.ProjectTitle, new { @placeholder = "Title of your Project", @maxlength = 30 })
                         </div>
 
                         <div class="form-entry">
                             <p><b>Project Description:</b></p>
-                            @Html.TextAreaFor(model => model.Description, new { @placeholder = "How did your project come about? What will it do?",@rows=5 })
+                            @Html.TextAreaFor(model => model.Description, new { @placeholder = "How did your project come about? What will it do?",@rows=5, @maxlength = 1000 })
                         </div>
 
                         <div class="form-entry">
                             <p><b>Intended Audience:</b></p>
-                            @Html.TextAreaFor(model => model.Audience, new { @placeholder = "Who will your project benefit?", @rows = 5 })
+                            @Html.TextAreaFor(model => model.Audience, new { @placeholder = "Who will your project benefit?", @rows = 5, @maxlength = 1000 })
                         </div>
 
                         <div class="form-entry">
                             <p><b>Roadblocks:</b></p>
-                            @Html.TextAreaFor(model => model.Roadblocks, new { @placeholder = "Any forseeable roadblocks or obstacles?", @rows = 5 })
+                            @Html.TextAreaFor(model => model.Roadblocks, new { @placeholder = "Any forseeable roadblocks or obstacles?", @rows = 5, @maxlength = 1000 })
                         </div>
 
                         <div class="form-entry">
                             <p><b>High Level Project/Product Requirements:</b></p>
-                            @Html.TextAreaFor(model => model.Requirements, new { @placeholder = "What types of people are you looking for? Any expertise you're seeking? Is there a specific market you wish to target?", @rows = 8,@maxlength=500 })
+                            @Html.TextAreaFor(model => model.Requirements, new { @placeholder = "What types of people are you looking for? Any expertise you're seeking? Is there a specific market you wish to target?", @rows = 8,@maxlength=1000 })
                         </div>
 
                     </div>

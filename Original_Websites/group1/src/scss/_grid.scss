@@ -1,5 +1,10 @@
 @mixin flex-size($range) {
-  @if $range==xl {
+    @if $range==xxl {
+        @media (min-width: $xxlarge-width) {
+            @content;
+        }
+    }
+  @else if $range==xl {
       @media (min-width: $xlarge-width) {
           @content;
       }
@@ -55,8 +60,9 @@
     align-items: center;
 }
 
-@for $column-size-number from 1 through 6 {
+@for $column-size-number from 1 through 7 {
   $column-size-name: d;
+
   @if $column-size-number==1 {
       $column-size-name: xl;
   }
@@ -71,6 +77,9 @@
   }
   @else if $column-size-number==5 {
       $column-size-name: xs;
+  }  
+  @else if $column-size-number==6 {
+      $column-size-name: xxl;
   }
   @else {
       $column-size-name: f;
