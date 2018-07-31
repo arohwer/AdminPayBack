@@ -5,12 +5,12 @@
 
 <nav class='navbar-fixed-top-after'>
     <a href="javascript:void(0)" id='close-menu' class="closebtn">&times;</a>
-    <img class='nav-icon' src='~/Content/Images/nclogo.png' id='nc-icon' />
+    <a target="_blank" href="https://www.neumont.edu" id="icon-link"><img class='nav-icon' src='~/Content/Images/nclogo.png' id='nc-icon' /></a>
     @Html.ActionLink("HOME", "Index", "Home")
     @Html.ActionLink("PROJECTS", "Projects", "Home")
     @Html.ActionLink("EVENTS", "Events", "Home")
     @Html.ActionLink("CONTACT", "Contact", "Home", null, new { @class = "active" })
-    @Html.ActionLink("APPLY", "Apply", "Home")
+    @Html.ActionLink("APPLY", "Apply", "Apply")
 </nav>
 <div class="navbar-side">
     <span id="hamburger" onclick="">&#9776;</span>
@@ -30,7 +30,7 @@
                 <a href="mailto:JPay@neumont.edu?Subject=Innovation%20Lab">JPay@neumont.edu</a> to learn more about the Innovation Lab.
             </p>
             <div class='nc-btn uppercase' id="apply-btn">
-                APPLY
+                @Html.ActionLink("APPLY", "Apply", "Apply",null, new {@id = "white-color"})
             </div>
         </div>
         <div class="col-l-5" id="contact-bg">

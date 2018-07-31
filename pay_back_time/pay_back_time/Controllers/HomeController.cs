@@ -10,8 +10,22 @@ namespace pay_back_time.Controllers
     {
         public ActionResult Index()
         {
+            if (Session["visited"] == null)
+            {
+                ViewBag.visited = false;
+                Session["visited"] = DateTime.Now;
+            } else
+            {
+                ViewBag.visited = true;
+            }
             return View();
         }
+
+        //public ActionResult IndexVisited()
+        //{
+        //    ViewBag.visited = true;
+        //    return View("Index");
+        //}
 
         public ActionResult Projects()
         {

@@ -2,14 +2,6 @@
     ViewBag.Title = "NCCS Innovation Lab | Home";
 }
 
-<div class='loader'>
-    <img class='loaderImg' src='~/Content/Images/nclogo.png' />
-    <div class='progress-bar'>
-        <div class='bar'></div>
-    </div>
-    <h3 class='percent'>0%</h3>
-</div>
-
 <nav class='navbar-fixed-top-after'>
     <a href="javascript:void(0)" id='close-menu' class="closebtn">&times;</a>
     <img class='nav-icon' src='~/Content/Images/nclogo.png' id='nc-icon' />
@@ -34,7 +26,7 @@
 
         </div>
         <div class='btn-cont' id='learnMoreBtn'>
-            <a class='btn' href='#'>
+            <a class='btn' href='#dreams-into-reality'>
                 Learn More
                 <span class='line-1'></span>
                 <span class='line-2'></span>
@@ -48,7 +40,7 @@
     </video>
 </div>
 
-<div class="section section2">
+<div class="section section2" id="dreams-into-reality">
     <div class="row fit theme-white">
         <div class="col-l-7 section-content">
             <h1 class="uppercase animated-text">
@@ -147,7 +139,7 @@
                 work across degrees and communities.
                 <br />
                 <br /> To start your application, click
-                @Html.ActionLink("here.", "Apply", "Home")
+                @Html.ActionLink("here.", "Apply", "Apply")
             </p>
         </div>
         <div class="col-l-5 index-bg" id="index-bg2"></div>
@@ -257,5 +249,22 @@
 </div>
   </div>
 
+@if (!ViewBag.visited)
+{
+    <div class='loader'>
+        <img class='loaderImg' src='~/Content/Images/nclogo.png' />
+        <div class='progress-bar'>
+            <div class='bar'></div>
+        </div>
+        <h3 class='percent'>0%</h3>
+    </div>
+    @Scripts.Render("~/Scripts/loader.js");
+} else
+{
+    <script>
+        document.getElementById("videoPlayer").play();
+    </script>
+}
 
-@Scripts.Render("~/Scripts/bundle--index.js")
+
+@Scripts.Render("~/Scripts/index-config.js")

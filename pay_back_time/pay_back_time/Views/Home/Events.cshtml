@@ -5,12 +5,12 @@
 
 <nav class='navbar-fixed-top-after'>
     <a href="javascript:void(0)" id='close-menu' class="closebtn">&times;</a>
-    <img class='nav-icon' src='~/Content/Images/nclogo.png' id='nc-icon' />
+    <a target="_blank" href="https://www.neumont.edu" id="icon-link"><img class='nav-icon' src='~/Content/Images/nclogo.png' id='nc-icon' /></a>
     @Html.ActionLink("HOME", "Index", "Home")
     @Html.ActionLink("PROJECTS", "Projects", "Home")
     @Html.ActionLink("EVENTS", "Events", "Home",null, new { @class = "active" })
     @Html.ActionLink("CONTACT", "Contact", "Home")
-    @Html.ActionLink("APPLY", "Apply", "Home")
+    @Html.ActionLink("APPLY", "Apply", "Apply")
 </nav>
 <div class="navbar-side">
     <span id="hamburger" onclick="">&#9776;</span>
@@ -26,7 +26,7 @@
             </h1>
             <p class="white animated-text">The Innovation Lab works with its partners to host various events and workshops for our students to get them connected with industry experts and get them the exposure and resources they need to turn their ideas and projects into tangible products and businesses. View our upcoming innovation lab events below.</p>
             <div class='nc-btn uppercase' id='view-events'>
-                VIEW Events
+                <a href="#" id="white-color">VIEW EVENTS</a>
             </div>
         </div>
         <div class="col-l-5" id="events-bg"></div>
