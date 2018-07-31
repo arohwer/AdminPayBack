@@ -24,5 +24,6 @@ namespace DataAccessLayer
         public bool Reviewed { get; set; }
         public bool Saved { get; set; }
         public bool Archived { get; set; }
+        public string ProjectTitle { get; set; }
     }
 }

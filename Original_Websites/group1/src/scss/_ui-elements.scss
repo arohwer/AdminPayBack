@@ -317,6 +317,12 @@ ul {
 .navbar-gray {
     @extend .navbar-fixed-top-after;
 }
+#white-color {
+    color: $white;
+}
+#icon-link {
+    padding: 0;
+}
 
 // picture - text sections
 .section-content {
@@ -593,12 +599,16 @@ p {
 }
 
 .event-container {
-    margin: 40px auto;
+    margin: 60px auto;
     box-shadow: 2px 4px 8px $logo-gray;
     width: 80%;
     @include max-width($small-width) {
         width: 100%;
     }
+}
+
+.app-bg{
+    background:$nc-light-steelgray;
 }
 
 .event-img {
@@ -615,6 +625,33 @@ p {
 
 .event-name {
     margin-bottom: 0.3em;
+}
+
+.app-name{
+    padding-left:20px;
+}
+
+.view-app{
+    margin-top:25px;
+}
+
+.app-download{
+    font-size:1em;
+}
+
+.download-btn:hover{
+    cursor:pointer;
+    color:$nc-yellow;
+    transition:ease-in-out 0.3s;
+}
+
+.fa fa-download{
+    color:$white;
+}
+
+.download-btn{
+    text-align: center;
+    margin-top: 25px;
 }
 
 .event-overview {
@@ -704,4 +741,47 @@ p {
     @include max-width($small-width) {
         background-position: center top;
     }
+}
+
+.app-control-box{
+    background:$nc-dark-steelgray;
+    height: 352px;
+    width: 300px;
+    position:fixed;
+    left: 30px;
+    top: 30%;
+    text-align: center;
+    box-shadow: 2px 4px 8px $logo-gray;
+    @include border-radius(0 25px 0 0);
+
+    @include max-width($large-width - (1px)){
+        position: static;
+        margin:auto;
+        margin-top:20%;
+    }
+
+    @include max-width($small-width - (1px)){
+        position: static;
+        margin:auto;
+        margin-top:30%;
+        width:80%;
+        @include border-radius(0 0 0 0);
+        height:300px;
+
+    }
+}
+
+.app-control{
+    color: $white;
+    font-size: 2em;
+    padding: 20px 10px;
+
+    @include max-width($small-width - (1px)){
+        font-size:1.5em;
+    }
+}
+
+.app-control:hover{
+    color:$nc-yellow;
+    cursor:pointer;
 }

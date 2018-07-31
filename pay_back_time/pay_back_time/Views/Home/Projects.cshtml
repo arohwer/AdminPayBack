@@ -5,12 +5,12 @@
 
 <nav class='navbar-fixed-top-after'>
     <a href="javascript:void(0)" id='close-menu' class="closebtn">&times;</a>
-    <img class='nav-icon' src='~/Content/Images/nclogo.png' id='nc-icon' />
+    <a target="_blank" href="https://www.neumont.edu" id="icon-link"><img class='nav-icon' src='~/Content/Images/nclogo.png' id='nc-icon' /></a>
     @Html.ActionLink("HOME", "Index", "Home")
     @Html.ActionLink("PROJECTS", "Projects", "Home", null, new { @class = "active" })
     @Html.ActionLink("EVENTS", "Events", "Home")
     @Html.ActionLink("CONTACT", "Contact", "Home")
-    @Html.ActionLink("APPLY", "Apply", "Home")
+    @Html.ActionLink("APPLY", "Apply", "Apply")
 </nav>
 <div class="navbar-side">
     <span id="hamburger" onclick="">&#9776;</span>
@@ -27,10 +27,10 @@
             <p class="white animated-text">Here at Neumont's Innovation Lab, students come up with ideas and learn how to create a proposal, develop them, and market them for the rest of the world to see. Students may work on their own or have the opportunity to build teams with other students from BYU, University of Utah, and Westminister College to help in areas of technical expertise.</p>
 
             <div class='nc-btn' id='view-projects'>
-                VIEW PROJECTS
-            </div>
+                <a href="#" id="white-color">VIEW PROJECTS</a> 
+            </div> 
         </div>
         <div class="col-l-5" id="projects-bg"></div>
     </div>
 </div>
-    </div>
+   
