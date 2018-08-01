@@ -217,6 +217,7 @@
     </Content>
     <Content Include="Scripts\index-config.js" />
     <Content Include="Scripts\loader.js" />
+    <Content Include="Scripts\send-email.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

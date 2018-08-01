@@ -11,7 +11,7 @@
     @Html.ActionLink("PROJECTS", "Projects", "Home")
     @Html.ActionLink("EVENTS", "Events", "Home")
     @Html.ActionLink("CONTACT", "Contact", "Home")
-    @Html.ActionLink("APPLY", "Apply", "Home", null, new { @class = "active" })
+    @Html.ActionLink("APPLY", "Apply", "Apply", null, new { @class = "active" })
 </nav>
 <div class="navbar-side">
     <span id="hamburger" onclick="">&#9776;</span>
@@ -25,14 +25,34 @@
                 <div id="application_header">
                     <h3>APPLICATION FOR NEUMONT INNOVATION CENTER</h3>
                 </div>
-                
-                @using (Html.BeginForm("CreateApplication","Apply", FormMethod.Post))
+
+                @using (Html.BeginForm("Apply", "Apply", FormMethod.Post))
                 {
+                    if (!ViewData.ModelState.IsValid)
+                    {
+                        <text>
+                            <h3 class="form-error">Must fill out every property.</h3>
+                        </text>
+                    }
                     <div id="form">
-                        
+
                         <div class="form-entry">
                             <p class="label"><b>Name:</b></p>
                             @Html.TextBoxFor(model => model.Name, new { @placeholder = "Your Name Here", @maxlength = 30 })
+                            @*@if (@Html.ValidationMessageFor(model => model.Name).ToString() == null)
+                            {
+
+                                @Html.TextBoxFor(model => model.Name, new { @placeholder = "Your Name Here", @maxlength = 30 })
+
+                                @Html.ValidationMessageFor(model => model.Name, "")
+                            }
+                            else
+                            {
+                                @Html.TextBoxFor(model => model.Name, new { @placeholder = Html.ValidationMessageFor(model => model.Name).ToString(), @maxlength = 30 })
+
+                            }*@
+
+
                         </div>
 
                         <div class="form-entry">
@@ -47,7 +67,7 @@
 
                         <div class="form-entry">
                             <p><b>Project Description:</b></p>
-                            @Html.TextAreaFor(model => model.Description, new { @placeholder = "How did your project come about? What will it do?",@rows=5, @maxlength = 1000 })
+                            @Html.TextAreaFor(model => model.Description, new { @placeholder = "How did your project come about? What will it do?", @rows = 5, @maxlength = 1000 })
                         </div>
 
                         <div class="form-entry">
@@ -62,17 +82,18 @@
 
                         <div class="form-entry">
                             <p><b>High Level Project/Product Requirements:</b></p>
-                            @Html.TextAreaFor(model => model.Requirements, new { @placeholder = "What types of people are you looking for? Any expertise you're seeking? Is there a specific market you wish to target?", @rows = 8,@maxlength=1000 })
+                            @Html.TextAreaFor(model => model.Requirements, new { @placeholder = "What types of people are you looking for? Any expertise you're seeking? Is there a specific market you wish to target?", @rows = 8, @maxlength = 1000 })
                         </div>
 
                     </div>
 
                     <div id="submit-btn">
-                        <input type="submit" value="Submit" class="nc-btn uppercase"/>
+                        <input type="submit" value="Submit" class="nc-btn uppercase" />
                     </div>
                 }
 
             </div>
+
         </div>
     </div>
 </div>

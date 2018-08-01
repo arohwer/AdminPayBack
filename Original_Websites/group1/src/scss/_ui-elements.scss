@@ -785,3 +785,26 @@ p {
     color:$nc-yellow;
     cursor:pointer;
 }
+
+.application-body {
+    margin: 15px;
+    .form-long {
+        p {
+            display: inline-block;
+            
+        }
+        p#label {
+            margin-right: 10px;
+            // width: 150px;
+            // text-align: right;
+        }
+    }
+    .form-column {
+
+    }
+}
+
+.form-error {
+    text-align: center;
+    color: $nc-red;
+}

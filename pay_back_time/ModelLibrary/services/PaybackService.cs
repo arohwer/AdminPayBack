@@ -167,7 +167,7 @@ namespace ModelLibrary.services
         }
         public int GetNextApplicationID(ApplicationListModel list)
         {
-            int count =0;
+            int count = 0;
             if (list.Applications.Count > 0)
             {
                 count = list.Applications.Last().ApplicationID + 1;
@@ -193,6 +193,72 @@ namespace ModelLibrary.services
                     Saved = false,
                     Archived = false
                 });
+                db.SaveChanges();
+            }
+        }
+        public void SaveApplicationByID(int id)
+        {
+            using (var db = new ApplicationsEntities())
+            {
+                var query = db.Applications.Where(x => x.ApplicationID == id);
+                var application = query.First();
+                application.Saved = true;
+                db.SaveChanges();
+            }
+            RemoveArchiveApplicationByID(id);
+        }
+
+        public void ArchiveApplicationByID(int id)
+        {
+            using (var db = new ApplicationsEntities())
+            {
+                var query = db.Applications.Where(x => x.ApplicationID == id);
+                var application = query.First();
+                application.Archived = true;
+                db.SaveChanges();
+            }
+            RemoveSaveApplicationByID(id);
+        }
+
+        public void ViewApplicationByID(int id)
+        {
+            using (var db = new ApplicationsEntities())
+            {
+                var query = db.Applications.Where(x => x.ApplicationID == id);
+                var application = query.First();
+                application.Reviewed = true;
+                db.SaveChanges();
+            }
+        }
+
+        public void RemoveSaveApplicationByID(int id)
+        {
+            using (var db = new ApplicationsEntities())
+            {
+                var query = db.Applications.Where(x => x.ApplicationID == id);
+                var application = query.First();
+                application.Saved = false;
+                db.SaveChanges();
+            }
+        }
+
+        public void RemoveArchiveApplicationByID(int id)
+        {
+            using (var db = new ApplicationsEntities())
+            {
+                var query = db.Applications.Where(x => x.ApplicationID == id);
+                var application = query.First();
+                application.Archived = false;
+                db.SaveChanges();
+            }
+        }
+        public void DeleteApplicationByID(int id)
+        {
+            using (var db = new ApplicationsEntities())
+            {
+                var query = db.Applications.Where(x => x.ApplicationID == id);
+                var application = query.First();
+                db.Applications.Remove(application);
                 db.SaveChanges();
             }
         }

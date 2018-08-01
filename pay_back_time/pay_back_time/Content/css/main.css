@@ -1548,6 +1548,11 @@ ul li {
     cursor: pointer;
 }
 
+.form-error {
+    text-align: center;
+    color: #d24d3b;
+}
+
 .loader {
     background-color: #2b2929;
     height: 100vh;

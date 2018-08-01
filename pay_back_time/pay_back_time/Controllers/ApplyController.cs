@@ -12,14 +12,60 @@ namespace pay_back_time.Controllers
     {
         IPaybackService service = new PaybackService();
         // GET: Apply
+        [HttpGet]
         public ActionResult Apply()
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Apply(ApplicationModel model)
+        {
+            if (string.IsNullOrEmpty(model.Name))
+            {
+                ModelState.AddModelError("Name", "Must enter a name");
+            }
+            if (model.Email == null)
+            {
+                ModelState.AddModelError("Email", "Must enter a valid email");
+            }
+            if (model.ProjectTitle == null)
+            {
+                ModelState.AddModelError("ProjectTitle", "Must enter a valid email");
+            }
+            if (string.IsNullOrEmpty(model.Description))
+            {
+                ModelState.AddModelError("Description", "Must enter a description");
+            }
+            if (string.IsNullOrEmpty(model.Audience))
+            {
+                ModelState.AddModelError("IntendedAudience", "Must enter an audience");
+            }
+            if (string.IsNullOrEmpty(model.Roadblocks))
+            {
+                ModelState.AddModelError("Roadblocks", "Must enter any roadblocks");
+            }
+            if (string.IsNullOrEmpty(model.Requirements))
+            {
+                ModelState.AddModelError("Requirements", "Must enter project requirements");
+            }
+
+            if (ModelState.IsValid)
+            {
+                service.CreateUserApplication(model);
+                return RedirectToAction("ApplySuccess");
+            }
+            else
+            {
+                return View(model);
+            }
+            //service.CreateUserApplication(model);
+
+        }
+
 
         public ActionResult ApplySuccess()
         {
-      
+
             return View();
         }
 
@@ -77,32 +123,5 @@ namespace pay_back_time.Controllers
         //    return View(model);
         //}
         //[HttpPost]
-        public ActionResult CreateApplication(ApplicationModel model)
-        {
-            //if (string.IsNullOrEmpty(model.Name))
-            //{
-            //    ModelState.AddModelError("Name", "Must enter a name");
-            //}
-            //if (model.Email == null)
-            //{
-            //    ModelState.AddModelError("Email", "Must enter a valid email");
-            //}
-            //if (string.IsNullOrEmpty(model.Description))
-            //{
-            //    ModelState.AddModelError("Description", "Must enter a description");
-            //}
-            //if (string.IsNullOrEmpty(model.ImageUrl))
-            //{
-            //    ModelState.AddModelError("ImageUrl", "Must enter an ImageUrl");
-            //}
-
-            //if (ModelState.IsValid)
-            //{
-            //    service.CreateUserApplication(model);
-            //}
-            service.CreateUserApplication(model);
-
-            return RedirectToAction("ApplySuccess");
-        }
     }
 }
