@@ -2,7 +2,7 @@ var modal = document.getElementById("main-modal");
 var modal_btn = document.getElementById("modal-btn");
 var span = document.getElementsByClassName("close")[0];
 
-var viewApp_btn = document.getElementById("viewApp-btn");
+var viewApp_btn = document.getElementById("view-app");
 viewApp_btn.onclick = function () {
   modal.style.display = "block";
 };

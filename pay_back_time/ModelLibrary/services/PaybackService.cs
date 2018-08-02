@@ -33,6 +33,8 @@ namespace ModelLibrary.services
                     a.Roadblocks = application.Roadblocks;
                     a.Requirements = application.Requirements;
                     a.Reviewed = application.Reviewed;
+                    a.Saved = application.Saved;
+                    a.Archived = application.Archived;
 
                     model.Applications.Add(a);
                 });
@@ -64,6 +66,8 @@ namespace ModelLibrary.services
                     a.Roadblocks = application.Roadblocks;
                     a.Requirements = application.Requirements;
                     a.Reviewed = application.Reviewed;
+                    a.Saved = application.Saved;
+                    a.Archived = application.Archived;
 
                     model.Applications.Add(a);
                 });
@@ -95,6 +99,8 @@ namespace ModelLibrary.services
                     a.Roadblocks = application.Roadblocks;
                     a.Requirements = application.Requirements;
                     a.Reviewed = application.Reviewed;
+                    a.Saved = application.Saved;
+                    a.Archived = application.Archived;
 
                     model.Applications.Add(a);
                 });
@@ -126,6 +132,8 @@ namespace ModelLibrary.services
                     a.Roadblocks = application.Roadblocks;
                     a.Requirements = application.Requirements;
                     a.Reviewed = application.Reviewed;
+                    a.Saved = application.Saved;
+                    a.Archived = application.Archived;
 
                     model.Applications.Add(a);
                 });
@@ -157,7 +165,8 @@ namespace ModelLibrary.services
                     a.Roadblocks = application.Roadblocks;
                     a.Requirements = application.Requirements;
                     a.Reviewed = application.Reviewed;
-
+                    a.Saved = application.Saved;
+                    a.Archived = application.Archived;
                     model.Applications.Add(a);
                 });
 
@@ -259,6 +268,26 @@ namespace ModelLibrary.services
                 var query = db.Applications.Where(x => x.ApplicationID == id);
                 var application = query.First();
                 db.Applications.Remove(application);
+                db.SaveChanges();
+            }
+        }
+        public void InvertSaveApplicationByID(int id)
+        {
+            using (var db = new ApplicationsEntities())
+            {
+                var query = db.Applications.Where(x => x.ApplicationID == id);
+                var application = query.First();
+                application.Saved = !application.Saved;
+                db.SaveChanges();
+            }
+        }
+        public void InvertArchiveApplicationByID(int id)
+        {
+            using (var db = new ApplicationsEntities())
+            {
+                var query = db.Applications.Where(x => x.ApplicationID == id);
+                var application = query.First();
+                application.Archived = !application.Archived;
                 db.SaveChanges();
             }
         }
