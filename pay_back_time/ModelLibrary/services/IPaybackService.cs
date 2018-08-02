@@ -28,5 +28,5 @@ namespace ModelLibrary.services
         void InvertSaveApplicationByID(int id);
         void InvertArchiveApplicationByID(int id);
 
-    }
+    }
 }

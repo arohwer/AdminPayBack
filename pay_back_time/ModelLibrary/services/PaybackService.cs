@@ -19,9 +19,7 @@ namespace ModelLibrary.services
             {
                 var query = db.Applications.Select(x => x);
 
-                var applicationList = query.ToList();
-
-                applicationList.ForEach(application =>
+                var applicationList = query.ToList();                applicationList.ForEach(application =>
                 {
                     ApplicationModel a = new ApplicationModel();
                     a.ApplicationID = application.ApplicationID;
@@ -33,11 +31,11 @@ namespace ModelLibrary.services
                     a.Roadblocks = application.Roadblocks;
                     a.Requirements = application.Requirements;
                     a.Reviewed = application.Reviewed;
+                    a.Saved = application.Saved;
+                    a.Archived = application.Archived;
 
                     model.Applications.Add(a);
                 });
-
-
             }
             return model;
         }
@@ -50,9 +48,7 @@ namespace ModelLibrary.services
             {
                 var query = db.Applications.Where(x => x.Reviewed == true);
 
-                var applicationList = query.ToList();
-
-                applicationList.ForEach(application =>
+                var applicationList = query.ToList();                applicationList.ForEach(application =>
                 {
                     ApplicationModel a = new ApplicationModel();
                     a.ApplicationID = application.ApplicationID;
@@ -64,6 +60,8 @@ namespace ModelLibrary.services
                     a.Roadblocks = application.Roadblocks;
                     a.Requirements = application.Requirements;
                     a.Reviewed = application.Reviewed;
+                    a.Saved = application.Saved;
+                    a.Archived = application.Archived;
 
                     model.Applications.Add(a);
                 });
@@ -71,9 +69,7 @@ namespace ModelLibrary.services
 
             }
             return model;
-        }
-
-        public ApplicationListModel GetNonReviewedApplications()
+        }        public ApplicationListModel GetNonReviewedApplications()
         {
             ApplicationListModel model = new ApplicationListModel();
 
@@ -85,16 +81,18 @@ namespace ModelLibrary.services
 
                 applicationList.ForEach(application =>
                 {
-                    ApplicationModel a = new ApplicationModel();
-                    a.ApplicationID = application.ApplicationID;
-                    a.Name = application.Name;
-                    a.Email = application.Email;
-                    a.ProjectTitle = application.ProjectTitle;
-                    a.Description = application.Description;
-                    a.Audience = application.Audience;
-                    a.Roadblocks = application.Roadblocks;
-                    a.Requirements = application.Requirements;
-                    a.Reviewed = application.Reviewed;
+                ApplicationModel a = new ApplicationModel();
+                a.ApplicationID = application.ApplicationID;
+                a.Name = application.Name;
+                a.Email = application.Email;
+                a.ProjectTitle = application.ProjectTitle;
+                a.Description = application.Description;
+                a.Audience = application.Audience;
+                a.Roadblocks = application.Roadblocks;
+                a.Requirements = application.Requirements;
+                a.Reviewed = application.Reviewed;
+                    a.Saved = application.Saved;
+                    a.Archived = application.Archived;
 
                     model.Applications.Add(a);
                 });
@@ -113,7 +111,6 @@ namespace ModelLibrary.services
                 var query = db.Applications.Where(x => x.Saved == true);
 
                 var applicationList = query.ToList();
-
                 applicationList.ForEach(application =>
                 {
                     ApplicationModel a = new ApplicationModel();
@@ -135,9 +132,7 @@ namespace ModelLibrary.services
 
             }
             return model;
-        }
-
-        public ApplicationListModel GetArchivedApplications()
+        }        public ApplicationListModel GetArchivedApplications()
         {
             ApplicationListModel model = new ApplicationListModel();
 
@@ -149,16 +144,20 @@ namespace ModelLibrary.services
 
                 applicationList.ForEach(application =>
                 {
-                    ApplicationModel a = new ApplicationModel();
-                    a.ApplicationID = application.ApplicationID;
-                    a.Name = application.Name;
-                    a.Email = application.Email;
-                    a.ProjectTitle = application.ProjectTitle;
-                    a.Description = application.Description;
-                    a.Audience = application.Audience;
-                    a.Roadblocks = application.Roadblocks;
-                    a.Requirements = application.Requirements;
-                    a.Reviewed = application.Reviewed;
+                ApplicationModel a = new ApplicationModel();
+                a.ApplicationID = application.ApplicationID;
+                a.Name = application.Name;
+                a.Email = application.Email;
+                a.ProjectTitle = application.ProjectTitle;
+                a.Description = application.Description;
+                a.Audience = application.Audience;
+                a.Roadblocks = application.Roadblocks;
+                a.Requirements = application.Requirements;
+                a.Reviewed = application.Reviewed;
+                a.Saved = application.Saved;
+                a.Archived = application.Archived;
+                    model.Applications.Add(a);
+                });
 
 
             }
@@ -166,7 +165,7 @@ namespace ModelLibrary.services
         }
         public int GetNextApplicationID(ApplicationListModel list)
         {
-            int count =0;
+            int count = 0;
             if (list.Applications.Count > 0)
             {
                 count = list.Applications.Last().ApplicationID + 1;
@@ -194,8 +193,7 @@ namespace ModelLibrary.services
                 });
                 db.SaveChanges();
             }
-        }
-        public void SaveApplicationByID(int id)
+        }        public void SaveApplicationByID(int id)
         {
             using (var db = new ApplicationsEntities())
             {
@@ -215,8 +213,7 @@ namespace ModelLibrary.services
                 var application = query.First();
                 application.Archived = true;
                 db.SaveChanges();
-            }
-            RemoveSaveApplicationByID(id);
+            }            RemoveSaveApplicationByID(id);
         }
 
         public void ViewApplicationByID(int id)
@@ -260,8 +257,7 @@ namespace ModelLibrary.services
                 db.Applications.Remove(application);
                 db.SaveChanges();
             }
-        }
-        public void InvertSaveApplicationByID(int id)
+        }        public void InvertSaveApplicationByID(int id)
         {
             using (var db = new ApplicationsEntities())
             {
@@ -270,8 +266,7 @@ namespace ModelLibrary.services
                 application.Saved = !application.Saved;
                 db.SaveChanges();
             }
-        }
-        public void InvertArchiveApplicationByID(int id)
+        }        public void InvertArchiveApplicationByID(int id)
         {
             using (var db = new ApplicationsEntities())
             {
@@ -283,3 +278,6 @@ namespace ModelLibrary.services
         }
     }
 }
+
+
+
