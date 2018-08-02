@@ -14,8 +14,6 @@
 </head>
 <body>
     @RenderBody()
-    @Scripts.Render("~/Scripts/mobile-nav.js")
-
-
+    @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -12,65 +12,14 @@ namespace pay_back_time.Controllers
     {
         IPaybackService service = new PaybackService();
         // GET: Apply
-        [HttpGet]
         public ActionResult Apply()
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult Apply(ApplicationModel model)
+
+        public ActionResult ApplySuccess()
         {
-            if (string.IsNullOrEmpty(model.Name))
-            {
-                ModelState.AddModelError("Name", "Must enter a name");
-            }
-            if (model.Email == null)
-            {
-                ModelState.AddModelError("Email", "Must enter a valid email");
-            }
-            if (model.ProjectTitle == null)
-            {
-                ModelState.AddModelError("ProjectTitle", "Must enter a valid email");
-            }
-            if (string.IsNullOrEmpty(model.Description))
-            {
-                ModelState.AddModelError("Description", "Must enter a description");
-            }
-            if (string.IsNullOrEmpty(model.Audience))
-            {
-                ModelState.AddModelError("IntendedAudience", "Must enter an audience");
-            }
-            if (string.IsNullOrEmpty(model.Roadblocks))
-            {
-                ModelState.AddModelError("Roadblocks", "Must enter any roadblocks");
-            }
-            if (string.IsNullOrEmpty(model.Requirements))
-            {
-                ModelState.AddModelError("Requirements", "Must enter project requirements");
-            }
-
-            if (ModelState.IsValid)
-            {
-                service.CreateUserApplication(model);
-<<<<<<< HEAD
-                return RedirectToAction("ApplySuccess");
-=======
-                return RedirectToAction("ApplySuccess", model);
->>>>>>> application
-            }
-            else
-            {
-                return View(model);
-            }
-            //service.CreateUserApplication(model);
-
-        }
-
-
-        public ActionResult ApplySuccess(ApplicationModel model)
-        {
-<<<<<<< HEAD
-
+      
             return View();
         }
 
@@ -84,106 +33,6 @@ namespace pay_back_time.Controllers
         {
             ViewBag.noResults = "No reviewed applications.";
             return View("Applications", service.GetReviewedApplications());
-=======
-            ViewBag.name = model.Name;
-            ViewBag.email = model.Email;
-            return View();
-        }
-
-
-        //[Authorize(Roles ="Admin")]
-        public ActionResult Applications()
-        {
-            ViewBag.section = "new";
-            ViewBag.noResults = "No new applications.";
-            return View(service.GetNonReviewedApplications());
-        }
-
-        //[Authorize(Roles ="Admin")]
-        public ActionResult ReviewedApplications()
-        {
-            ViewBag.section = "review";
-
-            ViewBag.noResults = "No reviewed applications.";
-            return View("Applications", service.GetReviewedApplications());
-        }
-
-        //[Authorize(Roles ="Admin")]
-        public ActionResult SavedApplications()
-        {
-            ViewBag.section = "save";
-
-            ViewBag.noResults = "No saved applications.";
-            return View("Applications", service.GetSavedApplications());
-        }
-        //[Authorize(Roles ="Admin")]
-        public ActionResult ArchivedApplications()
-        {
-            ViewBag.section = "archive";
-
-            ViewBag.noResults = "No archived applications.";
-            return View("Applications", service.GetArchivedApplications());
-        }
-
-        //[Authorize(Roles ="Admin")]
-
-        public ActionResult Viewed()
-        {
-            string temp = Request.QueryString["applicationID"];
-            int x;
-            if (Int32.TryParse(temp, out x))
-            {
-                x = Int32.Parse(temp);
-
-                service.ViewApplicationByID(x);
-            };
-            return new EmptyResult();
-        }
-
-        //[Authorize(Roles ="Admin")]
-
-        public ActionResult Saved()
-        {
-            string temp = Request.QueryString["applicationID"];
-            int x;
-            if (Int32.TryParse(temp, out x))
-            {
-                x = Int32.Parse(temp);
-
-                service.InvertSaveApplicationByID(x);
-            };
-            return new EmptyResult();
-        }
-
-        //[Authorize(Roles ="Admin")]
-
-        public ActionResult Archived()
-        {
-            string temp = Request.QueryString["applicationID"];
-            int x;
-            if (Int32.TryParse(temp, out x))
-            {
-                x = Int32.Parse(temp);
-
-                service.InvertArchiveApplicationByID(x);
-            };
-            return new EmptyResult();
-        }
-
-        //[Authorize(Roles ="Admin")]
-
-        public ActionResult Deleted()
-        {
-            string temp = Request.QueryString["applicationID"];
-            int x;
-            if (Int32.TryParse(temp, out x))
-            {
-                x = Int32.Parse(temp);
-
-                service.DeleteApplicationByID(x);
-            };
-            return new EmptyResult();
->>>>>>> application
         }
 
         public ActionResult SavedApplications()
@@ -228,5 +77,32 @@ namespace pay_back_time.Controllers
         //    return View(model);
         //}
         //[HttpPost]
+        public ActionResult CreateApplication(ApplicationModel model)
+        {
+            //if (string.IsNullOrEmpty(model.Name))
+            //{
+            //    ModelState.AddModelError("Name", "Must enter a name");
+            //}
+            //if (model.Email == null)
+            //{
+            //    ModelState.AddModelError("Email", "Must enter a valid email");
+            //}
+            //if (string.IsNullOrEmpty(model.Description))
+            //{
+            //    ModelState.AddModelError("Description", "Must enter a description");
+            //}
+            //if (string.IsNullOrEmpty(model.ImageUrl))
+            //{
+            //    ModelState.AddModelError("ImageUrl", "Must enter an ImageUrl");
+            //}
+
+            //if (ModelState.IsValid)
+            //{
+            //    service.CreateUserApplication(model);
+            //}
+            service.CreateUserApplication(model);
+
+            return RedirectToAction("ApplySuccess");
+        }
     }
 }

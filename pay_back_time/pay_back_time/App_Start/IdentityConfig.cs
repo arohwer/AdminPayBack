@@ -11,17 +11,55 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using pay_back_time.Models;
+using SendGrid;
+using System.Net;
+using System.Net.Http;
+using System.Net.Mail;
+using System.Configuration;
+using System.Diagnostics;
 
 namespace pay_back_time
 {
     public class EmailService : IIdentityMessageService
     {
-        public Task SendAsync(IdentityMessage message)
+        public async Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            await configSendGridasync(message);
+        }
+
+        private async Task configSendGridasync(IdentityMessage message)
+        {
+            var myMessage = new SendGridMessage();
+            myMessage.AddTo(message.Destination);
+            myMessage.From = new System.Net.Mail.MailAddress(
+                                "JPay@neumont.edu", "Do not reply");
+            myMessage.Subject = message.Subject;
+            myMessage.Text = message.Body;
+            myMessage.Html = message.Body;
+
+            var credentials = new NetworkCredential(
+                       ConfigurationManager.AppSettings["mailAccount"],
+                       ConfigurationManager.AppSettings["mailPassword"]
+                       );
+
+            // Create a Web transport for sending email.
+            var transportWeb = new SendGrid.Web(credentials);
+
+            // Send the email.
+            if (transportWeb != null)
+            {
+                await transportWeb.DeliverAsync(myMessage);
+            }
+            else
+            {
+                Trace.TraceError("Failed to create Web transport.");
+                await Task.FromResult(0);
+            }
         }
     }
+
+    
 
     public class SmsService : IIdentityMessageService
     {

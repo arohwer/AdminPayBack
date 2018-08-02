@@ -33,8 +33,6 @@ namespace ModelLibrary.services
                     a.Roadblocks = application.Roadblocks;
                     a.Requirements = application.Requirements;
                     a.Reviewed = application.Reviewed;
-                    a.Saved = application.Saved;
-                    a.Archived = application.Archived;
 
                     model.Applications.Add(a);
                 });
@@ -66,8 +64,6 @@ namespace ModelLibrary.services
                     a.Roadblocks = application.Roadblocks;
                     a.Requirements = application.Requirements;
                     a.Reviewed = application.Reviewed;
-                    a.Saved = application.Saved;
-                    a.Archived = application.Archived;
 
                     model.Applications.Add(a);
                 });
@@ -99,8 +95,6 @@ namespace ModelLibrary.services
                     a.Roadblocks = application.Roadblocks;
                     a.Requirements = application.Requirements;
                     a.Reviewed = application.Reviewed;
-                    a.Saved = application.Saved;
-                    a.Archived = application.Archived;
 
                     model.Applications.Add(a);
                 });
@@ -132,11 +126,6 @@ namespace ModelLibrary.services
                     a.Roadblocks = application.Roadblocks;
                     a.Requirements = application.Requirements;
                     a.Reviewed = application.Reviewed;
-<<<<<<< HEAD
-=======
-                    a.Saved = application.Saved;
-                    a.Archived = application.Archived;
->>>>>>> application
 
                     model.Applications.Add(a);
                 });
@@ -153,7 +142,6 @@ namespace ModelLibrary.services
             using (var db = new ApplicationsEntities())
             {
                 var query = db.Applications.Where(x => x.Archived == true);
-<<<<<<< HEAD
 
                 var applicationList = query.ToList();
 
@@ -174,35 +162,12 @@ namespace ModelLibrary.services
                 });
 
 
-=======
-
-                var applicationList = query.ToList();
-
-                applicationList.ForEach(application =>
-                {
-                    ApplicationModel a = new ApplicationModel();
-                    a.ApplicationID = application.ApplicationID;
-                    a.Name = application.Name;
-                    a.Email = application.Email;
-                    a.ProjectTitle = application.ProjectTitle;
-                    a.Description = application.Description;
-                    a.Audience = application.Audience;
-                    a.Roadblocks = application.Roadblocks;
-                    a.Requirements = application.Requirements;
-                    a.Reviewed = application.Reviewed;
-                    a.Saved = application.Saved;
-                    a.Archived = application.Archived;
-                    model.Applications.Add(a);
-                });
-
-
->>>>>>> application
             }
             return model;
         }
         public int GetNextApplicationID(ApplicationListModel list)
         {
-            int count = 0;
+            int count =0;
             if (list.Applications.Count > 0)
             {
                 count = list.Applications.Last().ApplicationID + 1;
@@ -231,94 +196,5 @@ namespace ModelLibrary.services
                 db.SaveChanges();
             }
         }
-        public void SaveApplicationByID(int id)
-        {
-            using (var db = new ApplicationsEntities())
-            {
-                var query = db.Applications.Where(x => x.ApplicationID == id);
-                var application = query.First();
-                application.Saved = true;
-                db.SaveChanges();
-            }
-            RemoveArchiveApplicationByID(id);
-        }
-
-        public void ArchiveApplicationByID(int id)
-        {
-            using (var db = new ApplicationsEntities())
-            {
-                var query = db.Applications.Where(x => x.ApplicationID == id);
-                var application = query.First();
-                application.Archived = true;
-                db.SaveChanges();
-            }
-            RemoveSaveApplicationByID(id);
-        }
-
-        public void ViewApplicationByID(int id)
-        {
-            using (var db = new ApplicationsEntities())
-            {
-                var query = db.Applications.Where(x => x.ApplicationID == id);
-                var application = query.First();
-                application.Reviewed = true;
-                db.SaveChanges();
-            }
-        }
-
-        public void RemoveSaveApplicationByID(int id)
-        {
-            using (var db = new ApplicationsEntities())
-            {
-                var query = db.Applications.Where(x => x.ApplicationID == id);
-                var application = query.First();
-                application.Saved = false;
-                db.SaveChanges();
-            }
-        }
-
-        public void RemoveArchiveApplicationByID(int id)
-        {
-            using (var db = new ApplicationsEntities())
-            {
-                var query = db.Applications.Where(x => x.ApplicationID == id);
-                var application = query.First();
-                application.Archived = false;
-                db.SaveChanges();
-            }
-        }
-        public void DeleteApplicationByID(int id)
-        {
-            using (var db = new ApplicationsEntities())
-            {
-                var query = db.Applications.Where(x => x.ApplicationID == id);
-                var application = query.First();
-                db.Applications.Remove(application);
-                db.SaveChanges();
-            }
-        }
-<<<<<<< HEAD
-=======
-        public void InvertSaveApplicationByID(int id)
-        {
-            using (var db = new ApplicationsEntities())
-            {
-                var query = db.Applications.Where(x => x.ApplicationID == id);
-                var application = query.First();
-                application.Saved = !application.Saved;
-                db.SaveChanges();
-            }
-        }
-        public void InvertArchiveApplicationByID(int id)
-        {
-            using (var db = new ApplicationsEntities())
-            {
-                var query = db.Applications.Where(x => x.ApplicationID == id);
-                var application = query.First();
-                application.Archived = !application.Archived;
-                db.SaveChanges();
-            }
-        }
->>>>>>> application
     }
 }

@@ -17,19 +17,5 @@ namespace ModelLibrary.services
         ApplicationListModel GetArchivedApplications();
         int GetNextApplicationID(ApplicationListModel list);
         void CreateUserApplication(ApplicationModel model);
-
-        void SaveApplicationByID(int id);
-        void RemoveSaveApplicationByID(int id);
-        void ArchiveApplicationByID(int id);
-        void RemoveArchiveApplicationByID(int id);
-        void ViewApplicationByID(int id);
-        //void RemoveViewApplicationByID(int id);
-        void DeleteApplicationByID(int id);
-<<<<<<< HEAD
-=======
-        void InvertSaveApplicationByID(int id);
-        void InvertArchiveApplicationByID(int id);
->>>>>>> application
-
     }
 }

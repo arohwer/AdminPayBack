@@ -17,7 +17,7 @@ namespace pay_back_time.Controllers
         private ApplicationUserManager _userManager;
 
         public ManageController()
-        {
+        {  
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
