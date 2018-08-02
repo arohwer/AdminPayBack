@@ -27,6 +27,7 @@ namespace ModelLibrary.services
                     a.ApplicationID = application.ApplicationID;
                     a.Name = application.Name;
                     a.Email = application.Email;
+                    a.ProjectTitle = application.ProjectTitle;
                     a.Description = application.Description;
                     a.Audience = application.Audience;
                     a.Roadblocks = application.Roadblocks;
@@ -57,6 +58,7 @@ namespace ModelLibrary.services
                     a.ApplicationID = application.ApplicationID;
                     a.Name = application.Name;
                     a.Email = application.Email;
+                    a.ProjectTitle = application.ProjectTitle;
                     a.Description = application.Description;
                     a.Audience = application.Audience;
                     a.Roadblocks = application.Roadblocks;
@@ -87,6 +89,7 @@ namespace ModelLibrary.services
                     a.ApplicationID = application.ApplicationID;
                     a.Name = application.Name;
                     a.Email = application.Email;
+                    a.ProjectTitle = application.ProjectTitle;
                     a.Description = application.Description;
                     a.Audience = application.Audience;
                     a.Roadblocks = application.Roadblocks;
@@ -101,12 +104,76 @@ namespace ModelLibrary.services
             return model;
         }
 
-        public int GetNextApplicationID(ApplicationListModel list)
+        public ApplicationListModel GetSavedApplications()
         {
-            return list.Applications.Last().ApplicationID + 1;
+            ApplicationListModel model = new ApplicationListModel();
+
+            using (var db = new ApplicationsEntities())
+            {
+                var query = db.Applications.Where(x => x.Saved == true);
+
+                var applicationList = query.ToList();
+
+                applicationList.ForEach(application =>
+                {
+                    ApplicationModel a = new ApplicationModel();
+                    a.ApplicationID = application.ApplicationID;
+                    a.Name = application.Name;
+                    a.Email = application.Email;
+                    a.ProjectTitle = application.ProjectTitle;
+                    a.Description = application.Description;
+                    a.Audience = application.Audience;
+                    a.Roadblocks = application.Roadblocks;
+                    a.Requirements = application.Requirements;
+                    a.Reviewed = application.Reviewed;
+
+                    model.Applications.Add(a);
+                });
+
+
+            }
+            return model;
         }
 
+        public ApplicationListModel GetArchivedApplications()
+        {
+            ApplicationListModel model = new ApplicationListModel();
 
+            using (var db = new ApplicationsEntities())
+            {
+                var query = db.Applications.Where(x => x.Archived == true);
+
+                var applicationList = query.ToList();
+
+                applicationList.ForEach(application =>
+                {
+                    ApplicationModel a = new ApplicationModel();
+                    a.ApplicationID = application.ApplicationID;
+                    a.Name = application.Name;
+                    a.Email = application.Email;
+                    a.ProjectTitle = application.ProjectTitle;
+                    a.Description = application.Description;
+                    a.Audience = application.Audience;
+                    a.Roadblocks = application.Roadblocks;
+                    a.Requirements = application.Requirements;
+                    a.Reviewed = application.Reviewed;
+
+                    model.Applications.Add(a);
+                });
+
+
+            }
+            return model;
+        }
+        public int GetNextApplicationID(ApplicationListModel list)
+        {
+            int count = 0;
+            if (list.Applications.Count > 0)
+            {
+                count = list.Applications.Last().ApplicationID + 1;
+            }
+            return count;
+        }
         public void CreateUserApplication(ApplicationModel model)
         {
             using (var db = new ApplicationsEntities())
@@ -117,6 +184,7 @@ namespace ModelLibrary.services
                     ApplicationID = GetNextApplicationID(GetAllApplications()),
                     Name = model.Name,
                     Email = model.Email,
+                    ProjectTitle = model.ProjectTitle,
                     Description = model.Description,
                     Audience = model.Audience,
                     Roadblocks = model.Roadblocks,
@@ -125,6 +193,72 @@ namespace ModelLibrary.services
                     Saved = false,
                     Archived = false
                 });
+                db.SaveChanges();
+            }
+        }
+        public void SaveApplicationByID(int id)
+        {
+            using (var db = new ApplicationsEntities())
+            {
+                var query = db.Applications.Where(x => x.ApplicationID == id);
+                var application = query.First();
+                application.Saved = true;
+                db.SaveChanges();
+            }
+            RemoveArchiveApplicationByID(id);
+        }
+
+        public void ArchiveApplicationByID(int id)
+        {
+            using (var db = new ApplicationsEntities())
+            {
+                var query = db.Applications.Where(x => x.ApplicationID == id);
+                var application = query.First();
+                application.Archived = true;
+                db.SaveChanges();
+            }
+            RemoveSaveApplicationByID(id);
+        }
+
+        public void ViewApplicationByID(int id)
+        {
+            using (var db = new ApplicationsEntities())
+            {
+                var query = db.Applications.Where(x => x.ApplicationID == id);
+                var application = query.First();
+                application.Reviewed = true;
+                db.SaveChanges();
+            }
+        }
+
+        public void RemoveSaveApplicationByID(int id)
+        {
+            using (var db = new ApplicationsEntities())
+            {
+                var query = db.Applications.Where(x => x.ApplicationID == id);
+                var application = query.First();
+                application.Saved = false;
+                db.SaveChanges();
+            }
+        }
+
+        public void RemoveArchiveApplicationByID(int id)
+        {
+            using (var db = new ApplicationsEntities())
+            {
+                var query = db.Applications.Where(x => x.ApplicationID == id);
+                var application = query.First();
+                application.Archived = false;
+                db.SaveChanges();
+            }
+        }
+        public void DeleteApplicationByID(int id)
+        {
+            using (var db = new ApplicationsEntities())
+            {
+                var query = db.Applications.Where(x => x.ApplicationID == id);
+                var application = query.First();
+                db.Applications.Remove(application);
                 db.SaveChanges();
             }
         }

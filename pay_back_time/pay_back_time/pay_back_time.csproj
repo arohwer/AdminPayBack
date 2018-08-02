@@ -215,7 +215,9 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\bundle--index.js" />
+    <Content Include="Scripts\index-config.js" />
+    <Content Include="Scripts\loader.js" />
+    <Content Include="Scripts\send-email.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -263,6 +265,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Apply\Apply.cshtml" />
     <Content Include="Views\Apply\ApplySuccess.cshtml" />
+    <Content Include="Views\Apply\Applications.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj">
