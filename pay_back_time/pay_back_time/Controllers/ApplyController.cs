@@ -17,9 +17,24 @@ namespace pay_back_time.Controllers
             return View();
         }
 
-        public ActionResult ApplySuccess()
+            if (ModelState.IsValid)
+            {
+                service.CreateUserApplication(model);
+                return RedirectToAction("ApplySuccess", model);
+            }
+            else
+            {
+                return View(model);
+            }
+            //service.CreateUserApplication(model);
+
+        }
+
+
+        public ActionResult ApplySuccess(ApplicationModel model)
         {
-      
+            ViewBag.name = model.Name;
+            ViewBag.email = model.Email;
             return View();
         }
 
@@ -47,62 +62,62 @@ namespace pay_back_time.Controllers
         }
 
 
-        //public ActionResult Applications(string list)
-        //{
-        //    ApplicationListModel model;
-        //    if (list == "new")
-        //    {
-        //        ViewBag.noResults = "No unread applications.";
-        //        model = service.GetNonReviewedApplications();
-        //    }
-        //    else if (list == "reviewed")
-        //    {
-        //        ViewBag.noResults = "No reviewed applications.";
-        //        model = service.GetReviewedApplications();
-        //    }
-        //    else if (list == "saved")
-        //    {
-        //        ViewBag.noResults = "No saved results.";
-        //        model = service.GetSavedApplications();
-        //    }
-        //    else if (list == "archived")
-        //    {
-        //        ViewBag.noResults = "No archived results.";
-        //        model = service.GetArchivedApplications();
-        //    }
-        //    else
-        //    {
-        //        model = null;
-        //    }
-        //    return View(model);
-        //}
-        //[HttpPost]
-        public ActionResult CreateApplication(ApplicationModel model)
+        public ActionResult Viewed()
         {
-            //if (string.IsNullOrEmpty(model.Name))
-            //{
-            //    ModelState.AddModelError("Name", "Must enter a name");
-            //}
-            //if (model.Email == null)
-            //{
-            //    ModelState.AddModelError("Email", "Must enter a valid email");
-            //}
-            //if (string.IsNullOrEmpty(model.Description))
-            //{
-            //    ModelState.AddModelError("Description", "Must enter a description");
-            //}
-            //if (string.IsNullOrEmpty(model.ImageUrl))
-            //{
-            //    ModelState.AddModelError("ImageUrl", "Must enter an ImageUrl");
-            //}
+            string temp = Request.QueryString["applicationID"];
+            int x;
+            if (Int32.TryParse(temp, out x))
+            {
+                x = Int32.Parse(temp);
 
-            //if (ModelState.IsValid)
-            //{
-            //    service.CreateUserApplication(model);
-            //}
-            service.CreateUserApplication(model);
+                service.ViewApplicationByID(x);
+            };
+            return new EmptyResult();
+        }
 
-            return RedirectToAction("ApplySuccess");
+        //[Authorize(Roles ="Admin")]
+
+        public ActionResult Saved()
+        {
+            string temp = Request.QueryString["applicationID"];
+            int x;
+            if (Int32.TryParse(temp, out x))
+            {
+                x = Int32.Parse(temp);
+
+                service.InvertSaveApplicationByID(x);
+            };
+            return new EmptyResult();
+        }
+
+        //[Authorize(Roles ="Admin")]
+
+        public ActionResult Archived()
+        {
+            string temp = Request.QueryString["applicationID"];
+            int x;
+            if (Int32.TryParse(temp, out x))
+            {
+                x = Int32.Parse(temp);
+
+                service.InvertArchiveApplicationByID(x);
+            };
+            return new EmptyResult();
+        }
+
+        //[Authorize(Roles ="Admin")]
+
+        public ActionResult Deleted()
+        {
+            string temp = Request.QueryString["applicationID"];
+            int x;
+            if (Int32.TryParse(temp, out x))
+            {
+                x = Int32.Parse(temp);
+
+                service.DeleteApplicationByID(x);
+            };
+            return new EmptyResult();
         }
     }
 }
