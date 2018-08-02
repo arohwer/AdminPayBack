@@ -25,6 +25,8 @@ namespace ModelLibrary.services
         void ViewApplicationByID(int id);
         //void RemoveViewApplicationByID(int id);
         void DeleteApplicationByID(int id);
+        void InvertSaveApplicationByID(int id);
+        void InvertArchiveApplicationByID(int id);
 
     }
 }

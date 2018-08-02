@@ -11,7 +11,7 @@
     @Html.ActionLink("PROJECTS", "Projects", "Home")
     @Html.ActionLink("EVENTS", "Events", "Home")
     @Html.ActionLink("CONTACT", "Contact", "Home")
-    @Html.ActionLink("APPLY", "Apply", "Home", null, new { @class = "active" })
+    @Html.ActionLink("APPLY", "Apply", "Apply", null, new { @class = "active" })
 </nav>
 <div class="navbar-side">
     <span id="hamburger" onclick="">&#9776;</span>
@@ -22,10 +22,39 @@
     <div class="row">
         <div class='col-l-4'>
             <div class='app-control-box'>
-                <p class="app-control">@Html.ActionLink("New", "Applications")</p>
-                <p class="app-control">@Html.ActionLink("Reviewed", "ReviewedApplications")</p>
-                <p class="app-control">@Html.ActionLink("Saved", "SavedApplications")</p>
-                <p class="app-control">@Html.ActionLink("Archived", "ArchivedApplications")</p>
+
+                @if (ViewBag.section == "new")
+                {
+                    <p class="app-control app-control-active">@Html.ActionLink("New", "Applications")</p>
+                }
+                else
+                {
+                    <p class="app-control">@Html.ActionLink("New", "Applications")</p>
+                }
+                @if (ViewBag.section == "review")
+                {
+                    <p class="app-control app-control-active">@Html.ActionLink("Reviewed", "ReviewedApplications")</p>
+                }
+                else
+                {
+                    <p class="app-control">@Html.ActionLink("Reviewed", "ReviewedApplications")</p>
+                }
+                @if (ViewBag.section == "save")
+                {
+                    <p class="app-control app-control-active">@Html.ActionLink("Saved", "SavedApplications")</p>
+                }
+                else
+                {
+                    <p class="app-control">@Html.ActionLink("Saved", "SavedApplications")</p>
+                }
+                @if (ViewBag.section == "archive")
+                {
+                    <p class="app-control app-control-active">@Html.ActionLink("Archived", "ArchivedApplications")</p>
+                }
+                else
+                {
+                    <p class="app-control">@Html.ActionLink("Archived", "ArchivedApplications")</p>
+                }
             </div>
         </div>
 
@@ -42,28 +71,40 @@
                             <h3 class='app-name'>Project: @application.ProjectTitle.</h3>
                         </div>
                         <div class="col-xxl-5">
-                            <div class='row'>
-                                <div class="col-xxl-8">
-                                    <div class='nc-btn uppercase view-app'>VIEW APPLICATION</div>
-                                </div>
-                                <div class="col-xxl-4 download-btn">
-                                    <i class="fa fa-download" style='font-size:48px'></i>
-                                    <p class='app-download'>Download</p>
-                                </div>
+                            <div class='nc-btn uppercase view-app' id="viewApp-btn" onclick="viewApp(this, @application.ApplicationID)">VIEW APPLICATION</div>
+                            @*<input type="button" value="Create" onclick="location.href='@Url.Action("Modal", "Apply")'" />*@
 
-                            </div>
+
 
                         </div>
                     </div>
 
-
-                    <div id="main-modal" class="modal">
+                    <div id="application-@application.ApplicationID" class="modal application-modal">
                         <div class="modal-container">
                             <div class="modal-header">
-                                <span class="close">&times;</span>
+                                <span class="close" onclick="closeModal()">&times;</span>
                                 <h2>
-                                    <i class="fa fa-save"></i>
-                                    <i class="fa fa-archive"></i>
+                                    @if (application.Saved)
+                                    {
+                                        <i class="fa fa-save app-icon app-icon-enabled" onclick="applicationSaved(this, @application.ApplicationID)"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-save app-icon" onclick="applicationSaved(this, @application.ApplicationID)"></i>
+                                    }
+                                    @if (application.Archived)
+                                    {
+                                        <i class="fa fa-archive app-icon app-icon-enabled" onclick="applicationArchived(this, @application.ApplicationID)"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-archive app-icon" onclick="applicationArchived(this, @application.ApplicationID)"></i>
+                                    }
+                                    @if (ViewBag.section == "archive")
+                                    {
+                                        <i class="fa fa-trash-o app-icon" onclick="applicationDeleted(this, @application.ApplicationID)"></i>
+                                    }
+                                    
                                 </h2>
                             </div>
                             <div class="modal-body">
@@ -72,33 +113,28 @@
                                         <p id="label">
                                             <b>Name:</b>
                                         </p>
-                                        <p id="application-name">Avery Johnson</p>
+                                        <p id="application-name">@application.Name</p>
 
                                     </div>
                                     <div class="form-long">
                                         <p id="label">
                                             <b>Email:</b>
                                         </p>
-                                        <p id="application-email">ajohnson@example.com</p>
+                                        <p id="application-email">@application.Email</p>
 
                                     </div>
                                     <div class="form-long">
                                         <p id="label">
                                             <b>Project Title:</b>
                                         </p>
-                                        <p id="application-title">HELLO, WORLD</p>
+                                        <p id="application-title">@application.ProjectTitle</p>
                                     </div>
                                     <br>
                                     <div class="form-column">
                                         <p>
                                             <b>Project Description:</b>
                                         </p>
-                                        <p id="application-desc">
-                                            Lorem ipsum dolor sit amet, minimum phaedrum qui an, vim modo natum essent ex. Te blandit incorrupte philosophia
-                                            sea, vix ubique iuvaret in, quod quando putant mei et. Ea mea voluptua dignissim, debitis tractatos laboramus
-                                            vix et, eu his vide minimum facilisi. At vim labitur periculis, mea quaeque deleniti lucilius in, tation latine
-                                            mandamus ex qui. Per bonorum tincidunt cu, in petentium vituperata est. Commodo inermis sit ne.
-                                        </p>
+                                        <p id="application-desc">@application.Description</p>
                                     </div>
                                     <br>
                                     <br>
@@ -106,22 +142,15 @@
                                         <p>
                                             <b>Intended Audience:</b>
                                         </p>
-                                        <p id="application-audience">
-                                            Has et nonumy ceteros, pri odio mediocrem abhorreant ei. Eam et unum dicunt sapientem. Eu affert vulputate ius,
-                                            ius an ipsum noluisse. Mea everti labitur meliore cu.
-                                        </p>
+                                        <p id="application-audience">@application.Audience</p>
                                     </div>
                                     <br>
                                     <br>
                                     <div class="form-column">
                                         <p>
-                                            <b>Difficulties:</b>
+                                            <b>Roadblocks:</b>
                                         </p>
-                                        <p id="application-diff">
-                                            At dicunt fastidii eam, id meis ferri suscipit his. No sit porro volumus scribentur, eum cu phaedrum posidonium.
-                                            Ad vim viris verear, id vitae alterum usu, eam nulla accusamus intellegebat id. Praesent dissentiunt per ad.
-                                            Vel ullum periculis intellegebat ea. Ipsum vituperatoribus in mei. No vix summo labitur sapientem.
-                                        </p>
+                                        <p id="application-diff">@application.Roadblocks</p>
                                     </div>
                                     <br>
                                     <br>
@@ -129,83 +158,26 @@
                                         <p>
                                             <b>High Level Requirements:</b>
                                         </p>
-                                        <p id="application-reqs">
-                                            Ex euismod argumentum mel, ad lobortis erroribus mnesarchum pri. Duo liber elaboraret cu, possit platonem constituam
-                                            mel no, sumo referrentur voluptatibus vix ex. Cu vero scribentur mei, vide velit gubergren in eos. Eos ea tritani
-                                            detracto reprehendunt, pro ut tota perpetua. Posse omnesque an nec.
-                                        </p>
+                                        <p id="application-reqs">@application.Requirements</p>
                                     </div>
 
                                 </div>
-                                <!-- <form action="mailto:JPay@neumont.edu?Subject=Innovation%20Lab%20Project%20Proposal" method="POST" enctype="text/plain">
-                                  <div id="form">
-                                    <div class="form-entry">
-                                      <p><b>Name</b></p>
-                                      <br>
-                                      <input type="text" name="Name" placeholder="Your Name here.">
-                                      <br>
-                                    </div>
-                                    <div class="form-entry">
-                                      <p><b>Email</b></p>
-                                      <br>
-                                      <input type="text" name="Email" placeholder="Your Email here.">
-                                      <br>
-                                    </div>
-                                    <div class="form-entry">
-                                      <p><b>Project Description</b></p>
-                                      <br>
-                                      <textarea rows="5" name="Project Description" placeholder="How did your project come about? What will it do?"></textarea>
-                                      <br>
-                                    </div>
-                                    <div class="form-entry">
-                                      <p><b>Intended Audience</b></p>
-                                      <br>
-                                      <textarea rows="5" name="Intended Audience" placeholder="Who will your project benefit?"></textarea>
-                                      <br>
-                                    </div>
-                                    <div class="form-entry">
-                                      <p><b>Difficulties</b></p>
-                                      <br>
-                                      <textarea rows="5" name="Obstacles" placeholder="Any forseeable roadblocks or obstacles?"></textarea>
-                                      <br>
-                                    </div>
-                                    <div class="form-entry">
-                                      <p><b>High Level Requirements</b></p>
-                                      <br>
-                                      <textarea rows="8" name="Requirements" placeholder="What types of people are you looking for? Any expertise you're seeking? Is there a specific market you wish to target?"></textarea>
-                                      <br>
-                                    </div>
-                                  </div>
-                                  <div id="submit-btn">
-                                    <input type="submit" class='nc-btn uppercase'></input>
-
-                                  </div>
-                                </form> -->
                             </div>
                         </div>
                     </div>
-                        <script src="../assets/scripts/application-modal.js"></script>
 
 
 
-                        @*<a href="@Url.Action("ProductDetail", "Product", new { id = product.ProductID})">
-                                <div class="productSection">
-
-                                    <img src="/Content/images/@product.ImageUrl" />
-                                    @Html.ActionLink(product.Name, "ProductDetail", new { id = product.ProductID })
-                                    <hr class="priceLine" />
-                                    @product.Price
-
-
-                                </div>
-                            </a>*@
+         
                 }
 
             }
             else
             {
-                <h3>@ViewBag.noResults</h3>
+                <h3 class="white align-center">@ViewBag.noResults</h3>
             }
         </div>
     </div>
 </div>
+
+@Scripts.Render("~/Scripts/application-controller.js")
