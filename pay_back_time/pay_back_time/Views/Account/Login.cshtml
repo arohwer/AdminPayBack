@@ -4,6 +4,22 @@
     ViewBag.Title = "Log in";
 }
 
+<nav class='navbar-fixed-top-after'>
+    <a href="javascript:void(0)" id='close-menu' class="closebtn">&times;</a>
+    <img class='nav-icon' src='~/Content/Images/nclogo.png' id='nc-icon' />
+    @Html.ActionLink("HOME", "Index", "Home", null, new { @class = "active" })
+    @Html.ActionLink("PROJECTS", "Projects", "Home")
+    @Html.ActionLink("EVENTS", "Events", "Home")
+    @Html.ActionLink("CONTACT", "Contact", "Home")
+    @Html.ActionLink("APPLY", "Apply", "Apply")
+    @Html.Partial("_LoginPartial")
+
+</nav>
+<div class="navbar-side">
+    <span id="hamburger" onclick="">&#9776;</span>
+    <img class="nav-icon-side" src='~/Content/Images/nclogo.png' id='nc-icon-side' />
+</div>
+
 <h2>@ViewBag.Title.</h2>
 <div class="row">
     <div class="col-md-8">
@@ -44,10 +60,9 @@
                 <p>
                     @Html.ActionLink("Register as a new user", "Register")
                 </p>
-                @* Enable this once you have account confirmation enabled for password reset functionality
-                    <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
+                <p>
+                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                </p>
             }
         </section>
     </div>
