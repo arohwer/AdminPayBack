@@ -3,6 +3,7 @@
     ViewBag.Title = "Success!";
 }
 
+<script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.2.4/email.min.js"></script>
 <div class="section " id="section0">
     <div class="row fit theme-steelgray">
         <div class="section">
@@ -22,3 +23,28 @@
         </div>
     </div>
 </div>
+
+<script>
+    (function () {
+        emailjs.init('user_OVSXlfcLPuE3cekERMrXu');
+    })();
+
+    window.onload = function () {
+        var name = '@(ViewBag.name)'
+        var email = '@(ViewBag.email)'
+        var user = {
+            name: name ,
+            email: email
+        };
+        console.log('name', user.name)
+        console.log('email', user.email)
+
+        emailjs.send('outlook_test', 'example_test', user)
+            .then(function (response) {
+                console.log('SUCCESS!', response.status, response.text);
+            }, function (error) {
+                console.log('FAILED...', error);
+            });
+    }
+</script>
+

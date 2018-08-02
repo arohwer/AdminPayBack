@@ -639,20 +639,21 @@ p {
     font-size:1em;
 }
 
-.download-btn:hover{
+
+.fa fa-save, fa-archive, fa-trash-o{
+    color:$white;
+}
+
+.app-icon:hover{
     cursor:pointer;
     color:$nc-yellow;
     transition:ease-in-out 0.3s;
 }
 
-.fa fa-download{
-    color:$white;
+.app-icon-enabled {
+    color: $nc-yellow;
 }
 
-.download-btn{
-    text-align: center;
-    margin-top: 25px;
-}
 
 .event-overview {
     line-height: inherit;
@@ -772,12 +773,19 @@ p {
 }
 
 .app-control{
-    color: $white;
     font-size: 2em;
     padding: 20px 10px;
-
+    a {
+        color: $white;
+    }
     @include max-width($small-width - (1px)){
         font-size:1.5em;
+    }
+}
+.app-control-active {
+    background-color: $nc-yellow;
+    a {
+        color: $white;
     }
 }
 
@@ -785,3 +793,27 @@ p {
     color:$nc-yellow;
     cursor:pointer;
 }
+
+.application-body {
+    margin: 15px;
+    .form-long {
+        p {
+            display: inline-block;
+            
+        }
+        p#label {
+            margin-right: 10px;
+            // width: 150px;
+            // text-align: right;
+        }
+    }
+    .form-column {
+
+    }
+}
+
+.form-error {
+    text-align: center;
+    color: $nc-yellow;
+}
+

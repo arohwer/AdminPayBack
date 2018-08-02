@@ -1150,6 +1150,7 @@ ul li {
     overflow: auto;
     z-index: 101;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     margin: 0;
@@ -1381,19 +1382,18 @@ ul li {
     font-size: 1em;
 }
 
-.download-btn:hover {
+.fa fa-save, fa-archive, fa-trash-o {
+    color: #fff;
+}
+
+.app-icon:hover {
     cursor: pointer;
     color: #ffcc00;
     transition: ease-in-out 0.3s;
 }
 
-.fa fa-download {
-    color: #fff;
-}
-
-.download-btn {
-    text-align: center;
-    margin-top: 25px;
+.app-icon-enabled {
+    color: #ffcc00;
 }
 
 .event-overview {
@@ -1471,11 +1471,17 @@ ul li {
                 font-size: 16px;
             }
 
+@media (max-width: 767px) {
+    #application_form {
+        margin: 0;
+    }
+}
+
 #submit-btn {
     text-align: center;
 }
 
-#application_bg {
+#application-bg {
     background-image: url("../images/nc_monogram-oncharcoal.png");
     background-size: cover;
     background-position: center;
@@ -1483,13 +1489,13 @@ ul li {
 }
 
 @media (max-width: 899px) {
-    #application_bg {
+    #application-bg {
         background-position: center 10%;
     }
 }
 
 @media (max-width: 650px) {
-    #application_bg {
+    #application-bg {
         background-position: center top;
     }
 }
@@ -1532,10 +1538,13 @@ ul li {
 }
 
 .app-control {
-    color: #fff;
     font-size: 2em;
     padding: 20px 10px;
 }
+
+    .app-control a {
+        color: #fff;
+    }
 
 @media (max-width: 649px) {
     .app-control {
@@ -1543,9 +1552,34 @@ ul li {
     }
 }
 
+.app-control-active {
+    background-color: #ffcc00;
+}
+
+    .app-control-active a {
+        color: #fff;
+    }
+
 .app-control:hover {
     color: #ffcc00;
     cursor: pointer;
+}
+
+.application-body {
+    margin: 15px;
+}
+
+    .application-body .form-long p {
+        display: inline-block;
+    }
+
+        .application-body .form-long p#label {
+            margin-right: 10px;
+        }
+
+.form-error {
+    text-align: center;
+    color: #ffcc00;
 }
 
 .loader {
