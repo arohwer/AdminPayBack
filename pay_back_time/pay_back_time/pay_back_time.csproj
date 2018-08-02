@@ -221,11 +221,12 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\application-controller.js" />
     <Content Include="Scripts\index-config.js" />
     <Content Include="Scripts\loader.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Scripts\mobile-nav.js" />
+    <Content Include="Scripts\send-email.js" />
+    <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

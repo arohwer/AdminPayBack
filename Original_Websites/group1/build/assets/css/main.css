@@ -1400,6 +1400,11 @@ ul li {
   font-family: "NCLight", sans-serif;
   font-size: 16px;
 }
+@media (max-width: 767px) {
+  #application_form {
+    margin: 0;
+  }
+}
 
 #submit-btn {
   text-align: center;
@@ -1471,6 +1476,20 @@ ul li {
 .app-control:hover {
   color: #ffcc00;
   cursor: pointer;
+}
+
+.application-body {
+  margin: 15px;
+}
+.application-body .form-long p {
+  display: inline-block;
+}
+.application-body .form-long p#label {
+  margin-right: 10px;
+}
+.form-error {
+  text-align: center;
+  color: #ffcc00;
 }
 
 .loader {
