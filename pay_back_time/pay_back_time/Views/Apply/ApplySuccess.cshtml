@@ -3,26 +3,54 @@
     ViewBag.Title = "Success!";
 }
 
+<<<<<<< HEAD
 <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.2.4/email.min.js'</script>
+=======
+<script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.2.4/email.min.js"></script>
+>>>>>>> application
 <div class="section " id="section0">
     <div class="row fit theme-steelgray">
         <div class="section">
-            <div class="row fit theme-white">
+            <div class="row fit theme-steelgray">
                 <div class="col-l-7 section-content">
                     <h1 class="uppercase animated-text">
                         YOUR APPLICATION IS
                         <span class="font-bold block">SUBMITTED</span>
                     </h1>
                     <p class="animated-text">Your application was successfully sent to Jerry Pay. Please wait for processing time and handling, and await contact from Mr. Pay for further information on your approval.</p>
-                    <!-- <a class="animated-text" id="submit-btn" href="../index.html">Return to the Home Page</a> -->
-                    @*<p class="animated-text"><a href="../index.html">Return to Home Page</a></p>*@
                     <p class="animated-text">@Html.ActionLink("Return to Home Page", "Index", "Home")</p>
                 </div>
-                <div class="col-l-5 index-bg" id="application_bg"></div>
+                <div class="col-l-5 index-bg" id="application-bg"></div>
             </div>
         </div>
     </div>
 </div>
 
+<<<<<<< HEAD
 @Styles.Render("~/Scripts/send-email.js")
+=======
+<script>
+    (function () {
+        emailjs.init('user_OVSXlfcLPuE3cekERMrXu');
+    })();
+
+    window.onload = function () {
+        var name = '@(ViewBag.name)'
+        var email = '@(ViewBag.email)'
+        var user = {
+            name: name ,
+            email: email
+        };
+        console.log('name', user.name)
+        console.log('email', user.email)
+
+        emailjs.send('outlook_test', 'example_test', user)
+            .then(function (response) {
+                console.log('SUCCESS!', response.status, response.text);
+            }, function (error) {
+                console.log('FAILED...', error);
+            });
+    }
+</script>
+>>>>>>> application
 

@@ -422,6 +422,7 @@ p {
     overflow: auto;
     z-index: 101;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     margin: 0;
@@ -639,12 +640,22 @@ p {
     font-size:1em;
 }
 
+<<<<<<< HEAD
 .download-btn:hover{
+=======
+
+.fa fa-save, fa-archive, fa-trash-o{
+    color:$white;
+}
+
+.app-icon:hover{
+>>>>>>> application
     cursor:pointer;
     color:$nc-yellow;
     transition:ease-in-out 0.3s;
 }
 
+<<<<<<< HEAD
 .fa fa-download{
     color:$white;
 }
@@ -653,6 +664,12 @@ p {
     text-align: center;
     margin-top: 25px;
 }
+=======
+.app-icon-enabled {
+    color: $nc-yellow;
+}
+
+>>>>>>> application
 
 .event-overview {
     line-height: inherit;
@@ -724,13 +741,17 @@ p {
             }
         }
     }
+    @media(max-width: $medium-width - 1) {
+        margin: 0;
+        
+    }
 }
 
 #submit-btn {
     text-align: center;
 }
 
-#application_bg {
+#application-bg {
     background-image: url("../images/nc_monogram-oncharcoal.png");
     background-size: cover;
     background-position: center;
@@ -772,14 +793,31 @@ p {
 }
 
 .app-control{
+<<<<<<< HEAD
     color: $white;
     font-size: 2em;
     padding: 20px 10px;
 
+=======
+    font-size: 2em;
+    padding: 20px 10px;
+    a {
+        color: $white;
+    }
+>>>>>>> application
     @include max-width($small-width - (1px)){
         font-size:1.5em;
     }
 }
+<<<<<<< HEAD
+=======
+.app-control-active {
+    background-color: $nc-yellow;
+    a {
+        color: $white;
+    }
+}
+>>>>>>> application
 
 .app-control:hover{
     color:$nc-yellow;
@@ -806,5 +844,11 @@ p {
 
 .form-error {
     text-align: center;
+<<<<<<< HEAD
     color: $nc-red;
 }
+=======
+    color: $nc-yellow;
+}
+
+>>>>>>> application

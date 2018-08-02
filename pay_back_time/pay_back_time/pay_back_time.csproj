@@ -206,17 +206,31 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\main.css" />
+    <Content Include="Content\Images\brian.jpg" />
+    <Content Include="Content\Images\building.jpg" />
     <Content Include="Content\Images\car.jpg" />
+    <Content Include="Content\Images\classroom.jpg" />
     <Content Include="Content\Images\favicon.ico" />
+    <Content Include="Content\Images\innovation.jpg" />
     <Content Include="Content\Images\maddy.jpg" />
     <Content Include="Content\Images\nclogo.png" />
+    <Content Include="Content\Images\nc_monogram-oncharcoal.png" />
+    <Content Include="Content\Images\payHD.jpg" />
+    <Content Include="Content\Images\projectshowcase.jpg" />
     <Content Include="Content\Videos\innovation1080.mp4" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+<<<<<<< HEAD
     <Content Include="Scripts\index-config.js" />
     <Content Include="Scripts\loader.js" />
+=======
+    <Content Include="Scripts\application-controller.js" />
+    <Content Include="Scripts\index-config.js" />
+    <Content Include="Scripts\loader.js" />
+    <Content Include="Scripts\mobile-nav.js" />
+>>>>>>> application
     <Content Include="Scripts\send-email.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

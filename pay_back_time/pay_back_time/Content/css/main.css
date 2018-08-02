@@ -1150,6 +1150,10 @@ ul li {
     overflow: auto;
     z-index: 101;
     top: 0;
+<<<<<<< HEAD
+=======
+    left: 0;
+>>>>>>> application
     width: 100%;
     height: 100%;
     margin: 0;
@@ -1367,6 +1371,7 @@ ul li {
 
 .event-name {
     margin-bottom: 0.3em;
+<<<<<<< HEAD
 }
 
 .app-name {
@@ -1667,6 +1672,336 @@ ul li {
     transform: translateY(-40px);
 }
 
+=======
+}
+
+.app-name {
+    padding-left: 20px;
+}
+
+.view-app {
+    margin-top: 25px;
+}
+
+.app-download {
+    font-size: 1em;
+}
+
+.fa fa-save, fa-archive, fa-trash-o {
+    color: #fff;
+}
+
+.app-icon:hover {
+    cursor: pointer;
+    color: #ffcc00;
+    transition: ease-in-out 0.3s;
+}
+
+.app-icon-enabled {
+    color: #ffcc00;
+}
+
+.event-overview {
+    line-height: inherit;
+}
+
+.project-bg {
+    min-height: 400px;
+    background-position: center top;
+    background-image: url("../images/brian.jpg");
+    background-size: cover;
+}
+
+#application_form {
+    margin: 60px;
+    margin-top: 15px;
+}
+
+    #application_form #application_header {
+        background-color: #4a4a4a;
+        text-align: center;
+        padding: 50px;
+        border-radius: 0px 45px 0px 0px;
+    }
+
+        #application_form #application_header h3 {
+            font-family: "NCBold", sans-serif;
+            margin: 0;
+        }
+
+    #application_form .label {
+        width: 80px;
+    }
+
+    #application_form form {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #989898;
+        padding: 15px;
+        padding-top: 30px;
+    }
+
+        #application_form form #form .form-entry {
+            width: 98%;
+            margin-bottom: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+            #application_form form #form .form-entry p {
+                margin-bottom: -20px;
+                display: inline-block;
+            }
+
+            #application_form form #form .form-entry textarea {
+                resize: none;
+                width: inherit;
+                border-radius: 5px;
+                padding: 5px;
+                font-family: "NCLight", sans-serif;
+                font-size: 16px;
+            }
+
+            #application_form form #form .form-entry input[type=text] {
+                margin-left: 20px;
+                display: inline-block;
+                height: 25px;
+                width: 45%;
+                padding: 5px;
+                border-radius: 5px;
+                border: 0.5px solid #636363;
+                font-family: "NCLight", sans-serif;
+                font-size: 16px;
+            }
+
+@media (max-width: 767px) {
+    #application_form {
+        margin: 0;
+    }
+}
+
+#submit-btn {
+    text-align: center;
+}
+
+#application-bg {
+    background-image: url("../images/nc_monogram-oncharcoal.png");
+    background-size: cover;
+    background-position: center;
+    min-height: 400px;
+}
+
+@media (max-width: 899px) {
+    #application-bg {
+        background-position: center 10%;
+    }
+}
+
+@media (max-width: 650px) {
+    #application-bg {
+        background-position: center top;
+    }
+}
+
+.app-control-box {
+    background: #636363;
+    height: 352px;
+    width: 300px;
+    position: fixed;
+    left: 30px;
+    top: 30%;
+    text-align: center;
+    box-shadow: 2px 4px 8px #2b2929;
+    -webkit-border-radius: 0 25px 0 0;
+    -moz-border-radius: 0 25px 0 0;
+    -ms-border-radius: 0 25px 0 0;
+    border-radius: 0 25px 0 0;
+}
+
+@media (max-width: 899px) {
+    .app-control-box {
+        position: static;
+        margin: auto;
+        margin-top: 20%;
+    }
+}
+
+@media (max-width: 649px) {
+    .app-control-box {
+        position: static;
+        margin: auto;
+        margin-top: 30%;
+        width: 80%;
+        -webkit-border-radius: 0 0 0 0;
+        -moz-border-radius: 0 0 0 0;
+        -ms-border-radius: 0 0 0 0;
+        border-radius: 0 0 0 0;
+        height: 300px;
+    }
+}
+
+.app-control {
+    font-size: 2em;
+    padding: 20px 10px;
+}
+
+    .app-control a {
+        color: #fff;
+    }
+
+@media (max-width: 649px) {
+    .app-control {
+        font-size: 1.5em;
+    }
+}
+
+.app-control-active {
+    background-color: #ffcc00;
+}
+
+    .app-control-active a {
+        color: #fff;
+    }
+
+.app-control:hover {
+    color: #ffcc00;
+    cursor: pointer;
+}
+
+.application-body {
+    margin: 15px;
+}
+
+    .application-body .form-long p {
+        display: inline-block;
+    }
+
+        .application-body .form-long p#label {
+            margin-right: 10px;
+        }
+
+.form-error {
+    text-align: center;
+    color: #ffcc00;
+}
+
+.loader {
+    background-color: #2b2929;
+    height: 100vh;
+    width: 100%;
+    padding-top: 15%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 105;
+    opacity: 1;
+    transition: all 2s;
+    transition-delay: 1s;
+    visibility: visible;
+}
+
+@media (max-width: 1200px) {
+    .loader {
+        padding-top: 20%;
+    }
+
+        .loader .progress-bar {
+            width: 20%;
+        }
+
+        .loader .loaderImg {
+            width: 20%;
+        }
+}
+
+@media (max-width: 768px) {
+    .loader {
+        padding-top: 30%;
+    }
+
+        .loader .progress-bar {
+            width: 30%;
+        }
+
+        .loader .loaderImg {
+            width: 30%;
+        }
+}
+
+@media (max-width: 650px) {
+    .loader {
+        padding-top: 40%;
+    }
+
+        .loader .progress-bar {
+            width: 30%;
+        }
+
+        .loader .loaderImg {
+            width: 30%;
+        }
+}
+
+.progress-bar {
+    width: 20%;
+    margin: auto;
+    background-color: #989898;
+    position: relative;
+    height: 15px;
+    border-radius: 5px;
+    overflow-x: hidden;
+    transition: 0.5s;
+    transition-delay: 0.6s;
+    animation: fadeIn ease-in 1s;
+}
+
+.bar {
+    width: 0%;
+    height: 15px;
+    background-color: #ffcc00;
+}
+
+.percent {
+    margin: 10px;
+    color: #fff;
+    font-family: "NCMedium", sans-serif;
+    text-align: center;
+    transition: 0.5s;
+    transition-delay: 1s;
+    animation: fadeIn ease-in 1s;
+}
+
+.loaderImg {
+    width: 15%;
+    margin: 20px auto;
+    display: block;
+    animation: fadeIn ease-in 0.5s;
+    animation: float 1s ease-in-out infinite;
+    transition: 0.5s;
+}
+
+.fade, .fadeUp {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeUp {
+    transform: translateY(-40px);
+}
+
+>>>>>>> application
 @keyframes float {
     0% {
         transform: translatey(0px);
@@ -1756,6 +2091,7 @@ ul li {
     bottom: 40px;
     width: 100%;
     text-align: center;
+<<<<<<< HEAD
 }
 
     .btn-cont .btn {
@@ -1898,6 +2234,150 @@ ul li {
     }
 }
 
+=======
+}
+
+    .btn-cont .btn {
+        transition: all 0.5s;
+        position: relative;
+        padding: 10px 30px;
+        border: 1px solid white;
+        color: white;
+        text-decoration: none;
+        font-size: 1.125em;
+        font-family: "NCBold", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        -webkit-font-smoothing: antialiased;
+    }
+
+        .btn-cont .btn:hover {
+            border: none;
+            color: #ffcc00;
+        }
+
+            .btn-cont .btn:hover .line-1 {
+                -webkit-animation: move1 1500ms infinite ease;
+                animation: move1 1500ms infinite ease;
+            }
+
+            .btn-cont .btn:hover .line-2 {
+                -webkit-animation: move2 1500ms infinite ease;
+                animation: move2 1500ms infinite ease;
+            }
+
+            .btn-cont .btn:hover .line-3 {
+                -webkit-animation: move3 1500ms infinite ease;
+                animation: move3 1500ms infinite ease;
+            }
+
+            .btn-cont .btn:hover .line-4 {
+                -webkit-animation: move4 1500ms infinite ease;
+                animation: move4 1500ms infinite ease;
+            }
+
+    .btn-cont .line-1 {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 1px;
+        background-color: #ffcc00;
+        left: 0;
+        bottom: 0;
+    }
+
+    .btn-cont .line-2 {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 1px;
+        background-color: #ffcc00;
+        left: 0;
+        top: 0;
+    }
+
+    .btn-cont .line-3 {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 1px;
+        background-color: #ffcc00;
+        right: 0;
+        top: 0;
+    }
+
+    .btn-cont .line-4 {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 1px;
+        background-color: #ffcc00;
+        right: 0;
+        bottom: 0;
+    }
+
+@-webkit-keyframes move1 {
+    0% {
+        height: 100%;
+        bottom: 0;
+    }
+
+    54% {
+        height: 0;
+        bottom: 100%;
+    }
+
+    55% {
+        height: 0;
+        bottom: 0;
+    }
+
+    100% {
+        height: 100%;
+        bottom: 0;
+    }
+}
+
+@keyframes move1 {
+    0% {
+        height: 100%;
+        bottom: 0;
+    }
+
+    54% {
+        height: 0;
+        bottom: 100%;
+    }
+
+    55% {
+        height: 0;
+        bottom: 0;
+    }
+
+    100% {
+        height: 100%;
+        bottom: 0;
+    }
+}
+
+@-webkit-keyframes move2 {
+    0% {
+        width: 0;
+        left: 0;
+    }
+
+    50% {
+        width: 100%;
+        left: 0;
+    }
+
+    100% {
+        width: 0;
+        left: 100%;
+    }
+}
+
+>>>>>>> application
 @keyframes move2 {
     0% {
         width: 0;
@@ -2583,12 +3063,21 @@ ul li {
         -webkit-transform: translateY(-2px);
         transform: translateY(-2px);
     }
+<<<<<<< HEAD
 
     83.25% {
         -webkit-transform: translateY(1px);
         transform: translateY(1px);
     }
 
+=======
+
+    83.25% {
+        -webkit-transform: translateY(1px);
+        transform: translateY(1px);
+    }
+
+>>>>>>> application
     100% {
         -webkit-transform: translateY(0);
         transform: translateY(0);
@@ -2734,6 +3223,7 @@ ul li {
         -webkit-transform: translate(8px, 8px);
         transform: translate(8px, 8px);
     }
+<<<<<<< HEAD
 
     33.3% {
         -webkit-transform: translate(-6px, -6px);
@@ -2755,6 +3245,29 @@ ul li {
         transform: translate(1px, 1px);
     }
 
+=======
+
+    33.3% {
+        -webkit-transform: translate(-6px, -6px);
+        transform: translate(-6px, -6px);
+    }
+
+    49.95% {
+        -webkit-transform: translate(4px, 4px);
+        transform: translate(4px, 4px);
+    }
+
+    66.6% {
+        -webkit-transform: translate(-2px, -2px);
+        transform: translate(-2px, -2px);
+    }
+
+    83.25% {
+        -webkit-transform: translate(1px, 1px);
+        transform: translate(1px, 1px);
+    }
+
+>>>>>>> application
     100% {
         -webkit-transform: translate(0, 0);
         transform: translate(0, 0);
@@ -2827,12 +3340,21 @@ ul li {
         -webkit-transform: translate(4px, -4px);
         transform: translate(4px, -4px);
     }
+<<<<<<< HEAD
 
     66.6% {
         -webkit-transform: translate(-2px, 2px);
         transform: translate(-2px, 2px);
     }
 
+=======
+
+    66.6% {
+        -webkit-transform: translate(-2px, 2px);
+        transform: translate(-2px, 2px);
+    }
+
+>>>>>>> application
     83.25% {
         -webkit-transform: translate(1px, -1px);
         transform: translate(1px, -1px);
@@ -3080,12 +3602,21 @@ ul li {
         -webkit-transform: skew(-6deg);
         transform: skew(-6deg);
     }
+<<<<<<< HEAD
 
     66.6% {
         -webkit-transform: skew(4deg);
         transform: skew(4deg);
     }
 
+=======
+
+    66.6% {
+        -webkit-transform: skew(4deg);
+        transform: skew(4deg);
+    }
+
+>>>>>>> application
     83.25% {
         -webkit-transform: skew(-2deg);
         transform: skew(-2deg);

@@ -33,6 +33,8 @@ namespace ModelLibrary.services
                     a.Roadblocks = application.Roadblocks;
                     a.Requirements = application.Requirements;
                     a.Reviewed = application.Reviewed;
+                    a.Saved = application.Saved;
+                    a.Archived = application.Archived;
 
                     model.Applications.Add(a);
                 });
@@ -64,6 +66,8 @@ namespace ModelLibrary.services
                     a.Roadblocks = application.Roadblocks;
                     a.Requirements = application.Requirements;
                     a.Reviewed = application.Reviewed;
+                    a.Saved = application.Saved;
+                    a.Archived = application.Archived;
 
                     model.Applications.Add(a);
                 });
@@ -95,6 +99,8 @@ namespace ModelLibrary.services
                     a.Roadblocks = application.Roadblocks;
                     a.Requirements = application.Requirements;
                     a.Reviewed = application.Reviewed;
+                    a.Saved = application.Saved;
+                    a.Archived = application.Archived;
 
                     model.Applications.Add(a);
                 });
@@ -126,6 +132,11 @@ namespace ModelLibrary.services
                     a.Roadblocks = application.Roadblocks;
                     a.Requirements = application.Requirements;
                     a.Reviewed = application.Reviewed;
+<<<<<<< HEAD
+=======
+                    a.Saved = application.Saved;
+                    a.Archived = application.Archived;
+>>>>>>> application
 
                     model.Applications.Add(a);
                 });
@@ -142,6 +153,7 @@ namespace ModelLibrary.services
             using (var db = new ApplicationsEntities())
             {
                 var query = db.Applications.Where(x => x.Archived == true);
+<<<<<<< HEAD
 
                 var applicationList = query.ToList();
 
@@ -162,6 +174,29 @@ namespace ModelLibrary.services
                 });
 
 
+=======
+
+                var applicationList = query.ToList();
+
+                applicationList.ForEach(application =>
+                {
+                    ApplicationModel a = new ApplicationModel();
+                    a.ApplicationID = application.ApplicationID;
+                    a.Name = application.Name;
+                    a.Email = application.Email;
+                    a.ProjectTitle = application.ProjectTitle;
+                    a.Description = application.Description;
+                    a.Audience = application.Audience;
+                    a.Roadblocks = application.Roadblocks;
+                    a.Requirements = application.Requirements;
+                    a.Reviewed = application.Reviewed;
+                    a.Saved = application.Saved;
+                    a.Archived = application.Archived;
+                    model.Applications.Add(a);
+                });
+
+
+>>>>>>> application
             }
             return model;
         }
@@ -262,5 +297,28 @@ namespace ModelLibrary.services
                 db.SaveChanges();
             }
         }
+<<<<<<< HEAD
+=======
+        public void InvertSaveApplicationByID(int id)
+        {
+            using (var db = new ApplicationsEntities())
+            {
+                var query = db.Applications.Where(x => x.ApplicationID == id);
+                var application = query.First();
+                application.Saved = !application.Saved;
+                db.SaveChanges();
+            }
+        }
+        public void InvertArchiveApplicationByID(int id)
+        {
+            using (var db = new ApplicationsEntities())
+            {
+                var query = db.Applications.Where(x => x.ApplicationID == id);
+                var application = query.First();
+                application.Archived = !application.Archived;
+                db.SaveChanges();
+            }
+        }
+>>>>>>> application
     }
 }
