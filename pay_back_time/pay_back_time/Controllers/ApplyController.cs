@@ -34,7 +34,8 @@ namespace pay_back_time.Controllers
             if (string.IsNullOrEmpty(model.Description))
             {
                 ModelState.AddModelError("Description", "Must enter a description");
-            }            if (string.IsNullOrEmpty(model.Roadblocks))
+            }
+            if (string.IsNullOrEmpty(model.Roadblocks))
             {
                 ModelState.AddModelError("Roadblocks", "Must enter any roadblocks");
             }
@@ -54,7 +55,8 @@ namespace pay_back_time.Controllers
             }
             //service.CreateUserApplication(model);
 
-        }        public ActionResult ApplySuccess(ApplicationModel model)
+        }
+        public ActionResult ApplySuccess(ApplicationModel model)
         {
             ViewBag.name = model.Name;
             ViewBag.email = model.Email;
@@ -73,7 +75,8 @@ namespace pay_back_time.Controllers
         //[Authorize(Roles ="Admin")]
         public ActionResult ReviewedApplications()
         {
-            ViewBag.section = "review";            ViewBag.noResults = "No reviewed applications.";
+            ViewBag.section = "review";
+            ViewBag.noResults = "No reviewed applications.";
             return View("Applications", service.GetReviewedApplications());
         }
 
@@ -92,7 +95,8 @@ namespace pay_back_time.Controllers
 
             ViewBag.noResults = "No archived applications.";
             return View("Applications", service.GetArchivedApplications());
-        }        //[Authorize(Roles ="Admin")]
+        }
+        //[Authorize(Roles ="Admin")]
 
         public ActionResult Viewed()
         {
@@ -135,7 +139,9 @@ namespace pay_back_time.Controllers
                 service.InvertArchiveApplicationByID(x);
             };
             return new EmptyResult();
-        }        //[Authorize(Roles ="Admin")]
+        }
+
+        //[Authorize(Roles ="Admin")]
 
         public ActionResult Deleted()
         {
@@ -150,4 +156,9 @@ namespace pay_back_time.Controllers
             return new EmptyResult();
         }
     }
-}
+}
+
+
+
+
+
