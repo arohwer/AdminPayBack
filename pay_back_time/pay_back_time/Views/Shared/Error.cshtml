@@ -20,14 +20,14 @@
     <img class="nav-icon-side" src='~/Content/Images/nclogo.png' id='nc-icon-side' />
 </div>
 
-<h1 class="text-danger">Error.</h1>
+<h2 class="text-danger account-message-title">Error</h2>
 @{
     if (String.IsNullOrEmpty(ViewBag.errorMessage))
     {
-        <h2 class="text-danger">An error occurred while processing your request.</h2>
+        <p class="text-danger account-message">An error occurred while processing your request.</p>
     }
     else
     {
-        <h2 class="text-danger">@ViewBag.errorMessage</h2>
+        <p class="text-danger account-message">@ViewBag.errorMessage</p>
     }
 }

@@ -18,9 +18,9 @@
     <img class="nav-icon-side" src='~/Content/Images/nclogo.png' id='nc-icon-side' />
 </div>
 
-<h2>@ViewBag.Title.</h2>
-<div>
-    <p>
-        Thank you for confirming your email. Please @Html.ActionLink("Click here to Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+<h2 class="account-message-title">@ViewBag.Title</h2>
+<div class="account-message">
+    <p class="font-light">
+        Thank you for confirming your email. Please @Html.ActionLink("click here to log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
     </p>
 </div>

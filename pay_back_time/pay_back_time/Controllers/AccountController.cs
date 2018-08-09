@@ -80,7 +80,7 @@ namespace pay_back_time.Controllers
                 {
                     string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
 
-                    ViewBag.errorMessage = "You must have a confirmed email to log on."
+                    ViewBag.errorMessage = "You must have a confirmed email to log in. "
                         + "The confirmation token has been resent to your email account.";
                     return View("Error");
                 }
