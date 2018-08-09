@@ -4982,4 +4982,13 @@ ul li {
   padding-top: 30px;
   padding-bottom: 30px; }
 
+.account-img {
+  margin: 0 auto;
+  padding-top: 50px;
+  height: 60px;
+  text-align: center; }
+
+.account-img > img {
+  height: 60px; }
+
 /*# sourceMappingURL=main.css.map */
